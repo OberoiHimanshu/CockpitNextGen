@@ -1,0 +1,78 @@
+﻿@model Cockpit_NextGenMVC.BAL.VW_BCR_SignOff_Summary[]
+@{
+    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+
+    string RangeFrom = ViewData["FromDate"].ToString();
+    string RangeTo = ViewData["ToDate"].ToString();
+    
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li class="active">BCR Sign Off Summary</li>
+          </ol>
+        <br />
+        <hr style="background: gray; border: 0; height: 3px" />
+          <h1>
+            Business Control Reports : Signed-off Comments Summary
+          </h1>
+        </section>
+        <section class="Content">
+        <div class="row">
+        <div class="col-xs-12">
+@using (Ajax.BeginForm("Closed_Summary", "BCR", FormMethod.Post, new AjaxOptions { HttpMethod = "post" }))
+{
+
+        <div class="box">
+         Order CNG Snapshot Date Range 
+         From &nbsp;&nbsp;@(Html.Kendo().DatePicker()
+                            .Value(RangeFrom)
+                            .Name("Archive_Range_From")
+                            )
+         &nbsp;&nbsp;To &nbsp;&nbsp;@(Html.Kendo().DatePicker()
+                            .Value(RangeTo)
+                            .Name("Archive_Range_To")
+                            )
+        &nbsp;&nbsp;<input type="submit" value="Go" />
+
+        Note:- By Default Last 90 Days Snapshot Summary will be available.
+
+         
+                    @(Html.Kendo().Grid(Model).Name("grdOrders").ToolBar(tools => tools.Excel()).Columns(c =>
+                            {
+                                c.Bound(p => p.Report).Width(100).Title("Report Name").ClientTemplate("<a href='/BCR/Closed_Details?Report=#= Report#' onclick='showProgress();'>#=Report#</a>").Filterable(fb => fb.Multi(true));
+                                c.Bound(p => p.Commented_Sign_Off).Width(100).Title("Sign-Off Order comments").ClientFooterTemplate("Orders: #= sum#");
+                            })
+                            .Scrollable(sc => sc.Height(400))
+                                .Events(e => e.FilterMenuInit("onFilterMenuInit"))
+                            .Pageable()
+                            .Sortable()
+                            .Selectable(selectable => selectable
+                                    .Mode(GridSelectionMode.Single)
+                                    .Type(GridSelectionType.Row))
+                            .Resizable(r => r.Columns(true))
+                            .Reorderable(reorder => reorder.Columns(true))
+                            .Filterable()
+                            .Groupable()
+                                .DataSource(dataSource => dataSource
+                                .Ajax()
+                                .Aggregates(aggregates =>
+                                {
+                                    aggregates.Add(p => p.Commented_Sign_Off).Sum();
+                                })
+                                .PageSize(20)
+                                .Model(model => model.Id(p => p.Report))
+                                .ServerOperation(false)
+                                 ).Excel(excel => excel
+                                     .FileName("CNG_BCR_Signoff_Summary.xlsx")
+                                     .Filterable(true)
+                                     .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+                                     )
+                    )
+                </div>
+}
+        </div>
+       </div>
+    </section>
+</div>

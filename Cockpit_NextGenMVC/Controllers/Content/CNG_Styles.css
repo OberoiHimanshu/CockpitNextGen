@@ -1,0 +1,45 @@
+﻿
+/* Responsive Tab Strip Tyles */
+
+#tabstrip h2 
+{
+font-weight: lighter;
+font-size: 5em;
+line-height: 1;
+padding: 0 0 0 30px;
+margin: 0;
+}
+
+#tabstrip h2 span 
+{
+background: none;
+padding-left: 5px;
+font-size: .3em;
+vertical-align: top;
+}
+
+#tabstrip p 
+{
+margin: 0;
+padding: 0;
+}
+
+.Level2BucketName
+{
+color:White;opacity: 0.9;text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);webkit-text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);text-transform: uppercase;font-weight: bold;font-size: 15px;
+}
+
+#grdOrders
+{
+height:100%;
+}
+
+#grdMyFollowups
+{
+height:100%;
+}
+
+.handc
+{
+cursor: pointer; cursor: hand;
+}

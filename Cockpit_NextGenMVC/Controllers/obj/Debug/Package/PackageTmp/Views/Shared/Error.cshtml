@@ -1,0 +1,36 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+
+
+    <!-- Main content -->
+        <section class="content">
+
+          <div class="error-page">
+            <h2 class="headline text-red">500</h2>
+            <div class="error-content" style="color:White;">
+              <h3><i class="fa fa-warning text-red"></i> Oops! Something went wrong.</h3>
+              <p>
+                We will work on fixing that right away.
+                Meanwhile, you may <a href="@Url.Action("Index","Home")">return to dashboard</a> or try using the search form.
+
+                    @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+                    {
+                        <div style="color:White;">
+                            <p>
+                                <b>Exception:</b> @Model.Exception.Message<br />
+                                <b>Controller:</b> @Model.ControllerName<br />
+                                <b>Action:</b> @Model.ActionName<br />
+                                <b>Stack Trace:</b> @Model.Exception.StackTrace.ToString()
+                            </p>
+                        </div>
+                    }
+
+              </p>
+            </div>
+          </div><!-- /.error-page -->
+
+        </section><!-- /.content -->

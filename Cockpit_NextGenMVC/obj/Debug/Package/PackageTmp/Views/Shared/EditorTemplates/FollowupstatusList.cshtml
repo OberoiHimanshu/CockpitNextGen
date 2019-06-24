@@ -1,0 +1,9 @@
+﻿@(Html.Kendo().DropDownList()
+          .Name("status")
+           .DataTextField("Text")
+           .DataValueField("Value")
+           .BindTo(new List<SelectListItem>
+                  {
+                      new SelectListItem {Text = "Open", Value = "Open"},
+                      new SelectListItem {Text = "Closed", Value = "Closed"}
+                  }))

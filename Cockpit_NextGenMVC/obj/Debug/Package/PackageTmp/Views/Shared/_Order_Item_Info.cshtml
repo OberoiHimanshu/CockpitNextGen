@@ -1,0 +1,50 @@
+﻿@{
+    List<Cockpit_NextGenMVC.BAL.Tbl_Order_Items> OrderCommentsHistory = new List<Cockpit_NextGenMVC.BAL.Tbl_Order_Items>();
+}
+
+                @(Html.Kendo().Grid(OrderCommentsHistory)
+                   .Name("grdOrderLineItems")
+                   .ToolBar(tools => tools.Excel())
+                   .Columns(columns =>
+                    {
+                        columns.Bound(p => p.LINE_ITEM).Title("Line Item").Width(80);
+                        columns.Bound(p => p.MATERIAL_NO).Title("Material").Width(80);
+                        columns.Bound(p => p.MATERIAL_DESC).Width(100).Title("Description");
+                        columns.Bound(p => p.BACKLOG_AMT).Width(100).Title("Net Value(USD)");
+                        columns.Bound(p => p.CUSTOMER_REQ_GI_DATE).Title("CRDD").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.COMMIT_DATE).Title("SAP Load Date").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.TRIO_LOAD_DATE).Title("TRIO Load Date").Width(140);
+                        columns.Bound(p => p.DIVISION).Title("Division").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.BUSINESS_GROUP).Title("Business").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.PL_DIVISION_DESC).Title("PL Division").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.PRODUCT_LINE).Title("PL").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.DELV_BLK_LINE_CD).Title("Delivery Block").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.ITEM_BILLING_BLK_CD).Title("Billing Block").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.BACKLOG_STATUS).Title("Backlog Status").Width(100).Filterable(fb => fb.Multi(true));
+                    })
+                    .Scrollable(sc => sc.Height(350))
+                    .Pageable()
+                    .Sortable()
+                    .Scrollable()
+                    .Filterable()
+                    .Groupable()
+                    .Reorderable(reorder => reorder.Columns(true))
+                    .ColumnMenu()
+                    .Excel(excel => excel
+                        .FileName("CNG_Order_Line_Items.xlsx")
+                        .Filterable(true)
+                        .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+                        )
+                    .HtmlAttributes(new { style = "height:630px;" })
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        
+                        .PageSize(20)
+                                .Events(events => events.Error("onError"))
+                               
+                        .Model(model => model.Id(p => p.LINE_ITEM))
+                        .ServerOperation(false)
+                    )
+                    .Resizable(resize => resize.Columns(true))
+
+                        )

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Cockpit_NextGenMVC.BAL.Tbl_STR_Summary>
+@{
+    ViewBag.Title = "Speed to Revenue Summary";
+}
+<div class="content-wrapper">
+    <section class="content-header">
+    <h1>
+        Delivery block  - Speed to Revenue
+        </h1>
+        <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="halflings-icon home"></i>Home</a></li>
+        <li><a href="#"><i class="halflings-icon cog"></i>@ViewBag.Title</a></li>
+        </ol>
+   </section>
+    <section class="content">
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="box">
+       
+
+      @(Html.Kendo().Grid(Model)
+                   .Name("grdOrders")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(p => p.Region).Width(130);
+                        columns.Bound(p => p.TotalDBFocusList).Title("Total DB FocusList($)").Format("{0:c}").Width(100);
+                        columns.Bound(p => p.TotalOrders).Width(80).Title("# Orders");
+                        columns.Bound(p => p.TargetPercentageQExit).Title("Target %").Width(100);
+                        columns.Bound(p => p.TargetReduction).Title("Target Reduction($)").Format("{0:c}").Width(100);
+                        columns.Bound(p => p.DBReleased).Title("DB Released($)").Format("{0:c}").Width(100);
+                        columns.Bound(p => p.PercentageReleased).Title("% Released from Target").Width(100);
+                        columns.Bound(p => p.DBReleasedOrders).Title("# Ordes DB Released").Width(100);
+                        columns.Bound(p => p.DBOrders).Title("DB Orders($)").Format("{0:c}").Width(100);
+                        columns.Template(p => @Html.ActionLink(p.DBOrdersNo.ToString(), "DBSpeedtoRevenue", "DB")).Title("# of DB Orders").Width(100).ClientTemplate("<a href='" + Url.Action("DBSpeedtoRevenue", "DB", new { Region = "#=Region#" }) + "' onclick='showProgress();'>#=DBOrdersNo#</a>");
+                        columns.Bound(p => p.CancelledOrders).Title("Cancelled Orders($)").Format("{0:c}").Width(100);
+                        columns.Bound(p => p.CancelledOrdersNo).Title("# of Cancelled Orders").Width(100);
+                        columns.Bound(p => p.AdjustedTotalDBFocusList).Title("Adjusted Total DB (Total minus cancelled)").Format("{0:c}").Width(150);
+                        columns.Bound(p => p.AdjustedPerformance).Title("Adjusted Performance (w/o cancelled orders)").Width(100);
+                        columns.Bound(p => p.LastRefreshDate).Title("Last Refresh Date").Format("{0:MM/dd/yyyy}").Width(100);
+                    })
+                    .Scrollable(sc => sc.Height(350))
+                    .Pageable()
+                    .Sortable()
+                    .Filterable()
+                    .Resizable(r => r.Columns(true))
+                    .Reorderable(reorder => reorder.Columns(true))
+                    .ColumnMenu()
+                    .HtmlAttributes(new { style = "height:400px;" })
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .PageSize(20)
+                        .ServerOperation(false)
+                                ).Excel(excel => excel
+                                .FileName("CNG_SNI_Release_Target_Forecast.xlsx")
+                                .Filterable(true)
+                                .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+                                )
+                 )
+
+                 <div class="overlay" id="spinner" name="spinner" style="visibility:hidden;">
+                <i class="fa fa-refresh fa-spin"></i>
+                </div>
+
+                </div>
+
+    
+
+    </div>
+    </div>
+    </section>
+</div>

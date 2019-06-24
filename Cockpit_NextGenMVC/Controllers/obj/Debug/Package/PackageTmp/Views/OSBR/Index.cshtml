@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Cockpit_NextGenMVC.BAL.Tbl_OSBR_NOTIFICATIONS>
+@{
+    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+}
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+    <h1>
+        OSBR Notifications
+        <small style="visibility:hidden;">- Click here for <a id="btnAdvancedSearch" href="#">Advanced Search</a></small>
+        </h1>
+        <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="halflings-icon home"></i>Home</a></li>
+        <li><a href="#"><i class="halflings-icon cog"></i>@ViewBag.Title</a></li>
+        </ol>
+   </section>
+    <section class="content">
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="box">        @(
+                    Html.Kendo().Grid(Model)
+                    .ToolBar(tools => tools.Excel())
+                    .Name("grdOrders")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(p => p.REGION).Title("Region").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.SORG).Title("Sorg").Width(80).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.SALES_DOC).Title("Sales Order").Groupable(false).Width(100).ClientFooterTemplate("Orders: #= count#");
+                        columns.Bound(p => p.ITEM).Title("Item").Width(80);
+                        columns.Bound(p => p.MATERIAL).Width(80).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.ORDER_DATE).Title("Order Date").Format("{0:MM/dd/yyyy}").Width(100);
+                        columns.Bound(p => p.QTY).Title("QTY").Width(100);
+                        columns.Bound(p => p.CURR).Title("Currency").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.TOT_LC_PRICE).Format("{0:c}").Title("Total LC Price").Width(100);
+                        columns.Bound(p => p.TOT_USD_PRICE).Format("{0:c}").Title("Total USD Price").Width(100).ClientFooterTemplate("Net Value: #= kendo.toString(sum, 'C')#");
+                        columns.Bound(p => p.DELIVERY_STATUS).Title("Delivery Status").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.INVOICING_STATUS).Title("Invoicing Status").Width(100).Filterable(fb => fb.Multi(true)); 
+                        columns.Bound(p => p.SATY).Title("Order Type").Width(80);
+                        columns.Bound(p => p.CREATED_BY).Title("Created By").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.OWNER).Title("Owner").Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.CUSTOMER).Title("Customer").Width(200);
+                        columns.Bound(p => p.PL_DV).Title("PL").Width(50).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.ASSIGNED_ENGINEER_TEXT).Title("Assigned Engineer Text").Width(200);
+                    })
+            .Scrollable(sc => sc.Height(350))
+            .Events(e => e.Change("OnOSBRChange"))
+            .Pageable()
+            .Sortable()
+            .Scrollable()
+            .Selectable(selectable => selectable
+                            .Mode(GridSelectionMode.Multiple)
+                            .Type(GridSelectionType.Row))
+            .Filterable()
+            .Groupable()
+            .Excel(excel => excel
+                   .FileName("CNG_OSBR_Notifications.xlsx")
+                   .Filterable(true)
+                   .AllPages(true)
+                   .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+            )
+            .Resizable(r => r.Columns(true))
+            .Reorderable(reorder => reorder.Columns(true))
+            .ColumnMenu()
+            .HtmlAttributes(new { style = "height:530px;" })
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Aggregates(aggregates =>
+                {
+                    aggregates.Add(p => p.SALES_DOC).Count();
+                    aggregates.Add(p => p.TOT_USD_PRICE).Sum();
+                })
+                .PageSize(20)
+            .Model(model => model.Id(p => p.SALES_DOC))
+                .ServerOperation(false)))
+
+
+                 </div>
+    </div>
+    </div>
+    </section>
+
+    <div id="tabstrip">
+    <ul>
+        <li class="k-state-active">Comments History</li>
+        <li>Open Follow-ups</li>
+        <li>Closed Follow-ups</li>
+        <li>Header Info</li>
+        <li>Block Info</li>
+        <li>Item Info</li>
+        <li>Delivery Details</li>
+        <li>Partner Details</li>
+    </ul>
+    <div>@{Html.RenderPartial("_CommentHistory");}</div>
+    <div>@{Html.RenderPartial("_Order_Open_Followup");}</div>
+    <div>@{Html.RenderPartial("_Order_Closed_Followups");}</div>
+    <div>@{Html.RenderPartial("_Order_Header_Info");}</div>
+    <div>@{Html.RenderPartial("_Order_Block_Info");}</div>
+    <div>@{Html.RenderPartial("_Order_Item_Info");}</div>
+    <div>@{Html.RenderPartial("_Order_Delivery_Info");}</div>
+    <div>@{Html.RenderPartial("_Order_Partner_Info");}</div>
+    </div>
+
+   
+</div>
+

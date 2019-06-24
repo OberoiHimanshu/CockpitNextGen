@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Cockpit_NextGenMVC.BAL.VW_USERS>
+@{
+    ViewBag.Title = "Team Members";
+    var UserRole = Session["Role"].ToString();
+    var IsRowSelectableforSignOff = true;
+
+    if (UserRole == "Supervisor" || UserRole=="Support")
+    {
+        IsRowSelectableforSignOff = false;
+    }
+}
+<div class="content-wrapper">
+    <section class="content-header">
+    <h1>
+        My User Profile
+        <small>- Click here for <a id="btnAdvancedSearch" href="#">Advanced Search</a></small>
+        </h1>
+        <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="halflings-icon home"></i>Home</a></li>
+        <li><a href="#"><i class="halflings-icon cog"></i>@ViewBag.Title</a></li>
+        </ol>
+   </section>
+    <section class="content">
+    <div class="row">
+                <div class="col-xs-12">
+    <div class="box">
+                <div class="box-header" data-original-title>
+                    <h2>
+                        <i class="halflings-icon user"></i><span class="break"></span>Profile Details -
+                        @Model.FirstOrDefault().TEAM_NAME</h2>
+                    <div class="box-icon">
+                        <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a><a href="#"
+                            class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    @(Html.Kendo().Grid(Model)
+                   .Name("grdTeamUsers")
+                   .ToolBar(tools => tools.Excel())
+                   .Columns(columns =>
+                    {
+                        columns.Bound(p => p.FULLNAME).Width(100);
+                        columns.Bound(p => p.EMAIL).Groupable(false).Width(100);
+                        columns.Bound(p => p.SAP_User_Name).Width(100).Filterable(fb => fb.Equals(true));
+                        columns.Bound(p => p.NTLOGIN).Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.MANAGER).Width(140).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.ROLE_DESC).EditorTemplateName("RoleList").Width(100);        
+                        columns.Command(command => command.Edit()).Width(55).Visible(IsRowSelectableforSignOff);
+                        
+                    })
+                    .Scrollable(sc => sc.Height(350))
+                    .Pageable()
+                    .Sortable()
+                    .Scrollable()
+                    .Filterable()
+                    .Groupable()
+                    .ColumnMenu()
+                    
+                                    //.Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("EditUser"))
+                    .Excel(excel => excel
+                        .FileName("CNG_Users.xlsx")
+                        .Filterable(true)
+                        .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+                        )
+                    .HtmlAttributes(new { style = "height:630px;" })
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        
+                        .PageSize(20)
+                                .Events(events => events.Error("onError"))
+                               
+                        .Model(model => model.Id(p => p.USER_ID))
+                        .ServerOperation(false)
+                                .Update(u => u.Action("SaveUserDetails", "User"))
+                    )
+                    .Resizable(resize => resize.Columns(true))
+
+                        )
+                            <p>
+                        @Html.ActionLink("Back to Login", "UserLogin")
+                    </p>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+        </div>
+    </div>
+    <!--/fluid-row-->
+    </section>
+
+  
+</div>
+<!--/fluid-row-->
+
+<script type="text/javascript">
+    function onError(e, status) {
+        if (e.errors) {
+            var message = "Error:\n";
+
+            var grid = $('#grdTeamUsers').data('kendoGrid');
+            var gridElement = grid.editable.element;
+
+            var validationMessageTemplate = kendo.template(
+            "<div id='#=field#_validationMessage' " +
+                "class='k-widget k-tooltip k-tooltip-validation " +
+                    "k-invalid-msg field-validation-error' " +
+                "style='margin: 0.5em;' data-for='#=field#' " +
+                "data-val-msg-for='#=field#' role='alert'>" +
+                "<span class='k-icon k-warning'></span>" +
+                "#=message#" +
+                "<div class='k-callout k-callout-n'></div>" +
+            "</div>");
+
+            $.each(e.errors, function (key, value) {
+                if (value.errors) {
+                    gridElement.find("[data-valmsg-for=" + key + "],[data-val-msg-for=" + key + "]")
+                    .replaceWith(validationMessageTemplate({ field: key, message: value.errors[0] }));
+                    gridElement.find("input[name=" + key + "]").focus();
+                }
+            });
+            grid.one("dataBinding", function (e) {
+                e.preventDefault();   // cancel grid rebind
+            });
+        }
+    }
+</script>
+
