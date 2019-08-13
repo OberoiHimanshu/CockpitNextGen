@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Cockpit_NextGenMVC.BAL.VW_Orders_Info>
+
+@{
+    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+    ViewBag.SummaryTitle = "Archival Summary";
+    ViewBag.Title = "Archived Orders";
+}
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+    <h1>
+        Closed & Archived Orders 
+        <small style="visibility:hidden;">- Click here for <a id="btnAdvancedSearch" href="#">Advanced Search</a></small>
+        </h1>
+        <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="halflings-icon home"></i>Home</a></li>
+        <li><a href="@Url.Action("Archives_Summary", "History")"><i class="halflings-icon cog"></i>@ViewBag.SummaryTitle</a></li>
+        <li><a href="#"><i class="halflings-icon cog"></i>@ViewBag.Title</a></li>
+        </ol>
+   </section>
+    <section class="content">
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="box">       
+     @(
+            Html.Kendo().Grid(Model)
+            .ToolBar(tools => tools.Excel())
+            .Name("grdOrders")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.SALES_ORDERNO).Groupable(false).Width(130).ClientFooterTemplate("Orders: #= count#");
+                columns.Bound(p => p.CUSTOMER_PO_NO).Title("PO Number").Width(130);
+                columns.Bound(p => p.SALES_ORG).Width(80).Filterable(fb => fb.Multi(true));
+                columns.Bound(p => p.ORDER_OWNER).Title("Order Owner").Width(130).Filterable(fb => fb.Multi(true));
+                columns.Bound(p => p.ORDER_AGE).Title("Order Aging").Width(80);
+                columns.Bound(p => p.BACKLOG_AMT).Width(100).Format("{0:c}").Title("Net Value (USD)").Width(120).ClientFooterTemplate("Net Value: #= kendo.toString(sum, 'C')#");
+                columns.Bound(p => p.SOLD_TO_PARTY_NAME).Title("Sold-To Customer").Width(200);
+                columns.Bound(p => p.PAYMENT_TERMS).Title("Payment Terms").Width(150).Filterable(fb => fb.Multi(true));
+                columns.Bound(p => p.COMMIT_DATE).Title("SAP Load Date").Width(100).Format("{0:MM/dd/yyyy}");
+                columns.Bound(p => p.TRIO_LOAD_DATE).Title("Trio Load Date").Width(100);
+                columns.Bound(p => p.CUSTOMER_REQ_GI_DATE).Title("CRDD Date").Width(100).Format("{0:MM/dd/yyyy}");
+                columns.Bound(p => p.INCOTERMS).Title("Inco Terms").Width(100).Filterable(fb => fb.Multi(true));
+                columns.Bound(p => p.EXPECTED_RELEASE_DATE).Title("Expected Released date").Width(120).Format("{0:MM/dd/yyyy}");
+                columns.Bound(p => p.REASON_CODE).Title("Reason Code").Width(140).Filterable(fb => fb.Multi(true));
+                columns.Bound(p => p.LATEST_COMMENT).Title("Latest Comment").Width(300).ClientTemplate("#if(LATEST_COMMENT !=null && LATEST_COMMENT.length>50){# # var myContent =LATEST_COMMENT; #  # var dcontent = myContent.substring(0,50); # <span>#=kendo.toString(dcontent)#</span> .... <img src='../../Content/img/search-plus-24.png' onclick=\"ShowCommentDetails(this);\" /> </span> #}else{# <span>#=LATEST_COMMENT#</span> #}#");
+            })
+            .Scrollable(sc => sc.Height(380))
+            .Pageable()
+            .Sortable()
+            .Scrollable()
+            .Filterable()
+            .Groupable()
+            .Excel(excel => excel
+                   .FileName("CNG_Order_Archives_Summary.xlsx")
+                   .Filterable(true)
+                   .AllPages(true)
+                   .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+            )
+            .Resizable(r => r.Columns(true))
+            .ColumnMenu()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Aggregates(aggregates =>
+                {
+                    aggregates.Add(p => p.SALES_ORDERNO).Count();
+                    aggregates.Add(p => p.BACKLOG_AMT).Sum();
+                })
+                .PageSize(20)
+            .Model(model => model.Id(p => p.SALES_ORDERNO))
+                .ServerOperation(false)))
+                 </div>
+    </div>
+    </div>
+    </section>
+   
+</div>
+

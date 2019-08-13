@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Cockpit_NextGenMVC.BAL.Tbl_History_Comments>
+
+@{
+    ViewBag.Title = "Signed-off order Details";
+    
+    var currentBCR = ViewBag.currentBCR;
+    Cockpit_NextGenMVC.BAL.Tbl_Review_Reports oCurrentReport = ViewBag.oCurrentReport;
+    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+
+    var Approved_To_IsHidden = true;
+
+    if (currentBCR == "Orders greater than 5 months" || currentBCR == "CRDD>6 Months")
+    {
+        Approved_To_IsHidden = false;
+    }
+
+    string RangeFrom = ViewData["FromDate"].ToString();
+    string RangeTo = ViewData["ToDate"].ToString();
+    
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+    <h4>
+        Report Selected - <input type="text" value="@currentBCR" id="SelectedReportName" name="SelectedReportName" class="label-default" />
+        
+        </h4>
+        <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="halflings-icon home"></i>Home</a></li>
+        <li><a href="@Url.Action("Closed_Summary", "BCR")"><i class="halflings-icon home"></i>Control Reports Summary</a></li>
+        <li><a href="#"><i class="halflings-icon cog"></i>@ViewBag.Title</a></li>
+        </ol>
+   </section>
+    <section class="content">
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="box">    
+@using (Ajax.BeginForm("Closed_Details", "BCR", FormMethod.Post, new AjaxOptions { HttpMethod = "post" }))
+{
+
+        <div style="text-align:left;">
+         Order CNG Snapshot Date Range 
+         From &nbsp;&nbsp;@(Html.Kendo().DatePicker()
+                            .Value(RangeFrom)
+                            .Name("Archive_Range_From")
+                            )
+         &nbsp;&nbsp;To &nbsp;&nbsp;@(Html.Kendo().DatePicker()
+                            .Value(RangeTo)
+                            .Name("Archive_Range_To")
+                            )
+        &nbsp;&nbsp;<input type="submit" value="Go" />
+
+           @(Html.Kendo().Grid(Model)
+                   .Name("grdSignedOffOrdersDetails")
+                   .ToolBar(tools => tools.Excel())
+                   .Columns(columns =>
+                   {
+                       columns.Bound(p => p.Report).Width(200);
+                       columns.Bound(p => p.Sales_Org).Title("Sales Org").Width(80).Filterable(fb => fb.Multi(true));
+                       columns.Bound(p => p.Sales_Ord).Title("Sales Order").Width(100);
+                       columns.Bound(p => p.OrderOwner).Title("Order Owner").Width(120).Filterable(fb => fb.Multi(true));
+
+                       columns.Bound(p => p.Sold_To_Customer_Name).Title("Sold-To Customer Name").Width(120);
+                       columns.Bound(p => p.Order_Date).Title("Order Date").Width(100).Format("{0:MM/dd/yyyy}");
+                       columns.Bound(p => p.Net_Value).Title("Net Value").Width(100);
+
+                       columns.Bound(p => p.Approved_To_Date).Title("Aproved-To Date").Width(100).Format("{0:MM/dd/yyyy}").Hidden(Approved_To_IsHidden);
+                       columns.Bound(p => p.Cleardate).Title("Clear Date").Width(100).Format("{0:MM/dd/yyyy}");
+                       columns.Bound(p => p.snapshotdate).Title("Snapshot Date").Width(100).Format("{0:MM/dd/yyyy}");
+                       columns.Bound(p => p.Comment).Title("Comments").Width(200);
+                       columns.Bound(p => p.Comment_Date).Title("Comment Date").Width(100).Format("{0:MM/dd/yyyy}");
+                       columns.Bound(p => p.Commented_By).Title("Commented By").Width(100).Filterable(fb => fb.Multi(true));
+                       columns.Bound(p => p.SignOff).Title("Sign Off").Width(100);
+                       columns.Bound(p => p.SignOff_Date).Title("Sign Off Date").Width(100).Format("{0:MM/dd/yyyy}");
+                       columns.Bound(p => p.SignOff_By).Title("Sign Off By").Width(100).Filterable(fb => fb.Multi(true));
+                   })
+                    .Scrollable(sc => sc.Height(400))
+                    .Events(events => events.FilterMenuInit("onFilterMenuInit"))
+                    .Pageable()
+                    .Sortable()
+                    .Selectable(selectable => selectable
+                            .Mode(GridSelectionMode.Single)
+                            .Type(GridSelectionType.Row))
+                    .Resizable(r => r.Columns(true))
+                    .Reorderable(reorder => reorder.Columns(true))
+                    .Filterable()
+                    .Groupable()
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .PageSize(20)
+                        .Model(model => model.Id(p => p.Sales_Ord))
+                        .ServerOperation(false)
+                            ).Excel(excel => excel
+                                .FileName("CNG_BCr_Sign_Off_Details.xlsx")
+                                .Filterable(true)
+                                .AllPages(true)
+                                .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+                                )
+
+            )
+
+            <input type="hidden" id="hid_SessionUSer_NTLOGIN" name="hid_SessionUSer_NTLOGIN" value="@SessionUSer.NTLOGIN" />
+            <input type="hidden" id="hid_ReportName" name="hid_ReportName" value="@currentBCR" />
+
+            <div class="overlay" id="spinner" name="spinner" style="visibility:hidden;">
+            <i class="fa fa-refresh fa-spin"></i>
+            </div>
+
+        </div>
+}
+        </div>
+    </div>
+    </section>
+
+</div>
+
+

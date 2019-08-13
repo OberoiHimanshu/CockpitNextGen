@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Cockpit_NextGenMVC.BAL.Tbl_Archival_Summary>
+
+@{
+    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+    ViewBag.SummaryTitle = "Archival Summary";
+
+    string SummaryFor;
+
+    if (SessionUSer.ROLE_DESC == "CSR")
+    {
+        SummaryFor = SessionUSer.TEAM_NAME;
+    }
+    else if (SessionUSer.ROLE_DESC == "Supervisor")
+    {
+        SummaryFor = SessionUSer.TEAM_NAME;
+    }
+    else if (SessionUSer.ROLE_DESC == "BPA" || SessionUSer.ROLE_DESC == "Regional Lead")
+    {
+        SummaryFor = SessionUSer.SUPERREGION;
+    }
+    else
+    {
+        SummaryFor = "WW Regions";
+    }
+}
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+    <h1>
+        Closed Orders Archival Summary for : @SummaryFor
+        <small style="visibility:hidden;">- Click here for <a id="btnAdvancedSearch" href="#">Advanced Search</a></small>
+        </h1>
+        <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="halflings-icon home"></i>Home</a></li>
+        <li><a href="#"><i class="halflings-icon cog"></i>@ViewBag.SummaryTitle</a></li>
+        </ol>
+   </section>
+    <section class="content">
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="box">       
+     @(
+            Html.Kendo().Grid(Model)
+            .ToolBar(tools => tools.Excel())
+            .Name("grdOrders")
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.Order_Owner).Title("Order Owner").Width(100)
+                        .Template(@<text><a href="@Url.Action("Archives_Details", "History", new { OrderOwner = @item.Order_Owner })">@item.Order_Owner</a></text>)
+                        .ClientTemplate("<a href='/History/Archives_Details?OrderOwner=#= Order_Owner#'>#=Order_Owner#</a>").Title("Order Owner").Width(120);
+                columns.Bound(p => p.Orders).Title("Sales Orders").Width(80).ClientFooterTemplate("Orders: #= sum#"); ;
+                columns.Bound(p => p.NetValue).Title("Net Value").Width(100).Format("{0:c}").ClientFooterTemplate("Net Value: #= kendo.toString(sum, 'C')#"); ;
+            })
+            .Scrollable(sc => sc.Height(400))
+            .Pageable()
+            .Sortable()
+            .Scrollable()
+            .Filterable()
+            .Groupable()
+            .Excel(excel => excel
+                   .FileName("CNG_Order_Archives_Summary.xlsx")
+                   .Filterable(true)
+                   .AllPages(true)
+                   .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+            )
+            .Resizable(r => r.Columns(true))
+            .ColumnMenu()
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Aggregates(aggregates =>
+                {
+                    aggregates.Add(p => p.Orders).Sum();
+                    aggregates.Add(p => p.NetValue).Sum();
+                })
+                .PageSize(20)
+            .Model(model => model.Id(p => p.Order_Owner))
+                .ServerOperation(false)))
+                 </div>
+    </div>
+    </div>
+    </section>
+   
+</div>
+

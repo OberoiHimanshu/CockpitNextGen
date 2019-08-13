@@ -1,0 +1,356 @@
+﻿@model Cockpit_NextGenMVC.Models.Session_Filters
+
+<form id="FrmIndex" name="FrmIndex">
+<table style="width: 100%">
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Business :</b>
+        </td>
+        <td>
+            @Model.Business
+        </td>
+        <td>
+            <b>Region :</b>
+        </td>
+        <td>
+            @Model.Region
+        </td>
+        <td>
+            <b>Sales Org :</b>
+        </td>
+        <td style="text-align:center;">
+            @Model.Sorg
+        </td>
+        <td>
+            <b>Division :</b>
+        </td>
+        <td>
+            @Model.Division
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Primary Product :</b>
+        </td>
+        <td>
+            @Model.PrimaryProduct
+        </td>
+        <td>
+            <b>Product Line :</b>
+        </td>
+        <td>
+            @Model.PL
+        </td>
+        <td>
+            <b>Backlog Status :</b>
+        </td>
+        <td>
+            @Model.BacklogStatus
+        </td>
+        <td>
+            <b>PO Number :</b>
+        </td>
+        <td>
+            @Model.CustomerPONumber
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Order Owner :</b>
+        </td>
+        <td>
+            @Model.OrderOwner
+        </td>
+        <td>
+            <b>SNI Aging :</b>
+        </td>
+        <td>
+            @Model.SNIAging
+        </td>
+        <td>
+            <b>SNI Aging Bucket :</b>
+        </td>
+        <td>
+            @Model.SNIAgingBucket
+        </td>
+        <td>
+            <b>Order Aging :</b>
+        </td>
+        <td>
+            @Model.AgingBucket
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Dollar Bucket :</b>
+        </td>
+        <td>
+            @Model.DollarBucket
+        </td>
+        <td>
+            <b>DB Closuere Status :</b>
+        </td>
+        <td>
+            @Model.DBClosureStatus
+        </td>
+        <td>
+            <b>SNI Closure Status :</b>
+        </td>
+        <td>
+            @Model.SNIClosureStatus
+        </td>
+        <td>
+            <b>Backlog Amt :</b>
+        </td>
+        <td>
+            @Model.BacklogAmt
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Sold to Account ID :</b>
+        </td>
+        <td>
+            @Model.SoldToAccountID
+        </td>
+        <td>
+            <b>Sold To Account Name :</b>
+        </td>
+        <td>
+            @Model.SoldToAccount
+        </td>
+        <td>
+            <b>Sold to Country :</b>
+        </td>
+        <td>
+            @Model.SoldToCountry
+        </td>
+        <td>
+            <b> Payment Term :</b>
+        </td>
+        <td>
+            @Model.PaymentTerm
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Ship to Account ID :</b>
+        </td>
+        <td>
+            @Model.ShipToAccountID
+        </td>
+        <td>
+            <b>Ship To Account Name :</b>
+        </td>
+        <td>
+            @Model.ShipToAccount
+        </td>
+        <td>
+            <b>Ship to Country :</b>
+        </td>
+        <td>
+            @Model.ShipToCountry
+        </td>
+        <td>
+            <b> :</b>
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+        <tr style="height: 30px !important;">
+        <td>
+            <b>ZU Account ID :</b>
+        </td>
+        <td>
+            @Model.ZUAccountID
+        </td>
+        <td>
+            <b>ZU Account Name :</b>
+        </td>
+        <td>
+            @Model.ZUAccount
+        </td>
+        <td>
+            <b>ZU Country :</b>
+        </td>
+        <td>
+            @Model.ZUCountry
+        </td>
+        <td>
+            <b> :</b>
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Sales Rep :</b>
+        </td>
+        <td>
+            @Model.SalesRep
+        </td>
+        <td>
+            <b>BTM Name :</b>
+        </td>
+        <td>
+            @Model.BTM
+        </td>
+        <td>
+            <b>BTM Manager :</b>
+        </td>
+        <td>
+            @Model.BTM_Manager
+        </td>
+        <td>
+            <b> :</b>
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Billing Block Code :</b>
+        </td>
+        <td>
+            @Model.BillingBlock_Code
+        </td>
+        <td>
+            <b>Billing Block Description :</b>
+        </td>
+        <td>
+            @Model.BillingBlock_HeaderText
+        </td>
+        <td>
+            <b>Billing Block Item Code :</b>
+        </td>
+        <td>
+            @Model.BillingBlock_ItemText
+        </td>
+        <td>
+            <b> :</b>
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Delivery Block Code :</b>
+        </td>
+        <td>
+            @Model.DeliveryBlock_Code
+        </td>
+        <td>
+            <b>Delivery Block Description :</b>
+        </td>
+        <td>
+            @Model.DeliveryBlock_HeaderText
+        </td>
+        <td>
+            <b>Delivery Block Item Code :</b>
+        </td>
+        <td>
+            @Model.DeliveryBlock_ItemText
+        </td>
+        <td>
+            <b> :</b>
+        </td>
+        <td>
+            
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Delta Load Date :</b>
+        </td>
+        <td>
+            @Model.DeltaLoaddate
+        </td>
+        <td>
+            <b>Delta Load Date Bucket :</b>
+        </td>
+        <td>
+            @Model.DeltaLoaddateBucket
+        </td>
+        <td>
+            <b>Closure Days Delta From :</b>
+        </td>
+        <td>
+            @Model.ClosuredaysDeltaFrom
+        </td>
+        <td>
+            <b>Closure Days Delta To :</b>
+        </td>
+        <td>
+            @Model.ClosuredaysDeltaTo
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Sales Order :</b>
+        </td>
+        <td>
+            @Model.SalesOrder
+        </td>
+        <td>
+            <b>Order Owner :</b>
+        </td>
+        <td>
+            @Model.OwnerName
+        </td>
+        <td>
+            <b>NLHD :</b>
+        </td>
+        <td>
+            @Model.NLHD
+        </td>
+        <td>
+            <b>Load Date :</b>
+        </td>
+        <td>
+            @Model.LoaDDate
+        </td>
+    </tr>
+    <tr style="height: 30px !important;">
+        <td>
+            <b>Trio Load Date :</b>
+        </td>
+        <td>
+            @Model.TrioLoaDDate
+        </td>
+        <td>
+            <b>CRDD :</b>
+        </td>
+        <td>
+            @Model.CRDD
+        </td>
+        <td>
+            <b>Exp. Release Date :</b>
+        </td>
+        <td>
+            @Model.ExpReleaseDate
+        </td>
+        <td>
+            <b>Reason Code :</b>
+        </td>
+        <td>
+            @Model.ReasonCode
+        </td>
+    </tr>
+    <tr>
+    <td colspan="2">
+    <hr />
+
+        @(Html.Kendo().Button()
+        .Name("btnResetFilters")
+        .HtmlAttributes(new { type = "button" })
+        .Icon("tick")
+        .Events(e => e.Click("ResetFiltersApplied"))
+        .Content("Reset Filters Applied"))        
+    </td>
+    </tr>
+</table>
+</form>

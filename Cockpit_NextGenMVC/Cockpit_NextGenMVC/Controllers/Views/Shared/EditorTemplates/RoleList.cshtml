@@ -1,0 +1,15 @@
+﻿@(Html.Kendo().DropDownList()
+      .Name("RoleName")
+           .DataTextField("Text")
+                .DataValueField("Value")
+          .BindTo(new List<SelectListItem>
+                  {
+                      new SelectListItem {Text = "WW Lead", Value = "8"},
+                      new SelectListItem {Text = "Regional User", Value = "9"},
+                      new SelectListItem {Text = "Regional Lead", Value = "7"},
+                      new SelectListItem {Text = "Supervisor", Value = "1"},
+                      new SelectListItem {Text = "CSR", Value = "2"},
+                      new SelectListItem {Text = "BPA", Value = "3"},
+                      new SelectListItem {Text = "System", Value = "4"},
+                      new SelectListItem {Text = "Admin", Value = "5"}
+                  }))

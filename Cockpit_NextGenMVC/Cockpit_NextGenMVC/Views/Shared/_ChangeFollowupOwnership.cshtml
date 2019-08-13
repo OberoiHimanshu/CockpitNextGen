@@ -1,0 +1,197 @@
+﻿@{
+    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+    List<Cockpit_NextGenMVC.Controllers.Model_Pie> lstTeamMembers = (List<Cockpit_NextGenMVC.Controllers.Model_Pie>)Session["TeamProfile"];
+}
+<div class="control-group">
+    <div class="panel-wrap">
+        <div id="main-content">
+            <div id="news" class="widget">
+                <div>
+                    <h3>
+                        Ownership for</h3>
+                    <input type="text" id="lbl_FollowupsSelected" name="lbl_FollowupsSelected" readonly="readonly"
+                        style="width: 100%" />
+                    <h3>
+                        New Owner Name</h3>
+                    @(Html.Kendo().DropDownList()
+                              .Name("cmb_NewOwner")
+                              .Filter("contains")
+                              .DataTextField("category")
+                              .DataValueField("Color")
+                              .BindTo(lstTeamMembers)
+                              .SelectedIndex(0)
+                            )
+                    <h3>
+                        Confirm the Ownership change.</h3>
+                    <input type="submit" value="Change Ownership" onclick="UpdateMultipleSelecedFollowups();" />
+                    <input type="reset" value="reset" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #example {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        .dash-head {
+            width: 670px;
+            height: 80px;
+            background-color: #222;
+            position: relative;
+        }
+
+        .dash-head .k-rpanel-toggle {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 20px;
+            left: 20px;
+        }
+
+        .panel-wrap {
+            max-width: 668px;
+            background-color: #f5f5f5;
+            border: 1px solid #e5e5e5;
+        }
+
+        #sidebar {
+            margin: 0;
+            padding: 20px 0 20px 20px;
+            vertical-align: top;
+        }
+
+        @@media (max-width: 1000px) {
+            #sidebar {
+                background: #fff;
+                padding: 20px;
+                border-left: 1px solid #e5e5e5;
+
+                /* show sidebar in container, demo only*/
+                position: absolute;
+                top: 402px;
+                bottom: 0;
+            }
+
+            #sidebar.k-rpanel-expanded {
+                box-shadow: 0 0 10px rgba(0,0,0,.3);
+            }
+        }
+
+        #main-content {
+            overflow: hidden;
+            margin: 0;
+            padding: 20px;
+            vertical-align: top;
+        }
+
+        /* WIDGETS */
+        .widget {
+            margin: 0 0 20px;
+            padding: 0;
+            background-color: #ffffff;
+            border: 1px solid #e7e7e7;
+            border-radius: 3px;
+        }
+
+        .widget div {
+            padding: 10px;
+            min-height: 50px;
+        }
+
+        .widget h3 {
+            font-size: 12px;
+            padding: 8px 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .widget h3 span {
+            float: right;
+        }
+
+        .widget h3 span:hover {
+            cursor: pointer;
+            background-color: #e7e7e7;
+            border-radius: 20px;
+        }
+
+        /* PROFILE */
+        .profile-photo {
+            width: 80px;
+            height: 80px;
+            margin: 10px auto;
+            border-radius: 60px;
+            border: 1px solid #e7e7e7;
+            background: no-repeat 50% 50%;
+        }
+
+        #profile div {
+            text-align: center;
+        }
+
+        #profile h4 {
+            width: auto;
+            margin: 0 0 5px;
+            font-size: 1.2em;
+            color: #1f97f7;
+        }
+
+        #profile p {
+            margin: 0 0 10px;
+        }
+
+        /* BLOGS & NEWS */
+        #blogs div,
+        #news div {
+            padding: 0 20px 20px;
+        }
+
+        #teammates h4,
+        #blogs h4,
+        #news h4 {
+            width: auto;
+            margin: 20px 0 2px;
+            font-size: 1.4em;
+            color: #1f97f7;
+            font-weight: normal;
+        }
+
+        #main-content #news h4 {
+            font-size: 1.2em;
+            line-height: 1.4em;
+        }
+
+        #main-content #news h4 span {
+            display: block;
+            float: left;
+            width: 100px;
+            color: #000;
+            padding-right: 10px;
+        }
+
+        /* TEAMMATES */
+        .team-mate:after {
+            content: ".";
+            display: block;
+            height: 0;
+            line-height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        #teammates .team-mate h4 {
+            font-size: 1.4em;
+            font-weight: normal;
+            margin-top: 12px;
+        }
+
+        .team-mate p {
+            margin: 0;
+        }
+    </style>
+</div>

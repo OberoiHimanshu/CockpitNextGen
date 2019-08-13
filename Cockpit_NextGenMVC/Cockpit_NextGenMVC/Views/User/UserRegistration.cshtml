@@ -1,0 +1,339 @@
+﻿@model Cockpit_NextGenMVC.BAL.VW_USERS
+@{
+    ViewBag.Title = "UserRegistration";
+    Layout = "~/Views/Shared/_Layout_Register.cshtml";
+    string ntlogin = User.Identity.Name.Replace("STRYKERCORP\\", "");
+    SelectList RoleMaster = (SelectList)ViewData["Role_Master"];
+
+    var SubmissionConfirmation = ViewData["SubmissionConfirmation"];
+}
+<script language="javascript">
+    $(document).ready(function () {
+        $("#ddlRegion").change(function () {
+            var RegionName = $("#ddlRegion").val();
+            //SelectCountry(RegionName);
+            SelectTeam(RegionName);
+        })
+    });
+</script>
+<script language="javascript">
+
+
+    function SelectTeam(RegionName) {
+        $("#Team").empty();
+        var ddl = $('#Team').data("kendoDropDownList");
+        $.ajax({
+            type: 'POST',
+            url: '../Generic/GetTeamsByRegion/', // we are calling json method
+            dataType: 'json',
+            data: { RegionName: RegionName },
+            success: function (Team) {
+                ddl.setDataSource(Team);
+            },
+            error: function (ex) {
+                alert('Failed to retrieve states.' + ex);
+            }
+        });
+        return false;
+    }
+</script>
+
+<script language="javascript">
+    function SeachUserDetailsByNTLogin(NTLogin) {
+        if (NTLogin.indexOf(" ") != -1) {
+            alert("Please enter NTLogin");
+            return false;
+        }
+        else {
+            CheckuserExist(NTLogin);
+            GetUserDeatailsByNTLogin(NTLogin);
+        }
+
+    }
+</script>
+
+<script language="javascript">
+    function GetUserDeatailsByNTLogin(NTLogin) {
+        $.ajax({
+            cache: false,
+            type: "POST",
+            async: false,
+
+            url: '../User/GetUserDetailsByNTLogin/',
+            data: { NtLogin: NTLogin },
+            datatype: "json",
+            success: function (data) {
+                var item = data;
+                $("#txtFullname").val(item.FullName);
+                $("#txtEmail").val(item.Email);
+
+            },
+            statusCode: {
+                404: function (content) { alert('cannot find resource'); },
+                500: function (content) { alert('internal server error'); }
+            },
+            error: function (req, status, errorObj) {
+                // handle status === "timeout"
+                // handle other errors
+            }
+        });
+    }
+
+
+
+    function validate_RegistrationForm() {
+        var x = document.forms["frmRegistration"]["txtUsername"].value;
+        if (x == null || x == "") {
+            alert("user Name must be filled out");
+            return false;
+        }
+        var x = document.forms["frmRegistration"]["txtFullname"].value;
+        if (x == null || x == "") {
+            alert("Fullname must be filled out");
+            return false;
+        }
+        var x = document.forms["frmRegistration"]["txtEmail"].value;
+        if (x == null || x == "") {
+            alert("Email must be filled out");
+            return false;
+        }
+        var x = document.forms["frmRegistration"]["txtManager"].value;
+        if (x == null || x == "") {
+            alert("manager name must be filled out");
+            return false;
+        }
+        var x = document.forms["frmRegistration"]["Team"].value;
+        if (x == "0") {
+            alert("Please Select Team");
+            return false;
+        }
+        var x = document.forms["frmRegistration"]["ddlRegion"].value;
+        if (x == "0") {
+            alert("Please Select Region");
+            return false;
+
+        }
+        var x = document.forms["frmRegistration"]["ddlCountry"].value;
+        if (x == "0") {
+            alert("Please select country");
+            return false;
+        }
+
+        var email = document.forms["frmRegistration"]["txtEmail"].value;
+
+    }
+</script>
+
+<script language="javascript">
+    function CheckuserExist(NTLogin) {
+        $('#lblmsg').text("");
+        $.ajax({
+            cache: false,
+            type: "POST",
+            async: false,
+            url: '../User/CheckuserExistByNtLogin/',
+            data: { NtLogin: NTLogin },
+            datatype: "json",
+            success: function (data) {
+                var item = data;
+
+                if (item) {
+                    var fullmsg = "The user with NtLogin " + item.NTLOGIN + " already exist in " + item.TEAM_NAME + " Team (" + item.SUPERREGION + ")";
+                    $('#lblmsg').text(fullmsg);
+                    $('#lblmsg').css("color", "red");
+                    $("#lblmsg").css("fontSize", 13);
+                    $('#btnAdduser').prop("disabled", true);
+                    $("#lblmsg").css("font-weight", "Bold");
+                }
+                else {
+                    $('#lblmsg').text("");
+                    $('#btnAdduser').prop("disabled", false);
+                }
+            },
+            statusCode: {
+                404: function (content) { alert('cannot find resource'); },
+                500: function (content) { alert('internal server error'); }
+            },
+            error: function (req, status, errorObj) {
+                // handle status === "timeout"
+                // handle other errors
+            }
+        });
+    }
+</script>
+
+<style>
+
+#txtComment {
+     display: block;
+     background: white;
+    
+     padding: 1em;
+     margin: auto;
+     font-size: 1em;
+    
+     height: 2em;
+     max-height: 12em;
+     width: 93%;
+     max-width: 93%;
+     text-align:left;
+     float:left;
+ }
+ 
+ body
+ {
+     background-color:#d2d6de;}
+ 
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Team").change(function () {
+            var nn = $("#Team").data("kendoDropDownList").text();
+            $("#txtteamname").val(nn);
+            $.ajax({
+                type: 'POST',
+                url: '../User/GetmanagerName/',
+                dataType: 'json',
+                data: { Team: nn },
+                success: function (Manager) {
+                    var aa = Manager;
+                    var datalength = aa.length;
+                    if (datalength > 0) {
+                        var item = aa[0];
+                        $("#txtManager").val(item.MANAGER);
+                    }
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve states.' + ex);
+                }
+            });
+            return false;
+        })
+    });
+</script>
+
+<form class="sky-form" name="frmRegistration" action="@Url.Action("SaveUserRegistration", "User")" method="post" onsubmit="return validate_RegistrationForm()">
+<header>Registration form</header>
+<fieldset>
+    <section>
+        <label class="input">@SubmissionConfirmation</label>
+        <div id="lblmsg">
+        </div>
+    </section>
+    <section>
+        <label class="input">
+            <i class="icon-append"><img src="../../Content/img/search-plus-24.png" title="Search details by NT Login"  style="cursor:pointer; height:24px;" onclick="SeachUserDetailsByNTLogin(nttlogin.value);"/></i>
+            <input type="text" name="nttlogin" id="nttlogin" value=@ntlogin placeholder="NtLogin">
+            <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+            
+        </label>
+    </section>
+    <section>
+        <label class="input">
+            <i class="icon-append icon-user"></i>
+            <input name="txtUsername" id="txtUsername"  type="text" placeholder="Your SAP User Name">
+            <b class="tooltip tooltip-bottom-right">Enter SAP user name</b>
+        </label>
+    </section>
+    <section>
+        <label class="input">
+            <i class="icon-append icon-lock"></i>
+            <input name="txtFullname" id="txtFullname"  type="text" placeholder="Full Name">
+            <b class="tooltip tooltip-bottom-right">Enter full name</b>
+        </label>
+    </section>
+    <section>
+        <label class="input">
+            <i class="icon-append icon-envelope-alt"></i>
+            <input name="txtEmail" id="txtEmail"  type="text" placeholder="Email address">
+            <b class="tooltip tooltip-bottom-right">Enter Email ID</b>
+        </label>
+    </section>
+    <section>
+        @(Html.Kendo().DropDownList()
+        .Name("ddlRegion")
+        .BindTo(new List<string>() {
+            "AFO",
+            "EMEA-I",
+            "GCFO",
+            "JFO",
+            "SAPK"
+        })
+        .OptionLabel("Select Region..........")
+        .SelectedIndex(0)
+        .HtmlAttributes(new { style = "width:100%", ID = "ddlRegion" })
+        )
+    </section>
+    <section style="display:none;">
+        @(Html.Kendo().DropDownList()
+        .Name("ddlCountry")
+        .DataValueField("Country")
+        .DataTextField("Country")
+        .SelectedIndex(0)
+        .AutoBind(false)
+        .OptionLabel("Select Country..........")
+        .HtmlAttributes(new { style = "width:100%", ID = "ddlCountry" })
+        )
+    </section>
+    <section>
+        @(Html.Kendo().DropDownList()
+        .Name("Team")
+        .DataValueField("TEAM_ID")
+        .DataTextField("TEAM_NAME")
+        .SelectedIndex(0)
+        .AutoBind(false)
+        .OptionLabel("Select Team..........")
+        .HtmlAttributes(new { style = "width:100%", ID = "Team" })
+        )
+        <b class="tooltip tooltip-bottom-right">Select team</b>
+    </section>
+    <section>
+        <label class="input">
+            <i class="icon-append icon-user"></i>
+            <input name="txtManager" id="txtManager" readonly="readonly" style="background-color:#e6f2f8; border:1px solid #94c0d2;"  type="text" placeholder="Manager Name">
+            <b class="tooltip tooltip-bottom-right">Team manager name</b>
+        </label>
+    </section>
+
+    <section>
+        @(Html.Kendo().ComboBox()
+            .Name("ddlRole")
+            .Placeholder("Select Role...")
+            .BindTo(RoleMaster)
+            .SelectedIndex(0)
+            .HtmlAttributes(new { style = "width:250px;", ID = "Role" })
+            .Suggest(true)
+            )
+        <b class="tooltip tooltip-bottom-right">Select Role</b>
+    </section>
+    <section>
+        <label class="input">
+            <i class="icon-append icon-envelope-alt"></i>
+            <textarea name="txtComment" id="txtComment" rows="3" width="100%" placeholder="Put your comment here"></textarea>
+            <b class="tooltip tooltip-bottom-right">Put your comment here</b>
+        </label>
+    </section>
+</fieldset>
+<fieldset>
+    <section>
+        <label class="checkbox">
+            <input type="checkbox" checked="checked" name="checkbox">
+            <i></i>I agree to Corporate Data Privacy Policy
+        </label>
+    </section>
+</fieldset>
+<footer>
+@{
+    if (SubmissionConfirmation != null && SubmissionConfirmation.ToString().Contains("request Submited"))
+    {
+        <button type="submit" name="btnAdduser" id="btnAdduser" class="button" disabled="disabled">Submit</button>
+    }
+    else
+    { 
+        <button type="submit" name="btnAdduser" id="btnAdduser" class="button">Submit</button>    
+    }
+}
+    
+    <input type="hidden" name="txtteamname" id="txtteamname" />
+</footer>
+</form>

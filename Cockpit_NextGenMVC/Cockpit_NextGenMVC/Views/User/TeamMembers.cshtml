@@ -1,0 +1,309 @@
+﻿@model IEnumerable<Cockpit_NextGenMVC.BAL.VW_USERS>
+@{
+    ViewBag.Title = "Team Members";
+    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+    var UserRole = SessionUSer.ROLE_DESC;
+    var IsRowSelectableforSignOff = false;
+
+    SelectList TeamMaster = (SelectList)ViewData["Team_Master"];
+    
+    if (UserRole == "Supervisor" || UserRole == "Support" || UserRole == "BPA")
+    {
+        IsRowSelectableforSignOff = true;
+    }
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="halflings-icon home"></i>Home</a></li>
+        <li><a href="#"><i class="halflings-icon cog"></i>@ViewBag.Title</a></li>
+        </ol>
+   </section>
+    <section class="content">
+    <div class="row">
+                <div class="col-xs-12">
+    <div class="box">
+                <div class="box-header" data-original-title>
+                    <h2>
+                        <i class="halflings-icon user"></i><span class="break"></span>Profile Details -
+                        @Model.FirstOrDefault().TEAM_NAME</h2>
+                    <div class="box-icon">
+                        <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a><a href="#"
+                            class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    @(Html.Kendo().Grid(Model)
+                   .Name("grdTeamUsers")
+                   .ToolBar(tools => tools.Excel())
+                   .Columns(columns =>
+                    {
+                        columns.Bound(p => p.SUPERREGION).Width(80).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.TEAM_NAME).Width(80).Title("Team Name").Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.FULLNAME).Width(100);
+                        columns.Bound(p => p.EMAIL).Groupable(false).Width(100);
+                        columns.Bound(p => p.SAP_User_Name).Title("SAP User Name").Width(100).Filterable(fb => fb.Equals(true));
+                        columns.Bound(p => p.NTLOGIN).Width(100).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.MANAGER).Width(140).Filterable(fb => fb.Multi(true));
+                        columns.Bound(p => p.ROLE_DESC).Title("User Role").EditorTemplateName("RoleList").Width(100);
+                        columns.Command(command => command.Custom("Edit Details").Click("showDetails")).Visible(IsRowSelectableforSignOff).Width(120).Title("Edit");
+                    })
+                    .Scrollable(sc => sc.Height(350))
+                    .Pageable()
+                    .Sortable()
+                    .Scrollable()
+                    .Filterable()
+                    .Groupable()
+                    .ColumnMenu()
+                    
+                                    //.Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("EditUser"))
+                    .Excel(excel => excel
+                        .FileName("CNG_Users.xlsx")
+                        .Filterable(true)
+                        .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+                        )
+                    .HtmlAttributes(new { style = "height:630px;" })
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        
+                        .PageSize(20)
+                                .Events(events => events.Error("onError"))
+                               
+                        .Model(model => model.Id(p => p.USER_ID))
+                        .ServerOperation(false)
+                                .Update(u => u.Action("SaveUserDetails", "User"))
+                    )
+                    .Resizable(resize => resize.Columns(true))
+
+                        )
+
+                    <div class="alert alert-success alert-dismissable" id="div_UserUpdate_Success" name="div_UserUpdate_Success"
+                        style="visibility: hidden;">
+                        <button class="close" aria-hidden="true" type="button" data-dismiss="alert">
+                            ×</button>
+                        <h4>
+                            <i class="icon fa fa-check"></i>Confirmation!</h4>
+                        <p>
+                            User Details Modified Successfully.</p>
+                    </div>
+
+                            <p>
+                        @Html.ActionLink("Back to Login", "UserLogin")
+                    </p>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+        </div>
+    </div>
+    <!--/fluid-row-->
+    </section>
+
+  
+</div>
+<!--/fluid-row-->
+
+<script type="text/javascript">
+    function onError(e, status) {
+        if (e.errors) {
+            var message = "Error:\n";
+
+            var grid = $('#grdTeamUsers').data('kendoGrid');
+            var gridElement = grid.editable.element;
+
+            var validationMessageTemplate = kendo.template(
+            "<div id='#=field#_validationMessage' " +
+                "class='k-widget k-tooltip k-tooltip-validation " +
+                    "k-invalid-msg field-validation-error' " +
+                "style='margin: 0.5em;' data-for='#=field#' " +
+                "data-val-msg-for='#=field#' role='alert'>" +
+                "<span class='k-icon k-warning'></span>" +
+                "#=message#" +
+                "<div class='k-callout k-callout-n'></div>" +
+            "</div>");
+
+            $.each(e.errors, function (key, value) {
+                if (value.errors) {
+                    gridElement.find("[data-valmsg-for=" + key + "],[data-val-msg-for=" + key + "]")
+                    .replaceWith(validationMessageTemplate({ field: key, message: value.errors[0] }));
+                    gridElement.find("input[name=" + key + "]").focus();
+                }
+            });
+            grid.one("dataBinding", function (e) {
+                e.preventDefault();   // cancel grid rebind
+            });
+        }
+    }
+</script>
+
+@(Html.Kendo().Window().Name("Details")
+    .Title("Edit user profile")
+    .Visible(false)
+    .Modal(true)
+    .Draggable(true)
+    .Width(400)
+)
+
+<style>
+    .mypertextbox
+    {
+        border: none; background-color: #fff;  background: transparent;
+    }
+</style>
+ 
+ <script type="text/javascript">
+
+     function clickView(e) {
+         var window = $("#windowReassign"),
+            btnNewFollowup = $(".k-grid-Re-assign");
+         var data = this.dataItem($(e.target).closest("tr"));
+
+         btnNewFollowup.bind("click", function () {
+             window.data("kendoWindow").open();
+             btnNewFollowup.hide();
+         });
+
+
+         if (!window.data("kendoWindow")) {
+             window.kendoWindow({
+                 width: "700px",
+                 actions: ["Close"],
+                 title: "Map User"
+             });
+         }
+     }
+</script>
+
+ <script type="text/x-kendo-template" id="template">
+ 
+ @using (Html.BeginForm())
+ {
+      <table align="center" cellpadding="5" cellspacing="5" style="border:0px solid gray">
+
+        <tr style="height:40px !important;">
+            <td align="left" valign="top"><b>User ID  : </b></td>
+            <td align="left" valign="top" data-bind="text: Followupid">
+                  <input type="text"  id="hdnID" name="hdnID" value=#= USER_ID # style="width:100%;" readonly="readonly" placeholder="NT Login" width="100%"/>
+            </td>
+            <td>
+                <input type="hidden"  id="txtPROFILEPIC" name="txtPROFILEPIC" value=#= PROFILE_PIC #  placeholder="team Name" width="100%"/>
+            </td>
+        </tr>
+        <tr style="height:40px !important;">
+            <td align="left" valign="top"><b>NT Login  : </b></td>
+            <td align="left" valign="top" data-bind="text: Followupid">
+                    <input type="hidden" name="hdnID" id="hdbID" value="#= USER_ID #" />
+                  <input type="text"  id="nttlogin" name="nttlogin" value=#= NTLOGIN # style="width:100%;" placeholder="NT Login" width="100%"/>
+            </td>
+            <td>
+                <img src="../../Content/img/search-plus-24.png" title="Search details by NT Login"  style="cursor:pointer; height:24px;" onclick="SeachUserDetailsByNTLogin(nttlogin.value);"/>    
+            </td>
+        </tr>
+        <tr style="height:40px !important;">
+            <td align="left" valign="top"><b>Full Name  : </b></td>
+            <td align="left" colspan="2" valign="top" data-bind="text: Followupid">
+                  <input type="text"  id="txtFullName" name="txtFullname" value="#= FULLNAME #"  placeholder="Full Name" width="100%"/>
+            </td>
+            <td></td>
+        </tr>
+        <tr style="height:40px !important;">
+            <td align="left" valign="top" style="width:150px;"><b>Email Address  : </b></td>
+            <td align="left" colspan="2" valign="top" data-bind="text: Followupid">
+                  <input type="email"  id="txtEmail" name="txtEmail" value=#= EMAIL # placeholder="Email Address" width="100%"/>
+            </td>
+            <td></td>
+        </tr>
+        <tr style="height:40px !important;">
+            <td align="left" valign="top"><b>SAP User Name  : </b></td>
+            <td align="left" colspan="2" valign="top" data-bind="text: Followupid">
+                  <input type="email"  id="txtSAPUSERNAME" name="txtSAPUSERNAME" value=#= SAP_User_Name # placeholder="Email Address" width="100%"/>
+            </td>
+            <td></td>
+        </tr>
+        <tr style="height:40px !important;">
+            <td align="left" valign="top"><b>Select Region :</b></td>
+            <td align="left" colspan="2" valign="top">
+             <input type="hidden" value="#= SUPERREGION #" name="hdnRegion" id="hdnRegion"/>
+            @(Html.Kendo().DropDownList()
+                                  .Name("ddlRegion")
+                                     .BindTo(new List<string>() {
+                                      "Select Region...",
+                                      "AFO",
+                                      "EMEA-I",
+                                      "Greater China",
+                                      "JAPAN",
+                                      "SAPK"
+                                  }).Value("#= SUPERREGION #")
+                                  .HtmlAttributes(new { style = "width:100%", ID = "ddlRegion", onchange = "getCountryTeam(this.value)" }).ToClientTemplate()
+                                  )
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top"><b>Current Team :</b></td>
+            <td align="left" colspan="2" valign="top">
+                <input type="hidden" value="#= TEAM_NAME #" name="hdnTeam" id="hdnTeam"/>
+                <label name="lblTeam" id="lblTeam" for="#= TEAM_NAME #">#= TEAM_NAME #</label>
+            </td>
+        </tr>
+        <tr style="height:40px !important;">
+            <td align="left" valign="top"><b>New Team :</b></td>
+            <td align="left" colspan="2" valign="top">
+                @(Html.Kendo().DropDownList()
+                .Name("ddlTeam")
+                .BindTo(TeamMaster)
+                .HtmlAttributes(new { style = "width:100%", ID = "ddlTeam", onchange = "getManagerTeam(this.value)" }).ToClientTemplate()
+                )
+            </td>
+        </tr>
+        <tr style="height:40px !important;">
+            <td align="left" valign="top"><b>Manager Name :</b></td>
+            <td align="left" colspan="2" valign="top">
+                <label name="lblmanager" id="lblmanager" for="#= MANAGER #">#= MANAGER #</label>
+            </td>
+        </tr>
+        <tr style="height:40px !important;">
+            <td align="left" valign="top"><b>Select Role :</b></td>
+            <td align="left" colspan="2" valign="top">
+                @(Html.Kendo().DropDownList()
+                .Name("ddlRole")
+                .DataTextField("Text")
+                .DataValueField("Value")
+                .BindTo(new List<SelectListItem>
+                  {
+                      new SelectListItem {Text = "WW Lead", Value = "WW Lead"},
+                      new SelectListItem {Text = "Regional User", Value = "Regional User"},
+                      new SelectListItem {Text = "Regional Lead", Value = "Regional Lead"},
+                      new SelectListItem {Text = "Supervisor", Value = "Supervisor"},
+                      new SelectListItem {Text = "CSR", Value = "CSR"},
+                      new SelectListItem {Text = "BPA", Value = "BPA"},
+                      new SelectListItem {Text = "System", Value = "System"},
+                      new SelectListItem {Text = "Admin", Value = "Admin"}
+                  }).Value("#=ROLE_DESC#")
+                                  .HtmlAttributes(new { style = "width:100%", ID = "ddlRole" }).ToClientTemplate()
+                  )
+            </td>
+        </tr>
+        <tr style="height:40px !important;">
+            <td colspan="3" align="center"><input type="button" id="btnSaveNewUser" onclick="EditUser()" value="Update User" class="btn btn-default"></td>
+        </tr>
+    </table>
+
+    
+ }
+</script>
+<script type="text/javascript">
+    var detailsTemplate = kendo.template($("#template").html());
+
+    function showDetails(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var wnd = $("#Details").data("kendoWindow");
+
+        wnd.content(detailsTemplate(dataItem));
+        wnd.center().open();
+    }
+</script>
+
+
+

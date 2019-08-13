@@ -1,0 +1,83 @@
+﻿@model List<Cockpit_NextGenMVC.BAL.Tbl_WW_Blocked_Orders_Summary>
+<div class="content-wrapper">
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Unblocked Summary</li>
+          </ol>
+        <br />
+        <hr style="background: gray; border: 0; height: 3px" />
+          UnBlock orders WW Summary by : 
+          @(Html.Kendo().DropDownList().Name("drp_SummarySelection")
+            .Text("Select Summary Bucket")
+            .HtmlAttributes(new { style = "width:300px" })
+            .Events(e => e.Change("onSummaryBucketSelection"))
+            .BindTo(new List<string> { "Summary by Dollar Bucket", "Summary by Aging Bucket" })
+        )
+        </section>
+    <section class="Content">
+        <div class="row">
+        <div class="col-xs-12">
+    <div class="box">
+        <div id="content" class="span11" style="min-height: 939px;">
+        @(  
+                   Html.Kendo().Grid(Model)
+                   .Name("grdSummaryOrders")
+                    .ToolBar(tools => tools.Excel())
+                    .Columns(columns =>
+                    {
+                        columns.Bound(p => p.Bucket).Width(130).ClientFooterTemplate("Total"); ;
+                        columns.Bound(p => p.AFO).Width(80)
+                            .ClientFooterTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=AFO'>#=kendo.toString(sum,'C')#</a>")
+                            .ClientTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=AFO&Bucket=#= Bucket#&Bucket_Type=#= BucketName#'>#=kendo.toString(AFO,'C')#</a>");
+                        columns.Bound(p => p.EMEAI).Width(80)
+                            .ClientFooterTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=EMEAI'>#=kendo.toString(sum,'C')#</a>")
+                            .ClientTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=EMEAI&Bucket=#= Bucket#&Bucket_Type=#= BucketName#'>#=kendo.toString(EMEAI,'C')#</a>");
+                        columns.Bound(p => p.GCFO).Width(80)
+                            .ClientFooterTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=GCFO'>#=kendo.toString(sum,'C')#</a>")
+                            .ClientTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=GCFO&Bucket=#= Bucket#&Bucket_Type=#= BucketName#'>#=kendo.toString(GCFO,'C')#</a>");
+                        columns.Bound(p => p.SAPK).Width(80)
+                            .ClientFooterTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=SAPK'>#=kendo.toString(sum,'C')#</a>")
+                            .ClientTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=SAPK&Bucket=#= Bucket#&Bucket_Type=#= BucketName#'>#=kendo.toString(SAPK,'C')#</a>");
+                        columns.Bound(p => p.JFO).Width(80)
+                            .ClientFooterTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=JFO'>#=kendo.toString(sum,'C')#</a>")
+                            .ClientTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=JFO&Bucket=#= Bucket#&Bucket_Type=#= BucketName#'>#=kendo.toString(JFO,'C')#</a>");
+                        columns.Bound(p => p.WW).Width(80).Format("{0:##,#}").ClientFooterTemplate(" #= kendo.toString(sum, \"n2\")#").ClientTemplate("<a onclick='showProgress();' href='../Unblocked/AllUnblocked_via_Summary?Region=WW&Bucket=#= Bucket#&Bucket_Type=#= BucketName#'>#=kendo.toString(WW,'C')#</a>");;
+                    })
+                    .Sortable()
+                    .Selectable(selectable => selectable
+                            .Mode(GridSelectionMode.Multiple)
+                            .Type(GridSelectionType.Row))
+                    .Resizable(r => r.Columns(true))
+                    .Reorderable(reorder => reorder.Columns(true))
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .Aggregates(aggregates =>
+                        {
+                            aggregates.Add(p => p.AFO).Sum();
+                            aggregates.Add(p => p.EMEAI).Sum();
+                            aggregates.Add(p => p.GCFO).Sum();
+                            aggregates.Add(p => p.JFO).Sum();
+                            aggregates.Add(p => p.SAPK).Sum();
+			    aggregates.Add(p => p.WW).Sum();
+                        })
+                        .Model(model => model.Id(p => p.Bucket))
+                        .ServerOperation(false)
+                    )
+
+            )   
+	    <input type="hidden" id="hid_BucketArea" name="hid_BucketArea" value="@ViewBag.BucketArea" />
+            <input type="hidden" id="hid_BucketName" name="hid_BucketName" value="@ViewBag.BucketName" />
+	    <br />
+            @Html.ActionLink("Download Full Raw Details", "Download", new { ReportPath = "WW_Daily_Raw_Data_ZTRD" })
+
+             <div class="overlay" id="spinner" name="spinner" style="visibility:hidden;">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+
+            </div>
+    </div>
+</div>
+         </div>
+    </section>
+</div>

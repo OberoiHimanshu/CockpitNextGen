@@ -1,0 +1,42 @@
+﻿@model  IEnumerable<Cockpit_NextGenMVC.Models.Backlogstats>
+
+<h2>
+    Business Control Reports Summary :</h2>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            Report Name
+        </th>
+        <th>
+            Order Owner
+        </th>
+        <th>
+            Pending Comments #
+        </th>
+        <th>
+            Pending Review #
+        </th>
+        <th>
+            Pending Sign-Off(s) #
+        </th>
+    </tr>
+    @foreach (var BCRItem in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action(BCRItem.ReportPath, BCRItem.Area, new { Report = BCRItem.ReportName })">
+                    @BCRItem.ReportName
+                </a>
+            </td>
+            <td>@BCRItem.OrderOwner
+            </td>
+            <td>@BCRItem.PendingComments
+            </td>
+            <td>@BCRItem.PendingReview
+            </td>
+            <td>
+                @BCRItem.PendingSignOff
+            </td>
+        </tr>
+    }
+</table>

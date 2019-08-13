@@ -1,0 +1,10 @@
+﻿@(Html.Kendo().DropDownList()
+          .Name("Priority")
+           .DataTextField("Text")
+           .DataValueField("Value")
+           .BindTo(new List<SelectListItem>
+                  {
+                      new SelectListItem {Text = "1-High", Value = "1-High"},
+                      new SelectListItem {Text = "2-Medium", Value = "2-Medium"},
+                      new SelectListItem {Text = "3-Low", Value = "3-Low"}
+                  }))

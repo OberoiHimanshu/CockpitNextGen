@@ -1,0 +1,289 @@
+﻿@model Cockpit_NextGenMVC.BAL.VW_USERS
+@{
+    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+    var RolesList = Session["Role"].ToString();
+
+    SelectList RoleMaster = (SelectList)ViewData["Role_Master"];
+    SelectList TeamMaster = (SelectList)ViewData["Team_Master"];
+
+    var CurrentTeamID = TeamMaster.Where(p => p.Text == SessionUSer.TEAM_NAME).FirstOrDefault().Value.ToString();
+    
+    SelectListItem CurrentRole = new SelectListItem();
+    CurrentRole.Text = SessionUSer.ROLE_DESC;
+    switch(SessionUSer.ROLE_DESC)
+    {
+        case "CSR":
+            CurrentRole.Value = "2";
+            break;
+        case "Supervisor":
+            CurrentRole.Value = "1";
+            break;
+        case "BPA":
+            CurrentRole.Value = "3";
+            break;
+        case "Regional Lead":
+            CurrentRole.Value = "7";
+            break;
+        case "WW Lead":
+            CurrentRole.Value = "8";
+            break;
+        case "Regional User":
+            CurrentRole.Value = "9";
+            break;
+            
+    }
+
+    var IsEnableRoleEdit = false;
+    var IsEnableTeamEdit = false;
+    
+    if(SessionUSer.ROLE_DESC == "Supervisor" || SessionUSer.ROLE_DESC == "BPA")
+    {
+        IsEnableRoleEdit = true;
+        IsEnableTeamEdit = true;
+    }
+    
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index", "Home")"><i class="halflings-icon home"></i>Home</a></li>
+            <li><a href="#"><i class="halflings-icon cog"></i>@ViewBag.Title</a></li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header" data-original-title>
+                        <h2><i class="halflings-icon user"></i><span class="break"></span>@SessionUSer.FULLNAME Profile</h2>
+                        <div class="box-icon">
+                            <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
+                            <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="tabstrip">
+                    <ul>
+                        <li class="k-state-active">
+                            Profile Details
+                        </li>
+                        <li>
+                            Edit Profile
+                        </li>
+                    </ul>
+                    <div class="row">
+                            <div class="col-md-3">
+                                <img src="../../@SessionUSer.PROFILE_PIC" style="border:0px solid #CCC; margin-top:5px;width:200px;height:200px;" /><br />
+                            
+                                @if (RolesList != "CSR")
+                                {
+                                    <label for="inputEmail3" class="col-sm-12 control-label" style="text-align:left; margin-top:10px;">
+                                    @Html.ActionLink("In Active Users", "InActiveTeamMembers", new { TeamName = Model.TEAM_NAME }, new { @class = "btn btn-danger", @style = "width:150px;" })
+                                    </label>
+                                }
+         
+                                <label for="inputEmail3" class="col-sm-12 control-label" style="text-align:left;">
+                                    @Html.ActionLink("My Team", "TeamMembers", new { TeamName = Model.TEAM_NAME }, new { @class = "btn btn-success", @style = "width:150px;" })
+                                </label>
+                                    
+                                @if (RolesList == "Supervisor" || RolesList == "BPA" || RolesList == "Regional Lead")
+                                {
+                                    <label for="inputEmail3" class="col-sm-12 control-label" style="text-align:left;">
+                                        @Html.ActionLink("Rollback Order ownership", "UserOrdersRollback", new { TeamName = Model.TEAM_NAME }, new { @class = "btn bg-blue", @style = "width:150px;" })
+                                    </label>  
+                                }
+                                
+                                <label for="inputEmail3" class="col-sm-12 control-label" style="text-align:left;">
+                                @Html.ActionLink("Back to Login", "UserLogin", new { id = "bb" }, new { @class = "btn bg-navy", @style = "width:150px;" })
+                                  </label>           
+                            </div>
+                            <div class="col-md-8">
+                                        <div class="col-sm-3" style="border:1px solid white;height:30px !important; text-align:left; font-weight:bold;">
+                                            Full Name : 
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white;height:30px !important;">
+                                            @SessionUSer.FULLNAME
+                                           
+                                        </div>
+                                        <div class="col-sm-3" style="border:1px solid white;height:30px !important; text-align:left; font-weight:bold;">
+                                            Email :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white;height:30px !important;">
+                                            @SessionUSer.EMAIL
+                                        </div>
+                                        <div class="col-sm-3" style="border:1px solid white;height:30px !important; text-align:left; font-weight:bold;">
+                                            Role :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white;height:30px !important;">
+                                            @SessionUSer.ROLE_DESC
+                                        </div>
+                                        <div class="col-sm-3" style="border:1px solid white;height:30px !important; text-align:left; font-weight:bold;">
+                                            Status :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white;height:30px !important;">
+                                            @SessionUSer.ACTIVE
+                                        </div>
+                                        <div class="col-sm-3" style="border:1px solid white;height:30px !important; text-align:left; font-weight:bold;">
+                                            Region :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white;height:30px !important;">
+                                            @SessionUSer.SUPERREGION
+                                        </div>
+                                        <div class="col-sm-3" style="border:1px solid white;height:30px !important; text-align:left; font-weight:bold;">
+                                            Team :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white;height:30px !important;">
+                                            @SessionUSer.TEAM_NAME
+                                        </div>
+                                        <div class="col-sm-3" style="border:1px solid white;height:30px !important; text-align:left; font-weight:bold;">
+                                            MT Login :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white;height:30px !important;">
+                                            @SessionUSer.NTLOGIN
+                                        </div>
+                                        <div class="col-sm-3" style="border:1px solid white; text-align:left;height:30px !important; font-weight:bold;">
+                                            SAP User Name :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white;height:30px !important;">
+                                            @SessionUSer.SAP_User_Name
+                                        </div>
+                                    
+                            </div>
+                        </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="description-block border-right">
+                                <form name="frmUpdateuser" id="frmUpdateuser" method="post" action="@Url.Action("UpdateUserDetails", "User")" class="form-horizontal" enctype="multipart/form-data" >
+                                    <div class="box-body">
+                                       
+                                       <div class="col-sm-3" style="border:1px solid white; text-align:left; vertical-align:middle; height:40px !important; font-weight:bold;">
+                                            Change Image :     
+                                            </div>
+                                            <div class="col-sm-7" style="border:1px solid white; text-align:left; height:100px !important;">
+                                            <table>
+                                            <tr>
+                                            <td><img src="../../@SessionUSer.PROFILE_PIC" id="User_Pic" name="User_Pic" class="img-circle" style="width:100px;height:100px;"/></td>
+                                            <td><input type="file" name="ProfilePic" id="ProfilePic" class="form-control" style="width:200px;"  />
+                                            
+                                            </td>
+                                            </tr>
+                                            </table>
+                                               
+                                               
+                                               
+                                            </div>
+
+                                            <div class="col-sm-3" style="border:1px solid white; text-align:left; height:30px !important; font-weight:bold;">
+                                                Full Name : 
+                                            </div>
+                                            <div class="col-sm-7" style="border:1px solid white; height:30px !important;">
+                                                <input type="text" class="form-control" id="Fullname" name="Fullname" value="@SessionUSer.FULLNAME" style="height:25px;">
+                                            </div>
+                                       
+                                        <div class="col-sm-3" style="border:1px solid white; text-align:left; font-weight:bold;">
+                                            Email :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white;">
+                                            <input type="email" class="form-control" id="Email" name="Email" value="@SessionUSer.EMAIL" style="height:25px;">
+                                        </div>
+                                        <div class="col-sm-3" style="border:1px solid white; text-align:left; font-weight:bold;">
+                                            Role :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white; text-align:left;">
+                                            @(Html.Kendo().ComboBox()
+                                              .Name("Role")
+                                              .Placeholder("Select Role...")
+                                              .BindTo(RoleMaster)
+                                              .SelectedIndex(0)
+                                              .HtmlAttributes(new { style = "width:250px;", ID = "Role" })
+                                              .Suggest(true)
+                                              .Enable(IsEnableRoleEdit)
+                                              .Value(@CurrentRole.Value)
+                                              )
+                                        </div>   
+                                        <div class="col-sm-3" style="border:1px solid white; text-align:left; font-weight:bold;">
+                                            Team :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white; text-align:left;">
+                                            @(Html.Kendo().ComboBox()
+                                              .Name("Team")
+                                              .Placeholder("Select Team...")
+                                              .BindTo(TeamMaster)
+                                              .SelectedIndex(0)
+                                              .HtmlAttributes(new { style = "width:250px;", ID = "Team" })
+                                              .Suggest(true)
+                                              .Enable(IsEnableTeamEdit)
+                                              .Value(CurrentTeamID)
+                                              )
+                                        </div>                      
+                                        <div class="col-sm-3" style="border:1px solid white; text-align:left; font-weight:bold;">
+                                            NT Login :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white; height:30px !important;">
+                                            <input type="text" class="form-control" id="ntlogin" name="ntlogin" value="@SessionUSer.NTLOGIN" readonly="readonly" style="height:30px;">
+                                        </div>
+                                        <div class="col-sm-3" style="border:1px solid white; text-align:left; height:30px !important; font-weight:bold;">
+                                            SAP User Name :
+                                        </div>
+                                        <div class="col-sm-7" style="border:1px solid white; height:30px !important;">
+                                            <input type="text" class="form-control" id="SAP_User_Name" name="SAP_User_Name" value="@SessionUSer.SAP_User_Name" style="height:30px;">
+                                        </div>
+                                        <div class="col-sm-3" style="border:1px solid white; height:30px !important; text-align:left; font-weight:bold;">
+                                            USER ID :
+                                            </div>
+                                            <div class="col-sm-7" style="border:1px solid white; height:30px !important;">
+                                                <input type="text" id="UserID" class="form-control" name="UserID" value="@SessionUSer.USER_ID" readonly="readonly" style="height:30px;">
+                                            </div>
+                                    </div>
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-info" onclick="EditPersonalUser()">Update</button>
+                                        </div><!-- /.box-footer -->
+                                </form>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+                <style>
+                    #tabstrip h2
+                    {
+                        font-weight: lighter;
+                        font-size: 5em;
+                        line-height: 1;
+                        padding: 0 0 0 30px;
+                        margin: 0;
+                    }
+                    
+                    #tabstrip h2 span
+                    {
+                        background: none;
+                        padding-left: 5px;
+                        font-size: .3em;
+                        vertical-align: top;
+                    }
+                    
+                    #tabstrip p
+                    {
+                        margin: 0;
+                        padding: 0;
+                    }
+                </style>
+                <script>
+                    $(document).ready(function () {
+                        $("#tabstrip").kendoTabStrip({
+                            animation: {
+                                open: {
+                                    effects: "fadeIn"
+                                }
+                            }
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+</div>

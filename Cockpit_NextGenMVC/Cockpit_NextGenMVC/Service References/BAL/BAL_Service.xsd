@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BAL_Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BAL_Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
+  <xs:complexType name="CompositeType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="User">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q1:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Active" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fullname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Manager" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NTLogin" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ROLE_DESC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SAP_User_Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Superregion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Team_Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfTbl_Archives">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tbl_Archives" nillable="true" type="tns:Tbl_Archives" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTbl_Archives" nillable="true" type="tns:ArrayOfTbl_Archives" />
+  <xs:complexType name="Tbl_Archives">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q2:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ArchiveDate" type="xs:int" />
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="Month" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReportName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Report_Path" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tbl_Archives" nillable="true" type="tns:Tbl_Archives" />
+  <xs:complexType name="ArrayOfVW_DB_All_Orders">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VW_DB_All_Orders" nillable="true" type="tns:VW_DB_All_Orders" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVW_DB_All_Orders" nillable="true" type="tns:ArrayOfVW_DB_All_Orders" />
+  <xs:complexType name="VW_DB_All_Orders">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q3:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Action_Owner" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Actual_GI_Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Aging" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="AgingBucket" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BTM" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BTM_Manager" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Backlog" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Backlog_Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Billing_Block_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Block_Type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClosureMonth" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClosureStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Complete_delivery_Header" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Created_By" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Credit_Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DB_Cut_Off_Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Date_Change_Reason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Del_Prio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Del_Prio_Text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Delivery_Block_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Delta_Load_Date_Bucket" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Early_Delivery" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Header_Billing_Block_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Header_Delivery_Block_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Header_billing_block_Text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Header_delivery_block_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Last_Dlvy_Block" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Latest_Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order_Date" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PAYMENT_TERMS_DESC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PAYMENT_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PrimaryProduct" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Reason_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReqDlyDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Req_Install_Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SOrg" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SalesForce" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sales_Ord" type="xs:double" />
+          <xs:element minOccurs="0" name="Sales_Rep" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ship_Pt" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ship_To_Customer_Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Shipment_Cut_Of_Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Shipping_Condition" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sold_To_Customer_Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sub_Bus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Total_Blocks" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Total_Days_Blocked" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="closureDaysDelta" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="dlvy_Dt_Change_Reason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="dt_Last_Dlvy_Block_Applied" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="dt_Last_Dlvy_Block_Remved" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VW_DB_All_Orders" nillable="true" type="tns:VW_DB_All_Orders" />
+  <xs:complexType name="Tbl_Backlog_Summary">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q4:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SnapshotDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Total_Clean_Orders" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_DB" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_DB_CRDD_Less_2Days" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_DB_MF" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_DB_Overdue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_DB_Overdue_Less_3Weeks" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_DB_SppedtoRevenue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_NO_DB_CRDD_Less_2Days" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_SNI" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_SNI_MF" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_SNI_MF_300_Days" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_SNI_MF_Consumables" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_SNI_MF_Invoicing_Errors" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_Unblocked_Committed_ThisMonth" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Total_Unblocked_Overdue" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tbl_Backlog_Summary" nillable="true" type="tns:Tbl_Backlog_Summary" />
+  <xs:complexType name="ArrayOfVW_SNI_Orders">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VW_SNI_Orders" nillable="true" type="tns:VW_SNI_Orders" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVW_SNI_Orders" nillable="true" type="tns:ArrayOfVW_SNI_Orders" />
+  <xs:complexType name="VW_SNI_Orders">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q5:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Aging" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Aging_Bucket" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BBDescr" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BB_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BTM" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BTM_Manager" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Backlog" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ClosureStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Latest_Comments" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OR_created_by" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PAYMENT_TERMS_DESC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PAYMENT_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Primary_Product" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SOrg" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sales_Force" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sales_Ord" type="xs:double" />
+          <xs:element minOccurs="0" name="Sales_Rep" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ship_Pt" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ship_To_City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ship_To_Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ship_To_Customer_Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sold_To_City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sold_To_Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sold_To_Customer_Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="closureDaysDelta" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VW_SNI_Orders" nillable="true" type="tns:VW_SNI_Orders" />
+  <xs:complexType name="ArrayOfVW_DB_AllFocus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VW_DB_AllFocus" nillable="true" type="tns:VW_DB_AllFocus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVW_DB_AllFocus" nillable="true" type="tns:ArrayOfVW_DB_AllFocus" />
+  <xs:complexType name="VW_DB_AllFocus">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q6:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Actual_GI_Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Aging" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="AgingBucket" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BTM" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BTM_Manager" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Backlog" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Backlog_Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Billing_Block_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Block_Type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClosureStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Complete_delivery_Header" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Created_By" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Credit_Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DB_Cut_Off_Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Date_Change_Reason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Del_Prio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Del_Prio_Text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Delivery_Block_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Delta_Load_Date_Bucket" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Early_Delivery" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Header_Billing_Block_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Header_Delivery_Block_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Header_billing_block_Text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Header_delivery_block_text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Last_Dlvy_Block" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NLHD_Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order_Date" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PAYMENT_TERMS_DESC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PAYMENT_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PrimaryProduct" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReqDlyDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Req_Install_Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SOrg" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SalesForce" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sales_Ord" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Sales_Rep" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ship_Pt" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ship_To_Customer_Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Shipment_Cut_Of_Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Shipping_Condition" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sold_To_Customer_Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sub_Bus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Total_Blocks" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Total_Days_Blocked" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="closureDaysDelta" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="dlvy_Dt_Change_Reason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="dt_Last_Dlvy_Block_Applied" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="dt_Last_Dlvy_Block_Remved" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VW_DB_AllFocus" nillable="true" type="tns:VW_DB_AllFocus" />
+  <xs:complexType name="ArrayOfTbl_SNI_Comments">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tbl_SNI_Comments" nillable="true" type="tns:Tbl_SNI_Comments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTbl_SNI_Comments" nillable="true" type="tns:ArrayOfTbl_SNI_Comments" />
+  <xs:complexType name="Tbl_SNI_Comments">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q7:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActionOwner" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClosureMonth" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Comment_Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Commented_By" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NextAction" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Reason_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Regional_Reason_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sales_Ord" type="xs:double" />
+          <xs:element minOccurs="0" name="Tentative" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tbl_SNI_Comments" nillable="true" type="tns:Tbl_SNI_Comments" />
+  <xs:complexType name="ArrayOfTbl_DB_Comments">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tbl_DB_Comments" nillable="true" type="tns:Tbl_DB_Comments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTbl_DB_Comments" nillable="true" type="tns:ArrayOfTbl_DB_Comments" />
+  <xs:complexType name="Tbl_DB_Comments">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q8:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActionOwner" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BC_Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BC_Comment_Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BC_Commented_By" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BC_Prior" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClosureMonth" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NextAction" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OF_Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OF_Comment_Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="OF_Commented_By" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OF_Prior" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Reason_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Regional_Reason_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sales_Ord" type="xs:double" />
+          <xs:element minOccurs="0" name="Tentative" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tbl_DB_Comments" nillable="true" type="tns:Tbl_DB_Comments" />
+  <xs:complexType name="ArrayOfTbl_My_BCR_Summary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tbl_My_BCR_Summary" nillable="true" type="tns:Tbl_My_BCR_Summary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTbl_My_BCR_Summary" nillable="true" type="tns:ArrayOfTbl_My_BCR_Summary" />
+  <xs:complexType name="Tbl_My_BCR_Summary">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q9:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BODtls" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ClosedOrders" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CustomFilter" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Frequency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="M_Dollars" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="OpenOrders" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="OverdueOrders" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="PendingSignOff" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ReportID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SAP_T_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tbl_My_BCR_Summary" nillable="true" type="tns:Tbl_My_BCR_Summary" />
+  <xs:complexType name="ArrayOfVw_Summary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Vw_Summary" nillable="true" type="tns:Vw_Summary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVw_Summary" nillable="true" type="tns:ArrayOfVw_Summary" />
+  <xs:complexType name="Vw_Summary">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q10:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Active" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Actual_GI_Date" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Aging_Bucket" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Area_Manager" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BacklogDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="COMMIT_DATE" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CUSTOMER_REQ_GI_DATE" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Created_On" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Created_by" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomFilter" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Dist_Manager" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Dollar_Bucket" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fullname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Manager" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NLHD_STATUS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Net_Value_USD" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ORDER_AGE" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Order_Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order_Type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PAYMENT_TERMS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PAYMENT_TERMS_DESC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PAYMENT_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_PRODUCT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="QUOTA_SF" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="QUOTA_SF_DESC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="REGION" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReportID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ROLE_DESC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sales_Ord" type="xs:double" />
+          <xs:element minOccurs="0" name="Sales_Rep" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SnapshotDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Superregion" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Vw_Summary" nillable="true" type="tns:Vw_Summary" />
+  <xs:complexType name="ArrayOfTbl_Followup_Summary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tbl_Followup_Summary" nillable="true" type="tns:Tbl_Followup_Summary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTbl_Followup_Summary" nillable="true" type="tns:ArrayOfTbl_Followup_Summary" />
+  <xs:complexType name="Tbl_Followup_Summary">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q11:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DueToday" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="PassedDuedate" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ReassignedtoYou" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="TotalFollowups" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="id" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tbl_Followup_Summary" nillable="true" type="tns:Tbl_Followup_Summary" />
+  <xs:complexType name="ArrayOfTbl_Followups">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tbl_Followups" nillable="true" type="tns:Tbl_Followups" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTbl_Followups" nillable="true" type="tns:ArrayOfTbl_Followups" />
+  <xs:complexType name="Tbl_Followups">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" base="q12:EntityObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BacklogStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Created_By" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Created_On" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DueDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Followupid" type="xs:int" />
+          <xs:element minOccurs="0" name="Owner" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Re_Assigned_To" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Sales_Order" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Tbl_Followups" nillable="true" type="tns:Tbl_Followups" />
+</xs:schema>

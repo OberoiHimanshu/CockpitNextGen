@@ -1,0 +1,183 @@
+﻿@model  Cockpit_NextGenMVC.Models.DashboardModal
+@{
+    ViewBag.ReportGroup = "BacklogReport";
+    var currentMainReport = ViewBag.currentMainReport;
+
+    using (Html.BeginForm())
+    {
+    
+        
+    <h3>
+        Backlog Summary for: @Model.BacklogSummary.SnapshotDate</h3>
+        
+    <hr style="background: gray; border: 0; height: 3px" />
+        <div class="row-fluid">
+        <div class="statbox green noMargin" ontablet="span6" ondesktop="span3" data-original-title="Covers Total Follow-ups open."
+            data-rel="tooltip">
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadFollowupViews();" style="color: White;">Follow-up</a>
+                <br />
+                25 #
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+        <div class="statbox blue noMargin" ontablet="span6" ondesktop="span3" data-original-title="Covers Orders with No Delivery block and not yet shipped."
+            data-rel="tooltip">
+            <div class="boxchart">
+                45,50,55,60,65,70,75,80,85,90,95,100</div>
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadUBViews();" style="color: White;">Unblocked Order</a>
+                <br />
+                2576 Orders
+                <br />@Model.BacklogSummary.Total_Clean_Orders.ToString() M$
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+        <div class="statbox orange" ontablet="span6" ondesktop="span3" data-original-title="Covers all Delivery block (Shipment / Production block)."
+            data-rel="tooltip">
+            <div class="boxchart">
+                45,50,55,60,65,70,75,80,85,90,95,100</div>
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadDBViews();" style="color: White;">Delivery Block</a>
+                <br />
+                1876 Orders
+                <br />@Model.BacklogSummary.Total_DB.ToString() M$
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+        <div class="statbox purple" ontablet="span6" ondesktop="span3" data-original-title="Covers all Shipped not Invoiced (SNI) orders."
+            data-rel="tooltip">
+            <div class="boxchart">
+                45,50,55,60,65,70,75,80,85,90,95,100</div>
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadSNIViews();" style="color: White;">Shipped not Invoiced</a>
+                <br />
+                722 Orders
+                <br />@Model.BacklogSummary.Total_SNI.ToString() M$
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+        <div class="statbox pink noMargin" ontablet="span6" ondesktop="span3" data-original-title="Covers all OSBR Notifications for Delivery status = PERFORMED & Invoice status = Blank, Not Invoiced, Partial Invoiced."
+            data-rel="tooltip">
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadOSBRViews();" style="color: White;">OSBR Notification</a>
+                <br />
+                @Model.BCRSummary.TotalBCRBacklog
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+    </div>
+    
+    <hr style="background: gray; border: 0; height: 3px" />
+    
+    <div class="row-fluid">
+        <div class="hideInIE8 circleStats">
+            @foreach (var BacklogItem in Model.BacklogStats)
+            {
+                <div class="span2" ontablet="span4" ondesktop="span2">
+                    <div class="circleStatsItemBox">
+                        <div class="header @BacklogItem.Backcolor">
+                            <a href="@Url.Action(BacklogItem.ReportPath, BacklogItem.Area, new { Report = BacklogItem.ReportName })" style="color:White;">
+                                @BacklogItem.ReportName</a>
+                        </div>
+                        <span style="text-align:left;">
+                        <br />
+                            @if (currentMainReport == "Followups")
+                            {
+                                <label id="lblFollowups" style="text-align: center;">
+                                    # of Follow-ups : @BacklogItem.Totalorders</label>
+                            }
+                            else
+                            {
+                                <label id="lblOrders" style="text-align: center;">
+                                    # of Orders : @BacklogItem.Totalorders</label>
+                                <label id="lblDollars" style="text-align: center;">
+                                    Net Value : @BacklogItem.OrdersWorth (M$)</label>
+                            }
+                        </span> 
+                        <div class="footer">
+                            <a href="@Url.Action(BacklogItem.ReportPath, BacklogItem.Area, new { Report = BacklogItem.ReportName })" style="color:black;">
+                                Order Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    
+    <input type="hidden" value="DBOrders" name="hidReportName" id="hidReportName" />         
+    }
+}
+<script type="text/javascript">
+    
+
+    LoadDBViews = function () {
+        $('#hidReportName').val("DBOrders");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadBCRViews = function () {
+        $('#hidReportName').val("ControlReports");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadOSBRViews = function () {
+        $('#hidReportName').val("OSBRReports");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadSNIViews = function () {
+        $('#hidReportName').val("SNIOrders");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadUBViews = function () {
+        $('#hidReportName').val("UnblockedOrders");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadFollowupViews = function () {
+        $('#hidReportName').val("Followups");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+           
+
+</script>
+

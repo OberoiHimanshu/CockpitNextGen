@@ -1,0 +1,84 @@
+﻿@model  Cockpit_NextGenMVC.BAL.Tbl_Followups
+
+    <table align="left" cellpadding="5" cellspacing="5" width="100%">
+        <tr style="height:40px;">
+            <td>FollowUp ID :</td>
+            <td>
+                <input type="text" id="txtFollowUPID" name="txtFollowUPID" readonly="readonly" data-bind="value:Followupid"  width="100%" />
+            </td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Sales Order # :</td>
+            <td>
+                <input type="text" id="txtSalesOrder" name="txtSalesOrder" readonly="readonly" width="100%" data-bind="value:Sales_Order" />
+            </td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Customer Name :</td>
+            <td>
+                <input type="text" id="txtCustomerName" name="txtCustomerName" readonly="readonly" width="100%" data-bind="value:CustomerName" />
+            </td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Description :</td>
+            <td>
+                <textarea name="txtDesc" id="txtDesc" rows="2" cols="30" data-bind="value:Description"> </textarea>
+            </td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Comment :</td>
+            <td>
+                <textarea name="txtComments" id="txtComments" rows="2" cols="30" data-bind="value:Comment"> </textarea>
+            </td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Due Date :</td>
+            <td>
+                @Html.Kendo().DatePickerFor(model => model.DueDate).Format("{0:MM/dd/yyyy}").ToClientTemplate();
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+
+        <tr style="height:40px;">
+            <td>Priority :</td>
+            <td>
+                @(Html.Kendo().DropDownListFor(model => model.Priority)
+          .Name("Priority")
+          .SelectedIndex(0)
+               .DataTextField("Text")
+           .DataValueField("Value")
+           .SelectedIndex(1)
+           .BindTo(new List<SelectListItem>
+                  {
+                      new SelectListItem {Text = "1-High", Value = "1-High" },
+                      new SelectListItem {Text = "2-Medium", Value = "2-Medium"},
+                      new SelectListItem {Text = "3-Low", Value = "3-Low"}
+                  }).HtmlAttributes(new { name = "Priority", ID = "Priority" }).ToClientTemplate())
+                
+                    
+            </td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Status : </td>
+            <td>
+                <input type="radio" name="rdoStatus" checked="checked" value="Open">Open
+                <input type="radio" name="rdoStatus" value="Closed">Closed
+            </td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Created By :</td>
+            <td>
+                <input type="text" id="txtCreatedBy" readonly="readonly" name="txtCreatedBy" data-bind="value:Created_By"  width="100%" />
+            </td>
+        </tr>
+        <tr style="height:40px;">
+            <td>Created On :</td>
+            <td>
+                @Html.Kendo().DatePickerFor(Model => Model.Created_On).Format("{0:MM/dd/yyyy}").Enable(false).ToClientTemplate();
+                
+            </td>
+        </tr>
+    </table>  
+

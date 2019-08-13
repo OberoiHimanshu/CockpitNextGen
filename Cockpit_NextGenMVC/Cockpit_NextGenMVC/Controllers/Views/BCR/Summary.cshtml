@@ -1,0 +1,21 @@
+﻿@model  Cockpit_NextGenMVC.Models.DashboardModal
+<div class="content-wrapper">
+    <section class="content-header">
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li class="active">BCR Summary</li>
+          </ol>
+        <br />
+        <hr style="background: gray; border: 0; height: 3px" />
+          <h1>
+            Business Control Reports
+          </h1>
+        </section>
+    <section class="Content">
+        <div class="row">
+
+            @{Html.RenderPartial("_BCRSummary", Model);}
+            </div>
+    </section>
+</div>
+   

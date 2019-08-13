@@ -1,0 +1,55 @@
+﻿@model Cockpit_NextGenMVC.BAL.Tbl_Followup_Summary
+<div class="box black span4" ontablet="span6" ondesktop="span4" style="vertical-align: top;">
+    @{
+        using (Html.BeginForm())
+        {
+        <div class="box-header">
+            <h2>
+                <i class="halflings-icon white list"></i><span class="break"></span>Followup(s)
+                Summary :</h2>
+            <div class="box-icon">
+                <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="box-content">
+            <ul class="dashboard-list metro">
+                <li><a href="#" onclick="LoadFollowups('TotalFollowups');"><i class="icon-arrow-up blue">
+                </i><strong>
+                    @Model.TotalFollowups
+                </strong>Total Followups </a></li>
+                <li><a href="#" onclick="LoadFollowups('PassedDuedate');"><i class="icon-arrow-down red">
+                </i><strong>
+                    @Model.PassedDuedate
+                </strong>Followups Passed due Date </a></li>
+                <li><a href="#" onclick="LoadFollowups('DueToday');"><i class="icon-minus yellow"></i>
+                    <strong>
+                        @Model.DueToday
+                    </strong>Open Followups due Today </a></li>
+                <li><a href="#" onclick="LoadFollowups('ReasignedtoYou');"><i class="icon-comment blue">
+                </i><strong>
+                    @Model.ReassignedtoYou
+                </strong>OpenFollowup </a></li>
+                <li><a href="#" onclick="LoadFollowups('ReasignedtoYou');"><i class="icon-comment green">
+                </i><strong>
+                    @Model.ReassignedtoYou
+                </strong>Followup(s) re-assigned to you </a></li>
+            </ul>
+        </div>
+        <input type="hidden" value="ControlReports" name="hidcatagory" id="hidcatagory" />
+    
+        }
+    }
+</div>
+<script type="text/javascript">
+    LoadFollowups = function (Type) {
+        $('#hidcatagory').val(Type);
+
+        //alert($('#hidcatagory').val().toString());
+
+        $('#hidcatagory').parents('form').submit();
+
+        return false;
+    }
+
+</script>

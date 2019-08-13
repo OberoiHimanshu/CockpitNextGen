@@ -1,0 +1,248 @@
+﻿@model  Cockpit_NextGenMVC.Models.DashboardModal
+@{
+    var CurrentDashboard = ViewBag.CurrentDashboard;
+    var currentMainReport = ViewBag.currentMainReport;
+}
+@{
+    
+    using (Html.BeginForm())
+    {
+        
+    <p>
+        @(Html.Kendo().Button()
+        .Name("MyCockpit")
+        .HtmlAttributes(new { type = "button", @class = "k-primary" })
+        .Events(e => e.Click("onMyCockpitClick"))
+        .Content("My Cockpit"))
+        @(Html.Kendo().Button()
+        .Name("TeamCockpit")
+        .HtmlAttributes(new { type = "button" })
+        .Events(e => e.Click("onTeamCockpitClick"))
+        .Content("My Team's Cockpit"))
+        Search Order :
+        <input type="text" id="searchOrder" />
+        <input type="button" name="btnSearchOrder" value="Search" />
+        <input type="hidden" id="hidCockpitUI" name="hidCockpitUI" value="CSR Cockpit" />
+    </p>
+    <hr style="background: gray; border: 0; height: 3px" />
+    <div class="row-fluid">
+        <div class="statbox green noMargin" ontablet="span6" ondesktop="span3" data-original-title="Covers Total Follow-ups open."
+            data-rel="tooltip">
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadFollowupViews();" style="color: White;">Follow-up</a>
+                <br />
+                25 #
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+        <div class="statbox blue noMargin" ontablet="span6" ondesktop="span3" data-original-title="Covers Orders with No Delivery block and not yet shipped."
+            data-rel="tooltip">
+            <div class="boxchart">
+                45,50,55,60,65,70,75,80,85,90,95,100</div>
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadUBViews();" style="color: White;">Unblocked Order</a>
+                <br />
+                2576 Orders
+                <br />@Model.BacklogSummary.Total_Clean_Orders.ToString() M$
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+        <div class="statbox orange" ontablet="span6" ondesktop="span3" data-original-title="Covers all Delivery block (Shipment / Production block)."
+            data-rel="tooltip">
+            <div class="boxchart">
+                45,50,55,60,65,70,75,80,85,90,95,100</div>
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadDBViews();" style="color: White;">Delivery Block</a>
+                <br />
+                1876 Orders
+                <br />@Model.BacklogSummary.Total_DB.ToString() M$
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+        <div class="statbox purple" ontablet="span6" ondesktop="span3" data-original-title="Covers all Shipped not Invoiced (SNI) orders."
+            data-rel="tooltip">
+            <div class="boxchart">
+                45,50,55,60,65,70,75,80,85,90,95,100</div>
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadSNIViews();" style="color: White;">Shipped not Invoiced</a>
+                <br />
+                722 Orders
+                <br />@Model.BacklogSummary.Total_SNI.ToString() M$
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+        <div class="statbox yellow noMargin" ontablet="span6" ondesktop="span3" data-original-title="Covers all Business Comtrol Reports."
+            data-rel="tooltip">
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadBCRViews();" style="color: White;">Control Reports</a>
+                <br />
+                @Model.BCRSummary.TotalBCRBacklog Pending Comments
+                <br /> 112 Pending Sign-offs
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+        <div class="statbox pink noMargin" ontablet="span6" ondesktop="span3" data-original-title="Covers all OSBR Notifications for Delivery status = PERFORMED & Invoice status = Blank, Not Invoiced, Partial Invoiced."
+            data-rel="tooltip">
+            <div class="number">
+                <i class="icon-arrow-up"></i>
+            </div>
+            <div class="title">
+                <a href="#" onclick="LoadOSBRViews();" style="color: White;">OSBR Notification</a>
+                <br />
+                5 Orders
+            </div>
+            <div class="footer">
+                <a href="#">Analytics</a>
+            </div>
+        </div>
+    </div>
+    <hr style="background: gray; border: 0; height: 3px" />
+    
+    <div class="row-fluid">
+    @if (currentMainReport == "ControlReports")
+    {
+        <div class="hideInIE8 circleStats">
+            @{Html.RenderPartial("_BCRSummary", Model.BacklogStats);}
+        </div>
+    }
+    else
+    {
+        <div class="hideInIE8 circleStats">
+            @foreach (var BCRItem in Model.BacklogStats)
+            {
+                <div class="span2" ontablet="span4" ondesktop="span2">
+                    <div class="circleStatsItemBox">
+                        <div class="header @BCRItem.Backcolor">
+                            <a href="@Url.Action(BCRItem.ReportPath, BCRItem.Area, new { Report = BCRItem.ReportName })" style="color:White;">
+                                @BCRItem.ReportName</a>
+                        </div>
+                        <span style="text-align: left;">
+                            <br />
+                            @if (currentMainReport == "Followups")
+                            {
+                                <label id="lblFollowups" style="text-align: center;">
+                                    # of Follow-ups : @BCRItem.Totalorders</label>
+                            }
+                            else
+                            {
+                                <label id="lblOrders" style="text-align: center;">
+                                    # of Orders : @BCRItem.Totalorders</label>
+                                <label id="lblDollars" style="text-align: center;">
+                                    Net Value : @BCRItem.OrdersWorth (M$)</label>
+                            }
+                        </span>
+                        <div class="footer">
+                            <a href="@Url.Action(BCRItem.ReportPath, BCRItem.Area, new { Report = BCRItem.ReportName })" style="color:Black;">
+                                Order Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+        
+    </div>
+    
+
+    <input type="hidden" value="Followups" name="hidReportName" id="hidReportName" />         
+
+    }
+
+}
+<script type="text/javascript">
+    LoadBCRViews = function () {
+        $('#hidReportName').val("ControlReports");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+
+    LoadFollowupViews = function () {
+        $('#hidReportName').val("Followups");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadDBViews = function () {
+        $('#hidReportName').val("DBOrders");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadBCRViews = function () {
+        $('#hidReportName').val("ControlReports");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadOSBRViews = function () {
+        $('#hidReportName').val("OSBRReports");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadSNIViews = function () {
+        $('#hidReportName').val("SNIOrders");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadUBViews = function () {
+        $('#hidReportName').val("UnblockedOrders");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    LoadFollowupViews = function () {
+        $('#hidReportName').val("Followups");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+        return false;
+    }
+
+    function onMyCockpitClick(e) {
+        $('#hidCockpitUI').val("CSR Cockpit");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+    }
+
+    function onTeamCockpitClick(e) {
+        $('#hidCockpitUI').val("Team Cockpit");
+        //alert($('#hidReportName').val().toString());
+        $('#hidReportName').parents('form').submit();
+    }
+
+</script>

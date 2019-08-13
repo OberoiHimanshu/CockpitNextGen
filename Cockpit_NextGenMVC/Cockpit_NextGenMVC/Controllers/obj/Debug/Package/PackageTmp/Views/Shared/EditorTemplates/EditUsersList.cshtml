@@ -1,0 +1,13 @@
+﻿
+@(Html.Kendo().DropDownList()
+      .Name("TeamName")
+      .DataTextField("Text")
+      .DataValueField("Value")
+       .DataSource(source => {
+              source.Read(read =>
+              {
+                  read.Action("GetRegionTeams", "Generic");
+              })
+              .ServerFiltering(true);
+        }).SelectedIndex(0)
+)
