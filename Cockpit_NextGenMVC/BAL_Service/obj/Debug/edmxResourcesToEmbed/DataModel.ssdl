@@ -2309,6 +2309,8 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.tmp2_Service_Backlog' does 
     <Property Name="ZU_ACCOUNT_NAME" Type="nvarchar" MaxLength="255" />
     <Property Name="ZU_COUNTRY" Type="nvarchar" MaxLength="100" />
     <Property Name="DELTA_LOAD_DATE_BUCKET" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PRIMARY_PRODUCT" Type="nvarchar" MaxLength="100" />
+    <Property Name="BACKLOG_STATUS" Type="nvarchar" MaxLength="255" />
     <Property Name="FE_FE_DESC" Type="nvarchar" MaxLength="100" />
     <Property Name="SNI_AGE" Type="int" Nullable="false" />
     <Property Name="OVERALL_INSTALLATION_STATUS" Type="nvarchar" MaxLength="50" />
@@ -2546,6 +2548,7 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.VW_SNI_All_Orders' does not
       <PropertyRef Name="SNI_CLOSURE_STATUS" />
       <PropertyRef Name="DB_CLOSURE_STATUS" />
       <PropertyRef Name="DB_AGING_BUCKET" />
+      <PropertyRef Name="Overall_Installation_Status" />
     </Key>
     <Property Name="SALES_ORDERNO" Type="float" Nullable="false" />
     <Property Name="CUSTOMER_PO_NO" Type="nvarchar" MaxLength="100" />
@@ -2569,12 +2572,17 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.VW_SNI_All_Orders' does not
     <Property Name="REASON_CODE" Type="nvarchar" MaxLength="255" />
     <Property Name="LATEST_COMMENT" Type="nvarchar(max)" />
     <Property Name="DB_AGING_BUCKET" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="PRIMARY_PRODUCT" Type="nvarchar" MaxLength="100" />
-    <Property Name="BACKLOG_STATUS" Type="nvarchar" MaxLength="255" />
     <Property Name="REGION" Type="nvarchar" MaxLength="50" />
     <Property Name="ZU_ACCOUNT_NAME" Type="nvarchar" MaxLength="255" />
     <Property Name="ZU_COUNTRY" Type="nvarchar" MaxLength="100" />
     <Property Name="DELTA_LOAD_DATE_BUCKET" Type="nvarchar" MaxLength="50" />
+    <Property Name="PRIMARY_PRODUCT" Type="nvarchar" MaxLength="100" />
+    <Property Name="BACKLOG_STATUS" Type="nvarchar" MaxLength="255" />
+    <Property Name="FE_FE_DESC" Type="nvarchar" MaxLength="100" />
+    <Property Name="SNI_Age" Type="int" />
+    <Property Name="Overall_Installation_Status" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="LATEST_COMMENT_DATE_TIME" Type="datetime" />
+    <Property Name="QUOTA_SF" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'CockpitNextGen_Dev.dbo.VW_SNI_Mater_Focus_Main_Orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3389,6 +3397,10 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.VW_USERS' does not have a p
   <Function Name="usp_UpdateUserInSAPZTRD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="OrderOwner" Type="nvarchar" Mode="In" />
     <Parameter Name="CreatedBy" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_WW_Process_Summary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="param_Area" Type="nvarchar" Mode="In" />
+    <Parameter Name="param_SummaryType" Type="nvarchar" Mode="In" />
   </Function>
   <EntityContainer Name="Cockpit_NewGenerationModelStoreContainer">
     <EntitySet Name="Dim_Billing_Blocks" EntityType="Self.Dim_Billing_Blocks" Schema="dbo" store:Type="Tables" />
@@ -5148,12 +5160,17 @@ FROM [dbo].[VW_DB_Overdue] AS [VW_DB_Overdue]</DefiningQuery>
 [VW_SNI_All_Orders].[REASON_CODE] AS [REASON_CODE], 
 [VW_SNI_All_Orders].[LATEST_COMMENT] AS [LATEST_COMMENT], 
 [VW_SNI_All_Orders].[DB_AGING_BUCKET] AS [DB_AGING_BUCKET], 
-[VW_SNI_All_Orders].[PRIMARY_PRODUCT] AS [PRIMARY_PRODUCT], 
-[VW_SNI_All_Orders].[BACKLOG_STATUS] AS [BACKLOG_STATUS], 
 [VW_SNI_All_Orders].[REGION] AS [REGION], 
 [VW_SNI_All_Orders].[ZU_ACCOUNT_NAME] AS [ZU_ACCOUNT_NAME], 
 [VW_SNI_All_Orders].[ZU_COUNTRY] AS [ZU_COUNTRY], 
-[VW_SNI_All_Orders].[DELTA_LOAD_DATE_BUCKET] AS [DELTA_LOAD_DATE_BUCKET]
+[VW_SNI_All_Orders].[DELTA_LOAD_DATE_BUCKET] AS [DELTA_LOAD_DATE_BUCKET], 
+[VW_SNI_All_Orders].[PRIMARY_PRODUCT] AS [PRIMARY_PRODUCT], 
+[VW_SNI_All_Orders].[BACKLOG_STATUS] AS [BACKLOG_STATUS], 
+[VW_SNI_All_Orders].[FE_FE_DESC] AS [FE_FE_DESC], 
+[VW_SNI_All_Orders].[SNI_Age] AS [SNI_Age], 
+[VW_SNI_All_Orders].[Overall_Installation_Status] AS [Overall_Installation_Status], 
+[VW_SNI_All_Orders].[LATEST_COMMENT_DATE_TIME] AS [LATEST_COMMENT_DATE_TIME], 
+[VW_SNI_All_Orders].[QUOTA_SF] AS [QUOTA_SF]
 FROM [dbo].[VW_SNI_All_Orders] AS [VW_SNI_All_Orders]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="VW_SNI_Mater_Focus_Main_Orders" EntityType="Self.VW_SNI_Mater_Focus_Main_Orders" store:Type="Views" store:Schema="dbo">

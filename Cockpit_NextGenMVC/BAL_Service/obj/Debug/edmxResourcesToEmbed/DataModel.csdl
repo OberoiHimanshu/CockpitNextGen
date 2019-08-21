@@ -651,10 +651,6 @@
       <Parameter Name="UserID" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="Tbl_WW_Blocked_Orders_Summary" EntityType="Cockpit_NewGenerationModel.Tbl_WW_Blocked_Orders_Summary" />
-    <FunctionImport Name="usp_WW_Process_Summary" EntitySet="Tbl_WW_Blocked_Orders_Summary" ReturnType="Collection(Cockpit_NewGenerationModel.Tbl_WW_Blocked_Orders_Summary)">
-      <Parameter Name="Owner" Mode="In" Type="String" />
-      <Parameter Name="UI_Area" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="usp_Reassign_Followup">
       <Parameter Name="FollowupID" Mode="In" Type="Int32" />
       <Parameter Name="FullName" Mode="In" Type="String" />
@@ -989,6 +985,10 @@
       <Parameter Name="ScopeUsers" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="VW_USERS" EntityType="Cockpit_NewGenerationModel.VW_USERS" />
+    <FunctionImport Name="usp_WW_Process_Summary" EntitySet="Tbl_WW_Blocked_Orders_Summary" ReturnType="Collection(Cockpit_NewGenerationModel.Tbl_WW_Blocked_Orders_Summary)">
+      <Parameter Name="param_Area" Mode="In" Type="String" />
+      <Parameter Name="param_SummaryType" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Tbl_Archives">
     <Key>
@@ -1481,6 +1481,8 @@
     <Property Type="String" Name="OVERALL_INSTALLATION_STATUS" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="DateTime" Name="LATEST_COMMENT_DATE_TIME" Precision="3" />
     <Property Type="String" Name="QUOTA_SF" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PRIMARY_PRODUCT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BACKLOG_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Tbl_Country_Sorg_Orig">
     <Key>
@@ -3349,6 +3351,7 @@
       <PropertyRef Name="SNI_CLOSURE_STATUS" />
       <PropertyRef Name="DB_CLOSURE_STATUS" />
       <PropertyRef Name="DB_AGING_BUCKET" />
+      <PropertyRef Name="Overall_Installation_Status" />
     </Key>
     <Property Name="SALES_ORDERNO" Type="Double" Nullable="false" />
     <Property Name="CUSTOMER_PO_NO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -3378,6 +3381,11 @@
     <Property Name="ZU_ACCOUNT_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="ZU_COUNTRY" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="DELTA_LOAD_DATE_BUCKET" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FE_FE_DESC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SNI_Age" Type="Int32" />
+    <Property Name="Overall_Installation_Status" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="LATEST_COMMENT_DATE_TIME" Type="DateTime" Precision="3" />
+    <Property Name="QUOTA_SF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="VW_SNI_Mater_Focus_Main_Orders">
     <Key>
@@ -3564,4 +3572,15 @@
     <Property Name="PROFILE_PIC" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="SAP_User_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
+  <ComplexType Name="usp_WW_Process_Summary1_Result">
+    <Property Type="Int32" Name="Bucket_Rank" Nullable="true" />
+    <Property Type="String" Name="Bucket" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="AFO" Nullable="false" />
+    <Property Type="Double" Name="EMEAI" Nullable="false" />
+    <Property Type="Double" Name="JFO" Nullable="false" />
+    <Property Type="Double" Name="SAPK" Nullable="false" />
+    <Property Type="Double" Name="GCFO" Nullable="false" />
+    <Property Type="Double" Name="WW" Nullable="false" />
+    <Property Type="String" Name="BucketName" Nullable="true" MaxLength="100" />
+  </ComplexType>
 </Schema>

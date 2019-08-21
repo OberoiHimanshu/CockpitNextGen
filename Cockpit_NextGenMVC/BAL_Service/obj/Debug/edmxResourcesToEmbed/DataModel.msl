@@ -456,6 +456,8 @@
     <EntitySetMapping Name="VW_Orders_Info">
       <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.VW_Orders_Info)">
         <MappingFragment StoreEntitySet="VW_Orders_Info">
+          <ScalarProperty Name="BACKLOG_STATUS" ColumnName="BACKLOG_STATUS" />
+          <ScalarProperty Name="PRIMARY_PRODUCT" ColumnName="PRIMARY_PRODUCT" />
           <ScalarProperty Name="SALES_ORDERNO" ColumnName="SALES_ORDERNO" />
           <ScalarProperty Name="TRIO_LOAD_DATE" ColumnName="TRIO_LOAD_DATE" />
           <ScalarProperty Name="SNI_CLOSURE_STATUS" ColumnName="SNI_CLOSURE_STATUS" />
@@ -2332,6 +2334,11 @@
     <EntitySetMapping Name="VW_SNI_All_Orders">
       <EntityTypeMapping TypeName="Cockpit_NewGenerationModel.VW_SNI_All_Orders">
         <MappingFragment StoreEntitySet="VW_SNI_All_Orders">
+          <ScalarProperty Name="QUOTA_SF" ColumnName="QUOTA_SF" />
+          <ScalarProperty Name="LATEST_COMMENT_DATE_TIME" ColumnName="LATEST_COMMENT_DATE_TIME" />
+          <ScalarProperty Name="Overall_Installation_Status" ColumnName="Overall_Installation_Status" />
+          <ScalarProperty Name="SNI_Age" ColumnName="SNI_Age" />
+          <ScalarProperty Name="FE_FE_DESC" ColumnName="FE_FE_DESC" />
           <ScalarProperty Name="DELTA_LOAD_DATE_BUCKET" ColumnName="DELTA_LOAD_DATE_BUCKET" />
           <ScalarProperty Name="ZU_COUNTRY" ColumnName="ZU_COUNTRY" />
           <ScalarProperty Name="ZU_ACCOUNT_NAME" ColumnName="ZU_ACCOUNT_NAME" />
@@ -2507,7 +2514,6 @@
     <FunctionImportMapping FunctionImportName="usp_ActiveDeactiveUser" FunctionName="Cockpit_NewGenerationModel.Store.usp_ActiveDeactiveUser" />
     <FunctionImportMapping FunctionImportName="usp_Followups" FunctionName="Cockpit_NewGenerationModel.Store.usp_Followups" />
     <FunctionImportMapping FunctionImportName="usp_FollowUps_By_SalesOrderNumber" FunctionName="Cockpit_NewGenerationModel.Store.usp_FollowUps_By_SalesOrderNumber" />
-    <FunctionImportMapping FunctionImportName="usp_WW_Process_Summary" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_Blocked_Orders_Summary" />
     <FunctionImportMapping FunctionImportName="Usp_Unmapped_Users_Summary" FunctionName="Cockpit_NewGenerationModel.Store.Usp_Unmapped_Users_Summary" />
     <FunctionImportMapping FunctionImportName="usp_STR_Summary" FunctionName="Cockpit_NewGenerationModel.Store.usp_STR_Summary" />
     <FunctionImportMapping FunctionImportName="usp_Get_Blocked_Orders_Summary" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_Blocked_Orders_Summary" />
@@ -2546,5 +2552,6 @@
     <FunctionImportMapping FunctionImportName="usp_Get_DB_OverDue_in_14Days" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_DB_OverDue_in_14Days" />
     <FunctionImportMapping FunctionImportName="usp_Get_DB_Speed_to_Revenue" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_DB_Speed_to_Revenue" />
     <FunctionImportMapping FunctionImportName="usp_Get_Region_SalesForce" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_Region_SalesForce" />
+    <FunctionImportMapping FunctionImportName="usp_WW_Process_Summary" FunctionName="Cockpit_NewGenerationModel.Store.usp_WW_Process_Summary" />
   </EntityContainerMapping>
 </Mapping>

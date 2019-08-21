@@ -260,6 +260,9 @@
     <Compile Include="Usp_Unmapped_User_Summary_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_WW_Process_Summary1_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="VW_Archived_Orders.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

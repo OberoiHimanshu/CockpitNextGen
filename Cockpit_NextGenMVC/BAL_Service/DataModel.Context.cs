@@ -4528,32 +4528,6 @@ namespace BAL_Service
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ActiveDeactiveUser", userIDParameter);
         }
     
-        public virtual ObjectResult<Tbl_WW_Blocked_Orders_Summary> usp_WW_Process_Summary(string owner, string uI_Area)
-        {
-            var ownerParameter = owner != null ?
-                new ObjectParameter("Owner", owner) :
-                new ObjectParameter("Owner", typeof(string));
-    
-            var uI_AreaParameter = uI_Area != null ?
-                new ObjectParameter("UI_Area", uI_Area) :
-                new ObjectParameter("UI_Area", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tbl_WW_Blocked_Orders_Summary>("usp_WW_Process_Summary", ownerParameter, uI_AreaParameter);
-        }
-    
-        public virtual ObjectResult<Tbl_WW_Blocked_Orders_Summary> usp_WW_Process_Summary(string owner, string uI_Area, MergeOption mergeOption)
-        {
-            var ownerParameter = owner != null ?
-                new ObjectParameter("Owner", owner) :
-                new ObjectParameter("Owner", typeof(string));
-    
-            var uI_AreaParameter = uI_Area != null ?
-                new ObjectParameter("UI_Area", uI_Area) :
-                new ObjectParameter("UI_Area", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tbl_WW_Blocked_Orders_Summary>("usp_WW_Process_Summary", mergeOption, ownerParameter, uI_AreaParameter);
-        }
-    
         public virtual int usp_Reassign_Followup(Nullable<int> followupID, string fullName)
         {
             var followupIDParameter = followupID.HasValue ?
@@ -6581,6 +6555,32 @@ namespace BAL_Service
                 new ObjectParameter("ScopeUsers", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tbl_Followups>("usp_Catagory_Followups", mergeOption, catagoryParameter, nTLoginParameter, scopeUsersParameter);
+        }
+    
+        public virtual ObjectResult<Tbl_WW_Blocked_Orders_Summary> usp_WW_Process_Summary(string param_Area, string param_SummaryType)
+        {
+            var param_AreaParameter = param_Area != null ?
+                new ObjectParameter("param_Area", param_Area) :
+                new ObjectParameter("param_Area", typeof(string));
+    
+            var param_SummaryTypeParameter = param_SummaryType != null ?
+                new ObjectParameter("param_SummaryType", param_SummaryType) :
+                new ObjectParameter("param_SummaryType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tbl_WW_Blocked_Orders_Summary>("usp_WW_Process_Summary", param_AreaParameter, param_SummaryTypeParameter);
+        }
+    
+        public virtual ObjectResult<Tbl_WW_Blocked_Orders_Summary> usp_WW_Process_Summary(string param_Area, string param_SummaryType, MergeOption mergeOption)
+        {
+            var param_AreaParameter = param_Area != null ?
+                new ObjectParameter("param_Area", param_Area) :
+                new ObjectParameter("param_Area", typeof(string));
+    
+            var param_SummaryTypeParameter = param_SummaryType != null ?
+                new ObjectParameter("param_SummaryType", param_SummaryType) :
+                new ObjectParameter("param_SummaryType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tbl_WW_Blocked_Orders_Summary>("usp_WW_Process_Summary", mergeOption, param_AreaParameter, param_SummaryTypeParameter);
         }
     }
 }

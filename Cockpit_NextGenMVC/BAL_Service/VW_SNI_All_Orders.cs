@@ -42,5 +42,10 @@ namespace BAL_Service
         public string ZU_ACCOUNT_NAME { get; set; }
         public string ZU_COUNTRY { get; set; }
         public string DELTA_LOAD_DATE_BUCKET { get; set; }
+        public string FE_FE_DESC { get; set; }
+        public Nullable<int> SNI_Age { get; set; }
+        public string Overall_Installation_Status { get; set; }
+        public Nullable<System.DateTime> LATEST_COMMENT_DATE_TIME { get; set; }
+        public string QUOTA_SF { get; set; }
     }
 }

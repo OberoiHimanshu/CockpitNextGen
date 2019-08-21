@@ -45,5 +45,7 @@ namespace BAL_Service
         public string OVERALL_INSTALLATION_STATUS { get; set; }
         public Nullable<System.DateTime> LATEST_COMMENT_DATE_TIME { get; set; }
         public string QUOTA_SF { get; set; }
+        public string PRIMARY_PRODUCT { get; set; }
+        public string BACKLOG_STATUS { get; set; }
     }
 }

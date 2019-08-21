@@ -297,6 +297,7 @@
   <xs:complexType name="VW_Orders_Info">
     <xs:sequence>
       <xs:element minOccurs="0" name="BACKLOG_AMT" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BACKLOG_STATUS" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BILLING_BLOCK_CD" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="COMMIT_DATE" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="CUSTOMER_PO_NO" nillable="true" type="xs:string" />
@@ -315,6 +316,7 @@
       <xs:element minOccurs="0" name="ORDER_OWNER" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OVERALL_INSTALLATION_STATUS" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PAYMENT_TERMS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRIMARY_PRODUCT" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="QUOTA_SF" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="REASON_CODE" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="REGION" nillable="true" type="xs:string" />

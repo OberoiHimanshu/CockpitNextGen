@@ -2768,6 +2768,9 @@ namespace Cockpit_NextGenMVC.BAL {
         private System.Nullable<double> BACKLOG_AMTField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BACKLOG_STATUSField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string BILLING_BLOCK_CDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2820,6 +2823,9 @@ namespace Cockpit_NextGenMVC.BAL {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PAYMENT_TERMSField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PRIMARY_PRODUCTField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string QUOTA_SFField;
@@ -2876,6 +2882,19 @@ namespace Cockpit_NextGenMVC.BAL {
                 if ((this.BACKLOG_AMTField.Equals(value) != true)) {
                     this.BACKLOG_AMTField = value;
                     this.RaisePropertyChanged("BACKLOG_AMT");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BACKLOG_STATUS {
+            get {
+                return this.BACKLOG_STATUSField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BACKLOG_STATUSField, value) != true)) {
+                    this.BACKLOG_STATUSField = value;
+                    this.RaisePropertyChanged("BACKLOG_STATUS");
                 }
             }
         }
@@ -3110,6 +3129,19 @@ namespace Cockpit_NextGenMVC.BAL {
                 if ((object.ReferenceEquals(this.PAYMENT_TERMSField, value) != true)) {
                     this.PAYMENT_TERMSField = value;
                     this.RaisePropertyChanged("PAYMENT_TERMS");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PRIMARY_PRODUCT {
+            get {
+                return this.PRIMARY_PRODUCTField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PRIMARY_PRODUCTField, value) != true)) {
+                    this.PRIMARY_PRODUCTField = value;
+                    this.RaisePropertyChanged("PRIMARY_PRODUCT");
                 }
             }
         }
