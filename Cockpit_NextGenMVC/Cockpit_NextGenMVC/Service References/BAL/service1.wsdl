@@ -16,159 +16,6 @@
   <wsdl:message name="IService1_GetData_ServiceExceptionFault_FaultMessage">
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q1:ServiceException" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetUserDetails_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserDetails" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserDetails_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserDetailsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserDetails_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q2:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserTeamDetails_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserTeamDetails" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserTeamDetails_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserTeamDetailsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserTeamDetails_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q3:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserRegionDetails_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserRegionDetails" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserRegionDetails_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUserRegionDetailsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUserRegionDetails_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q4:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetInActiveUserTeamDetails_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetInActiveUserTeamDetails" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetInActiveUserTeamDetails_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetInActiveUserTeamDetailsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetInActiveUserTeamDetails_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q5:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_RegisterNewUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:RegisterNewUser" />
-  </wsdl:message>
-  <wsdl:message name="IService1_RegisterNewUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RegisterNewUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_RegisterNewUser_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q6:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_UpdateUserDetails_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateUserDetails" />
-  </wsdl:message>
-  <wsdl:message name="IService1_UpdateUserDetails_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateUserDetailsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_UpdateUserDetails_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q7:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUsersByRegion_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUsersByRegion" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUsersByRegion_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUsersByRegionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUsersByRegion_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q8:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUnMappedUsersByRegion_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUnMappedUsersByRegion" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUnMappedUsersByRegion_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUnMappedUsersByRegionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUnMappedUsersByRegion_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q9:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ActiveDeactiveUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:ActiveDeactiveUser" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ActiveDeactiveUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ActiveDeactiveUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_ActiveDeactiveUser_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q10:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetCountryByRegion_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCountryByRegion" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetCountryByRegion_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCountryByRegionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetCountryByRegion_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q11:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetManagerByTeamID_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetManagerByTeamID" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetManagerByTeamID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetManagerByTeamIDResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetManagerByTeamID_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q12:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetRoleMaster_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetRoleMaster" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetRoleMaster_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetRoleMasterResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetRoleMaster_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q13:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetTeamMaster_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTeamMaster" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetTeamMaster_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTeamMasterResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetTeamMaster_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q14:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUnMappedUsersByRegionFunction_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUnMappedUsersByRegionFunction" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUnMappedUsersByRegionFunction_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUnMappedUsersByRegionFunctionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetUnMappedUsersByRegionFunction_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q15:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetNTLoginBySAPName_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetNTLoginBySAPName" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetNTLoginBySAPName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetNTLoginBySAPNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetNTLoginBySAPName_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q16:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_UpdateUserInSApandBBZTRD_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateUserInSApandBBZTRD" />
-  </wsdl:message>
-  <wsdl:message name="IService1_UpdateUserInSApandBBZTRD_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateUserInSApandBBZTRDResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_UpdateUserInSApandBBZTRD_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q17:ServiceException" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getEmailIDByName_InputMessage">
-    <wsdl:part name="parameters" element="tns:getEmailIDByName" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getEmailIDByName_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getEmailIDByNameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_getEmailIDByName_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q18:ServiceException" />
-  </wsdl:message>
   <wsdl:message name="IService1_GetHeaderInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:GetHeaderInfo" />
   </wsdl:message>
@@ -176,7 +23,7 @@
     <wsdl:part name="parameters" element="tns:GetHeaderInfoResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetHeaderInfo_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q19:ServiceException" />
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q2:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetDeliveryInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDeliveryInfo" />
@@ -185,7 +32,7 @@
     <wsdl:part name="parameters" element="tns:GetDeliveryInfoResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetDeliveryInfo_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q20:ServiceException" />
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q3:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetPartnerInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPartnerInfo" />
@@ -194,7 +41,7 @@
     <wsdl:part name="parameters" element="tns:GetPartnerInfoResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetPartnerInfo_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q21:ServiceException" />
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q4:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetBlockInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBlockInfo" />
@@ -203,7 +50,7 @@
     <wsdl:part name="parameters" element="tns:GetBlockInfoResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetBlockInfo_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q22:ServiceException" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q5:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetLineItems_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLineItems" />
@@ -212,7 +59,7 @@
     <wsdl:part name="parameters" element="tns:GetLineItemsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetLineItems_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q23:ServiceException" />
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q6:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_AddOrder_Ownership_InputMessage">
     <wsdl:part name="parameters" element="tns:AddOrder_Ownership" />
@@ -221,7 +68,7 @@
     <wsdl:part name="parameters" element="tns:AddOrder_OwnershipResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_AddOrder_Ownership_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q24:ServiceException" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q7:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetArchivesList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetArchivesList" />
@@ -230,7 +77,7 @@
     <wsdl:part name="parameters" element="tns:GetArchivesListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetArchivesList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q25:ServiceException" />
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q8:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Ge_DB_ArchivesList_InputMessage">
     <wsdl:part name="parameters" element="tns:Ge_DB_ArchivesList" />
@@ -239,7 +86,7 @@
     <wsdl:part name="parameters" element="tns:Ge_DB_ArchivesListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Ge_DB_ArchivesList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q26:ServiceException" />
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q9:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Reports_Master_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_Reports_Master" />
@@ -248,7 +95,7 @@
     <wsdl:part name="parameters" element="tns:Get_Reports_MasterResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Reports_Master_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q27:ServiceException" />
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q10:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Business_Master_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_Business_Master" />
@@ -257,7 +104,7 @@
     <wsdl:part name="parameters" element="tns:Get_Business_MasterResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Business_Master_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q28:ServiceException" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q11:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Billing_Blocks_Master_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_Billing_Blocks_Master" />
@@ -266,7 +113,7 @@
     <wsdl:part name="parameters" element="tns:Get_Billing_Blocks_MasterResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Billing_Blocks_Master_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q29:ServiceException" />
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q12:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DeliveryBlocks_Master_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_DeliveryBlocks_Master" />
@@ -275,7 +122,7 @@
     <wsdl:part name="parameters" element="tns:Get_DeliveryBlocks_MasterResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DeliveryBlocks_Master_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q30:ServiceException" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q13:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Sales_Force_Master_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_Sales_Force_Master" />
@@ -284,7 +131,7 @@
     <wsdl:part name="parameters" element="tns:Get_Sales_Force_MasterResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Sales_Force_Master_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q31:ServiceException" />
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q14:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Customer_Master_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_Customer_Master" />
@@ -293,7 +140,7 @@
     <wsdl:part name="parameters" element="tns:Get_Customer_MasterResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Customer_Master_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q32:ServiceException" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q15:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Translate_Comment_From_Google_InputMessage">
     <wsdl:part name="parameters" element="tns:Translate_Comment_From_Google" />
@@ -302,7 +149,7 @@
     <wsdl:part name="parameters" element="tns:Translate_Comment_From_GoogleResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Translate_Comment_From_Google_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q33:ServiceException" />
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q16:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Translate_Comment_From_Microsoft_InputMessage">
     <wsdl:part name="parameters" element="tns:Translate_Comment_From_Microsoft" />
@@ -311,7 +158,7 @@
     <wsdl:part name="parameters" element="tns:Translate_Comment_From_MicrosoftResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Translate_Comment_From_Microsoft_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q34:ServiceException" />
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q17:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Translate_Mass_Comment_From_Microsoft_InputMessage">
     <wsdl:part name="parameters" element="tns:Translate_Mass_Comment_From_Microsoft" />
@@ -320,7 +167,7 @@
     <wsdl:part name="parameters" element="tns:Translate_Mass_Comment_From_MicrosoftResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Translate_Mass_Comment_From_Microsoft_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q35:ServiceException" />
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q18:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Search_Global_Order_InputMessage">
     <wsdl:part name="parameters" element="tns:Search_Global_Order" />
@@ -329,7 +176,7 @@
     <wsdl:part name="parameters" element="tns:Search_Global_OrderResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Search_Global_Order_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q36="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q36:ServiceException" />
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q19:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Archived_Orders_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_Archived_Orders" />
@@ -338,7 +185,7 @@
     <wsdl:part name="parameters" element="tns:Get_Archived_OrdersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Archived_Orders_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q37="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q37:ServiceException" />
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q20:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Archived_Orders_Summary_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_Archived_Orders_Summary" />
@@ -347,7 +194,7 @@
     <wsdl:part name="parameters" element="tns:Get_Archived_Orders_SummaryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Archived_Orders_Summary_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q38="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q38:ServiceException" />
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q21:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_SNIAllOrders_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_SNIAllOrders" />
@@ -356,7 +203,7 @@
     <wsdl:part name="parameters" element="tns:Get_SNIAllOrdersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_SNIAllOrders_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q39="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q39:ServiceException" />
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q22:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_SNICatagoryOrders_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_SNICatagoryOrders" />
@@ -365,7 +212,7 @@
     <wsdl:part name="parameters" element="tns:Get_SNICatagoryOrdersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_SNICatagoryOrders_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q40="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q40:ServiceException" />
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q23:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_SNICatagoryOrdersExport_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_SNICatagoryOrdersExport" />
@@ -374,7 +221,7 @@
     <wsdl:part name="parameters" element="tns:Get_SNICatagoryOrdersExportResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_SNICatagoryOrdersExport_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q41="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q41:ServiceException" />
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q24:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMasterFocusChildOrders_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMasterFocusChildOrders" />
@@ -383,7 +230,7 @@
     <wsdl:part name="parameters" element="tns:GetMasterFocusChildOrdersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMasterFocusChildOrders_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q42="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q42:ServiceException" />
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q25:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMasterFocusSummary_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMasterFocusSummary" />
@@ -392,7 +239,7 @@
     <wsdl:part name="parameters" element="tns:GetMasterFocusSummaryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMasterFocusSummary_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q43="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q43:ServiceException" />
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q26:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetSTR_Summary_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSTR_Summary" />
@@ -401,7 +248,7 @@
     <wsdl:part name="parameters" element="tns:GetSTR_SummaryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetSTR_Summary_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q44="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q44:ServiceException" />
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q27:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_CatagoryOrdersExport_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_DB_CatagoryOrdersExport" />
@@ -410,7 +257,7 @@
     <wsdl:part name="parameters" element="tns:Get_DB_CatagoryOrdersExportResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_CatagoryOrdersExport_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q45="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q45:ServiceException" />
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q28:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_RawOrders_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_DB_RawOrders" />
@@ -419,7 +266,7 @@
     <wsdl:part name="parameters" element="tns:Get_DB_RawOrdersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_RawOrders_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q46="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q46:ServiceException" />
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q29:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_SpeedToRevenue_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_DB_SpeedToRevenue" />
@@ -428,7 +275,7 @@
     <wsdl:part name="parameters" element="tns:Get_DB_SpeedToRevenueResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_SpeedToRevenue_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q47="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q47:ServiceException" />
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q30:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_Overdue_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_DB_Overdue" />
@@ -437,7 +284,7 @@
     <wsdl:part name="parameters" element="tns:Get_DB_OverdueResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_Overdue_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q48="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q48:ServiceException" />
+    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q31:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_Greater_90_days_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_DB_Greater_90_days" />
@@ -446,7 +293,7 @@
     <wsdl:part name="parameters" element="tns:Get_DB_Greater_90_daysResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_Greater_90_days_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q49="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q49:ServiceException" />
+    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q32:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_Expected_Release_Passed_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_DB_Expected_Release_Passed" />
@@ -455,7 +302,7 @@
     <wsdl:part name="parameters" element="tns:Get_DB_Expected_Release_PassedResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_Expected_Release_Passed_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q50="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q50:ServiceException" />
+    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q33:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_Overdue_14_Days_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_DB_Overdue_14_Days" />
@@ -464,7 +311,7 @@
     <wsdl:part name="parameters" element="tns:Get_DB_Overdue_14_DaysResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_DB_Overdue_14_Days_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q51="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q51:ServiceException" />
+    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q34:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Unblocked_All_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_Unblocked_All" />
@@ -473,7 +320,7 @@
     <wsdl:part name="parameters" element="tns:Get_Unblocked_AllResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_Unblocked_All_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q52="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q52:ServiceException" />
+    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q35:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetUnblocked_Overdue_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUnblocked_Overdue" />
@@ -482,7 +329,7 @@
     <wsdl:part name="parameters" element="tns:GetUnblocked_OverdueResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetUnblocked_Overdue_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q53="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q53:ServiceException" />
+    <wsdl:part xmlns:q36="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q36:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_UB_CatagoryOrdersExport_InputMessage">
     <wsdl:part name="parameters" element="tns:Get_UB_CatagoryOrdersExport" />
@@ -491,7 +338,7 @@
     <wsdl:part name="parameters" element="tns:Get_UB_CatagoryOrdersExportResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Get_UB_CatagoryOrdersExport_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q54="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q54:ServiceException" />
+    <wsdl:part xmlns:q37="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q37:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetDB_MasterFocusChildOrders_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDB_MasterFocusChildOrders" />
@@ -500,7 +347,7 @@
     <wsdl:part name="parameters" element="tns:GetDB_MasterFocusChildOrdersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetDB_MasterFocusChildOrders_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q55="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q55:ServiceException" />
+    <wsdl:part xmlns:q38="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q38:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetControlReprotsExcel_InputMessage">
     <wsdl:part name="parameters" element="tns:GetControlReprotsExcel" />
@@ -509,7 +356,7 @@
     <wsdl:part name="parameters" element="tns:GetControlReprotsExcelResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetControlReprotsExcel_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q56="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q56:ServiceException" />
+    <wsdl:part xmlns:q39="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q39:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyControlReportsSummary_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMyControlReportsSummary" />
@@ -518,7 +365,7 @@
     <wsdl:part name="parameters" element="tns:GetMyControlReportsSummaryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyControlReportsSummary_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q57="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q57:ServiceException" />
+    <wsdl:part xmlns:q40="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q40:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamControlReportsSummary_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamControlReportsSummary" />
@@ -527,7 +374,7 @@
     <wsdl:part name="parameters" element="tns:GetTeamControlReportsSummaryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamControlReportsSummary_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q58="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q58:ServiceException" />
+    <wsdl:part xmlns:q41="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q41:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetControlReportsDetails_InputMessage">
     <wsdl:part name="parameters" element="tns:GetControlReportsDetails" />
@@ -536,7 +383,7 @@
     <wsdl:part name="parameters" element="tns:GetControlReportsDetailsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetControlReportsDetails_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q59="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q59:ServiceException" />
+    <wsdl:part xmlns:q42="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q42:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetBCR_ClosedOrdersSummary_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBCR_ClosedOrdersSummary" />
@@ -545,7 +392,7 @@
     <wsdl:part name="parameters" element="tns:GetBCR_ClosedOrdersSummaryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetBCR_ClosedOrdersSummary_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q60="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q60:ServiceException" />
+    <wsdl:part xmlns:q43="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q43:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetBCR_ClosedOrdersDetails_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBCR_ClosedOrdersDetails" />
@@ -554,7 +401,7 @@
     <wsdl:part name="parameters" element="tns:GetBCR_ClosedOrdersDetailsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetBCR_ClosedOrdersDetails_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q61="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q61:ServiceException" />
+    <wsdl:part xmlns:q44="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q44:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsSummary_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMyFollowupsSummary" />
@@ -563,7 +410,7 @@
     <wsdl:part name="parameters" element="tns:GetMyFollowupsSummaryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsSummary_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q62="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q62:ServiceException" />
+    <wsdl:part xmlns:q45="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q45:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMyFollowupsList" />
@@ -572,7 +419,7 @@
     <wsdl:part name="parameters" element="tns:GetMyFollowupsListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q63="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q63:ServiceException" />
+    <wsdl:part xmlns:q46="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q46:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsList" />
@@ -581,7 +428,7 @@
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q64="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q64:ServiceException" />
+    <wsdl:part xmlns:q47="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q47:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsSummary_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsSummary" />
@@ -590,7 +437,7 @@
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsSummaryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsSummary_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q65="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q65:ServiceException" />
+    <wsdl:part xmlns:q48="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q48:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsPassedDueDateList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMyFollowupsPassedDueDateList" />
@@ -599,7 +446,7 @@
     <wsdl:part name="parameters" element="tns:GetMyFollowupsPassedDueDateListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsPassedDueDateList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q66="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q66:ServiceException" />
+    <wsdl:part xmlns:q49="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q49:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsPassedDueDateList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsPassedDueDateList" />
@@ -608,7 +455,7 @@
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsPassedDueDateListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsPassedDueDateList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q67="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q67:ServiceException" />
+    <wsdl:part xmlns:q50="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q50:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsDueTodayList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMyFollowupsDueTodayList" />
@@ -617,7 +464,7 @@
     <wsdl:part name="parameters" element="tns:GetMyFollowupsDueTodayListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsDueTodayList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q68="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q68:ServiceException" />
+    <wsdl:part xmlns:q51="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q51:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsDueTodayList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsDueTodayList" />
@@ -626,7 +473,7 @@
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsDueTodayListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsDueTodayList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q69="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q69:ServiceException" />
+    <wsdl:part xmlns:q52="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q52:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsReasignedList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMyFollowupsReasignedList" />
@@ -635,7 +482,7 @@
     <wsdl:part name="parameters" element="tns:GetMyFollowupsReasignedListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsReasignedList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q70="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q70:ServiceException" />
+    <wsdl:part xmlns:q53="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q53:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsReasignedList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsReasignedList" />
@@ -644,7 +491,7 @@
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsReasignedListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsReasignedList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q71="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q71:ServiceException" />
+    <wsdl:part xmlns:q54="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q54:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsSystemGeneratedList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMyFollowupsSystemGeneratedList" />
@@ -653,7 +500,7 @@
     <wsdl:part name="parameters" element="tns:GetMyFollowupsSystemGeneratedListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyFollowupsSystemGeneratedList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q72="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q72:ServiceException" />
+    <wsdl:part xmlns:q55="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q55:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsSystemGeneratedList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsSystemGeneratedList" />
@@ -662,7 +509,7 @@
     <wsdl:part name="parameters" element="tns:GetTeamFollowupsSystemGeneratedListResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamFollowupsSystemGeneratedList_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q73="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q73:ServiceException" />
+    <wsdl:part xmlns:q56="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q56:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetFollowupDetails_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFollowupDetails" />
@@ -671,7 +518,7 @@
     <wsdl:part name="parameters" element="tns:GetFollowupDetailsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetFollowupDetails_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q74="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q74:ServiceException" />
+    <wsdl:part xmlns:q57="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q57:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetFollowupHistory_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFollowupHistory" />
@@ -680,7 +527,7 @@
     <wsdl:part name="parameters" element="tns:GetFollowupHistoryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetFollowupHistory_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q75="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q75:ServiceException" />
+    <wsdl:part xmlns:q58="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q58:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_CreateFollowup_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateFollowup" />
@@ -689,7 +536,7 @@
     <wsdl:part name="parameters" element="tns:CreateFollowupResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_CreateFollowup_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q76="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q76:ServiceException" />
+    <wsdl:part xmlns:q59="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q59:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_UpdateFollowup_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateFollowup" />
@@ -698,7 +545,7 @@
     <wsdl:part name="parameters" element="tns:UpdateFollowupResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_UpdateFollowup_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q77="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q77:ServiceException" />
+    <wsdl:part xmlns:q60="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q60:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_ReAssignFollowup_InputMessage">
     <wsdl:part name="parameters" element="tns:ReAssignFollowup" />
@@ -707,7 +554,7 @@
     <wsdl:part name="parameters" element="tns:ReAssignFollowupResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_ReAssignFollowup_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q78="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q78:ServiceException" />
+    <wsdl:part xmlns:q61="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q61:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetFollowupSummaryDeatilsBySalesOrder_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFollowupSummaryDeatilsBySalesOrder" />
@@ -716,7 +563,7 @@
     <wsdl:part name="parameters" element="tns:GetFollowupSummaryDeatilsBySalesOrderResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetFollowupSummaryDeatilsBySalesOrder_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q79="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q79:ServiceException" />
+    <wsdl:part xmlns:q62="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q62:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyOSBRNotifications_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMyOSBRNotifications" />
@@ -725,7 +572,7 @@
     <wsdl:part name="parameters" element="tns:GetMyOSBRNotificationsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetMyOSBRNotifications_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q80="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q80:ServiceException" />
+    <wsdl:part xmlns:q63="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q63:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamOSBRNotifications_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamOSBRNotifications" />
@@ -734,7 +581,7 @@
     <wsdl:part name="parameters" element="tns:GetTeamOSBRNotificationsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetTeamOSBRNotifications_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q81="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q81:ServiceException" />
+    <wsdl:part xmlns:q64="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q64:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Add_OrderComment_InputMessage">
     <wsdl:part name="parameters" element="tns:Add_OrderComment" />
@@ -743,7 +590,7 @@
     <wsdl:part name="parameters" element="tns:Add_OrderCommentResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Add_OrderComment_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q82="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q82:ServiceException" />
+    <wsdl:part xmlns:q65="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q65:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_Add_OrderSignOff_InputMessage">
     <wsdl:part name="parameters" element="tns:Add_OrderSignOff" />
@@ -752,7 +599,7 @@
     <wsdl:part name="parameters" element="tns:Add_OrderSignOffResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_Add_OrderSignOff_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q83="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q83:ServiceException" />
+    <wsdl:part xmlns:q66="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q66:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_AddMultipleOrderComments_InputMessage">
     <wsdl:part name="parameters" element="tns:AddMultipleOrderComments" />
@@ -761,7 +608,7 @@
     <wsdl:part name="parameters" element="tns:AddMultipleOrderCommentsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_AddMultipleOrderComments_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q84="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q84:ServiceException" />
+    <wsdl:part xmlns:q67="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q67:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_AddMultipleOrderSignOffs_InputMessage">
     <wsdl:part name="parameters" element="tns:AddMultipleOrderSignOffs" />
@@ -770,7 +617,7 @@
     <wsdl:part name="parameters" element="tns:AddMultipleOrderSignOffsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_AddMultipleOrderSignOffs_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q85="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q85:ServiceException" />
+    <wsdl:part xmlns:q68="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q68:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_SNI_Release_Target_Projection_InputMessage">
     <wsdl:part name="parameters" element="tns:SNI_Release_Target_Projection" />
@@ -779,7 +626,7 @@
     <wsdl:part name="parameters" element="tns:SNI_Release_Target_ProjectionResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_SNI_Release_Target_Projection_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q86="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q86:ServiceException" />
+    <wsdl:part xmlns:q69="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q69:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_DB_Release_Target_Projection_InputMessage">
     <wsdl:part name="parameters" element="tns:DB_Release_Target_Projection" />
@@ -788,7 +635,7 @@
     <wsdl:part name="parameters" element="tns:DB_Release_Target_ProjectionResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_DB_Release_Target_Projection_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q87="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q87:ServiceException" />
+    <wsdl:part xmlns:q70="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q70:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_WW_Process_Summary_InputMessage">
     <wsdl:part name="parameters" element="tns:WW_Process_Summary" />
@@ -797,7 +644,7 @@
     <wsdl:part name="parameters" element="tns:WW_Process_SummaryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_WW_Process_Summary_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q88="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q88:ServiceException" />
+    <wsdl:part xmlns:q71="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q71:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_GetReassignedOrdersOFUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetReassignedOrdersOFUser" />
@@ -806,7 +653,7 @@
     <wsdl:part name="parameters" element="tns:GetReassignedOrdersOFUserResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_GetReassignedOrdersOFUser_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q89="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q89:ServiceException" />
+    <wsdl:part xmlns:q72="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q72:ServiceException" />
   </wsdl:message>
   <wsdl:message name="IService1_ReAssignUserOrders_InputMessage">
     <wsdl:part name="parameters" element="tns:ReAssignUserOrders" />
@@ -815,98 +662,13 @@
     <wsdl:part name="parameters" element="tns:ReAssignUserOrdersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_ReAssignUserOrders_ServiceExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q90="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q90:ServiceException" />
+    <wsdl:part xmlns:q73="http://schemas.datacontract.org/2004/07/BAL_Service" name="detail" element="q73:ServiceException" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetDataServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetData_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserDetails">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserDetails" message="tns:IService1_GetUserDetails_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserDetailsResponse" message="tns:IService1_GetUserDetails_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetUserDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetUserDetails_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserTeamDetails">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserTeamDetails" message="tns:IService1_GetUserTeamDetails_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserTeamDetailsResponse" message="tns:IService1_GetUserTeamDetails_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetUserTeamDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetUserTeamDetails_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUserRegionDetails">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUserRegionDetails" message="tns:IService1_GetUserRegionDetails_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserRegionDetailsResponse" message="tns:IService1_GetUserRegionDetails_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetUserRegionDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetUserRegionDetails_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetInActiveUserTeamDetails">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetInActiveUserTeamDetails" message="tns:IService1_GetInActiveUserTeamDetails_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetInActiveUserTeamDetailsResponse" message="tns:IService1_GetInActiveUserTeamDetails_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetInActiveUserTeamDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetInActiveUserTeamDetails_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RegisterNewUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RegisterNewUser" message="tns:IService1_RegisterNewUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RegisterNewUserResponse" message="tns:IService1_RegisterNewUser_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/RegisterNewUserServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_RegisterNewUser_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateUserDetails">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateUserDetails" message="tns:IService1_UpdateUserDetails_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateUserDetailsResponse" message="tns:IService1_UpdateUserDetails_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/UpdateUserDetailsServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_UpdateUserDetails_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUsersByRegion">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUsersByRegion" message="tns:IService1_GetUsersByRegion_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUsersByRegionResponse" message="tns:IService1_GetUsersByRegion_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetUsersByRegionServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetUsersByRegion_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUnMappedUsersByRegion">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUnMappedUsersByRegion" message="tns:IService1_GetUnMappedUsersByRegion_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUnMappedUsersByRegionResponse" message="tns:IService1_GetUnMappedUsersByRegion_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetUnMappedUsersByRegionServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetUnMappedUsersByRegion_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ActiveDeactiveUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ActiveDeactiveUser" message="tns:IService1_ActiveDeactiveUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ActiveDeactiveUserResponse" message="tns:IService1_ActiveDeactiveUser_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/ActiveDeactiveUserServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_ActiveDeactiveUser_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCountryByRegion">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCountryByRegion" message="tns:IService1_GetCountryByRegion_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCountryByRegionResponse" message="tns:IService1_GetCountryByRegion_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetCountryByRegionServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetCountryByRegion_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetManagerByTeamID">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetManagerByTeamID" message="tns:IService1_GetManagerByTeamID_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetManagerByTeamIDResponse" message="tns:IService1_GetManagerByTeamID_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetManagerByTeamIDServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetManagerByTeamID_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetRoleMaster">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRoleMaster" message="tns:IService1_GetRoleMaster_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetRoleMasterResponse" message="tns:IService1_GetRoleMaster_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetRoleMasterServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetRoleMaster_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetTeamMaster">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTeamMaster" message="tns:IService1_GetTeamMaster_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTeamMasterResponse" message="tns:IService1_GetTeamMaster_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetTeamMasterServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetTeamMaster_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUnMappedUsersByRegionFunction">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUnMappedUsersByRegionFunction" message="tns:IService1_GetUnMappedUsersByRegionFunction_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUnMappedUsersByRegionFunctionResponse" message="tns:IService1_GetUnMappedUsersByRegionFunction_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetUnMappedUsersByRegionFunctionServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetUnMappedUsersByRegionFunction_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetNTLoginBySAPName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetNTLoginBySAPName" message="tns:IService1_GetNTLoginBySAPName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetNTLoginBySAPNameResponse" message="tns:IService1_GetNTLoginBySAPName_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/GetNTLoginBySAPNameServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_GetNTLoginBySAPName_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateUserInSApandBBZTRD">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateUserInSApandBBZTRD" message="tns:IService1_UpdateUserInSApandBBZTRD_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateUserInSApandBBZTRDResponse" message="tns:IService1_UpdateUserInSApandBBZTRD_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/UpdateUserInSApandBBZTRDServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_UpdateUserInSApandBBZTRD_ServiceExceptionFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getEmailIDByName">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getEmailIDByName" message="tns:IService1_getEmailIDByName_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getEmailIDByNameResponse" message="tns:IService1_getEmailIDByName_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IService1/getEmailIDByNameServiceExceptionFault" name="ServiceExceptionFault" message="tns:IService1_getEmailIDByName_ServiceExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetHeaderInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetHeaderInfo" message="tns:IService1_GetHeaderInfo_InputMessage" />
@@ -1273,210 +1035,6 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetData">
       <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserDetails">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetUserDetails" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserTeamDetails">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetUserTeamDetails" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetUserRegionDetails">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetUserRegionDetails" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetInActiveUserTeamDetails">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetInActiveUserTeamDetails" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="RegisterNewUser">
-      <soap:operation soapAction="http://tempuri.org/IService1/RegisterNewUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateUserDetails">
-      <soap:operation soapAction="http://tempuri.org/IService1/UpdateUserDetails" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetUsersByRegion">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetUsersByRegion" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetUnMappedUsersByRegion">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetUnMappedUsersByRegion" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="ActiveDeactiveUser">
-      <soap:operation soapAction="http://tempuri.org/IService1/ActiveDeactiveUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetCountryByRegion">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetCountryByRegion" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetManagerByTeamID">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetManagerByTeamID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetRoleMaster">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetRoleMaster" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetTeamMaster">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetTeamMaster" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetUnMappedUsersByRegionFunction">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetUnMappedUsersByRegionFunction" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="GetNTLoginBySAPName">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetNTLoginBySAPName" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateUserInSApandBBZTRD">
-      <soap:operation soapAction="http://tempuri.org/IService1/UpdateUserInSApandBBZTRD" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="ServiceExceptionFault">
-        <soap:fault use="literal" name="ServiceExceptionFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="getEmailIDByName">
-      <soap:operation soapAction="http://tempuri.org/IService1/getEmailIDByName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

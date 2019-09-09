@@ -304,24 +304,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TBL_USERS">
-      <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.TBL_USERS)">
-        <MappingFragment StoreEntitySet="TBL_USERS">
-          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
-          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
-          <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
-          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
-          <ScalarProperty Name="NTLOGIN" ColumnName="NTLOGIN" />
-          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
-          <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
-          <ScalarProperty Name="SUPERREGION" ColumnName="SUPERREGION" />
-          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
-          <ScalarProperty Name="SUBSCRIPTION_ID" ColumnName="SUBSCRIPTION_ID" />
-          <ScalarProperty Name="PROFILE_PIC" ColumnName="PROFILE_PIC" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Tbl_Order_Search">
       <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.Tbl_Order_Search)">
         <MappingFragment StoreEntitySet="Tbl_Order_Search">
@@ -492,31 +474,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Tbl_Country_Sorg_Orig">
-      <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.Tbl_Country_Sorg_Orig)">
-        <MappingFragment StoreEntitySet="Tbl_Country_Sorg_Orig">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="Sorg" ColumnName="Sorg" />
-          <ScalarProperty Name="Region" ColumnName="Region" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TBL_TEAM_STRUCTURE">
-      <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.TBL_TEAM_STRUCTURE)">
-        <MappingFragment StoreEntitySet="TBL_TEAM_STRUCTURE">
-          <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
-          <ScalarProperty Name="TEAM_NAME" ColumnName="TEAM_NAME" />
-          <ScalarProperty Name="SUPERVISOR" ColumnName="SUPERVISOR" />
-          <ScalarProperty Name="BACKUP" ColumnName="BACKUP" />
-          <ScalarProperty Name="BACKUPFROM" ColumnName="BACKUPFROM" />
-          <ScalarProperty Name="BACKUPTO" ColumnName="BACKUPTO" />
-          <ScalarProperty Name="BACKUP_COMMENTS" ColumnName="BACKUP_COMMENTS" />
-          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Tbl_WW_Blocked_Orders_Summary">
       <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.Tbl_WW_Blocked_Orders_Summary)">
         <MappingFragment StoreEntitySet="Tbl_WW_Blocked_Orders_Summary">
@@ -529,14 +486,6 @@
           <ScalarProperty Name="GCFO" ColumnName="GCFO" />
           <ScalarProperty Name="WW" ColumnName="WW" />
           <ScalarProperty Name="BucketName" ColumnName="BucketName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TBL_ROLE">
-      <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.TBL_ROLE)">
-        <MappingFragment StoreEntitySet="TBL_ROLE">
-          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
-          <ScalarProperty Name="ROLE_DESC" ColumnName="ROLE_DESC" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -726,17 +675,6 @@
           <ScalarProperty Name="Ownership_To" ColumnName="Ownership_To" />
           <ScalarProperty Name="Assigned_By" ColumnName="Assigned_By" />
           <ScalarProperty Name="Assigned_On" ColumnName="Assigned_On" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Tbl_Unmapped_Summary">
-      <EntityTypeMapping TypeName="Cockpit_NewGenerationModel.Tbl_Unmapped_Summary">
-        <MappingFragment StoreEntitySet="Tbl_Unmapped_Summary">
-          <ScalarProperty Name="TotalUser" ColumnName="TotalUser" />
-          <ScalarProperty Name="Total_NV" ColumnName="Total_NV" />
-          <ScalarProperty Name="Order_Count" ColumnName="Order_Count" />
-          <ScalarProperty Name="SALES_ORG" ColumnName="SALES_ORG" />
-          <ScalarProperty Name="REGION" ColumnName="REGION" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

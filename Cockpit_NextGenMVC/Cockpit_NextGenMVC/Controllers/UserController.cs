@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Cockpit_NextGenMVC.BAL;
+using Cockpit_NextGenMVC.BAL_User_Mgmt;
 using Cockpit_NextGenMVC.Models;
 
 namespace Cockpit_NextGenMVC.Controllers
@@ -14,7 +15,9 @@ namespace Cockpit_NextGenMVC.Controllers
         //
         // GET: /VW_USERS/
 
+        static readonly BAL_User_Mgmt.Service1Client Users_service = new BAL_User_Mgmt.Service1Client();
         static readonly BAL.Service1Client service = new BAL.Service1Client();
+
         List<VW_USERS> oSessionUserProfiles;
         List<SelectListItem> lstRoles;
         VW_USERS oSessionUser;
@@ -61,13 +64,13 @@ namespace Cockpit_NextGenMVC.Controllers
 
             if (Session["UserProfile"] == null)
             {
-                oSessionUserProfiles = service.GetUserDetails(User.Identity.Name.Replace("AGILENT\\", "")).ToList();
+                oSessionUserProfiles = Users_service.GetUserDetails(User.Identity.Name.Replace("AGILENT\\", "")).ToList();
                 oSessionUser = oSessionUserProfiles.FirstOrDefault();
 
                 Session["UserProfile"] = oSessionUser;
                 Session["Role"] = oSessionUser.ROLE_DESC.ToString();
 
-                lst_Roles = service.GetRoleMaster().ToList();
+                lst_Roles = Users_service.GetRoleMaster().ToList();
                 Session["RolesMaster"] = lst_Roles;
 
                 ViewData.Add("Role_Master", new SelectList(lst_Roles, "ROLE_ID", "ROLE_DESC", oSessionUser.ROLE_DESC));
@@ -80,11 +83,11 @@ namespace Cockpit_NextGenMVC.Controllers
                 oDashboardModal = (DashboardModal)Session["oDashboardModal"];
                 ViewData.Add("oDashboardModal", oDashboardModal);
 
-                lst_Roles = service.GetRoleMaster().ToList();
+                lst_Roles = Users_service.GetRoleMaster().ToList();
                 Session["RolesMaster"] = lst_Roles;
                 ViewData.Add("Role_Master", new SelectList(lst_Roles, "ROLE_ID", "ROLE_DESC", oSessionUser.ROLE_DESC));
 
-                lst_Teams = service.GetTeamMaster(oSessionUser.SUPERREGION).ToList();
+                lst_Teams = Users_service.GetTeamMaster(oSessionUser.SUPERREGION).ToList();
                 Session["TeamsMaster"] = lst_Teams;
                 ViewData.Add("Team_Master", new SelectList(lst_Teams, "TEAM_ID", "TEAM_NAME", oSessionUser.TEAM_NAME));
             }
@@ -97,7 +100,7 @@ namespace Cockpit_NextGenMVC.Controllers
 
         public ActionResult InActiveTeamMembers(string TeamName)
         {
-            var userProfile = service.GetInActiveUserTeamDetails(TeamName);
+            var userProfile = Users_service.GetInActiveUserTeamDetails(TeamName);
             oDashboardModal = (DashboardModal)Session["oDashboardModal"];
             ViewData.Add("oDashboardModal", oDashboardModal);
 
@@ -116,16 +119,16 @@ namespace Cockpit_NextGenMVC.Controllers
         [HttpPost]
         public ActionResult ActivateUser(int UserID, string email, string fullname)
         {
-            oSessionUserProfiles = service.GetUserDetails(User.Identity.Name.Replace("AGILENT\\", "")).ToList();
+            oSessionUserProfiles = Users_service.GetUserDetails(User.Identity.Name.Replace("AGILENT\\", "")).ToList();
             oSessionUser = oSessionUserProfiles.FirstOrDefault();
 
             try
             {
                 TBL_USERS oUser = new TBL_USERS();
                 oUser.USER_ID = UserID;
-                service.ActiveDeactiveUser(oUser);
+                Users_service.ActiveDeactiveUser(oUser);
 
-                var userProfile = service.GetInActiveUserTeamDetails(oSessionUser.TEAM_NAME);
+                var userProfile = Users_service.GetInActiveUserTeamDetails(oSessionUser.TEAM_NAME);
 
                 string subject = "Welcome to CNG NextGen";
                 string body;
@@ -157,7 +160,7 @@ namespace Cockpit_NextGenMVC.Controllers
 
             if (DowntimeFlag == "false")
             {
-                oSessionUserProfiles = service.GetUserDetails(User.Identity.Name.Replace(domainName + "\\", "")).ToList();
+                oSessionUserProfiles = Users_service.GetUserDetails(User.Identity.Name.Replace(domainName + "\\", "")).ToList();
 
                 if (oSessionUserProfiles.Count != 0)
                 {
@@ -178,7 +181,7 @@ namespace Cockpit_NextGenMVC.Controllers
 
                     if (oSessionUser.ROLE_DESC == "Supervisor" || oSessionUser.ROLE_DESC == "CSR")
                     {
-                        var TeamProfile = service.GetUserTeamDetails(oSessionUser.TEAM_NAME);
+                        var TeamProfile = Users_service.GetUserTeamDetails(oSessionUser.TEAM_NAME);
                         var UniqueMembers = (from tbl in TeamProfile group tbl by new { tbl.FULLNAME, tbl.NTLOGIN } into g select new Model_Pie { category = g.Key.FULLNAME, Color = g.Key.NTLOGIN }).ToList();
                         var UniqueCSRs = (from tbl in TeamProfile where tbl.ROLE_DESC == "CSR" group tbl by new { tbl.FULLNAME, tbl.NTLOGIN } into g select new Model_Pie { category = g.Key.FULLNAME, Color = g.Key.NTLOGIN }).ToList();
 
@@ -187,7 +190,7 @@ namespace Cockpit_NextGenMVC.Controllers
                     }
                     else
                     {
-                        var TeamProfile = service.GetUserRegionDetails(oSessionUser.SUPERREGION);
+                        var TeamProfile = Users_service.GetUserRegionDetails(oSessionUser.SUPERREGION);
                         var UniqueMembers = (from tbl in TeamProfile group tbl by new { tbl.FULLNAME, tbl.NTLOGIN } into g select new Model_Pie { category = g.Key.FULLNAME, Color = g.Key.NTLOGIN }).ToList();
                         var UniqueCSRs = (from tbl in TeamProfile where tbl.ROLE_DESC == "CSR" group tbl by new { tbl.FULLNAME, tbl.NTLOGIN } into g select new Model_Pie { category = g.Key.FULLNAME, Color = g.Key.NTLOGIN }).ToList();
 
@@ -219,23 +222,23 @@ namespace Cockpit_NextGenMVC.Controllers
             oDashboardModal = (DashboardModal)Session["oDashboardModal"];
             ViewData.Add("oDashboardModal", oDashboardModal);
 
-            lst_Roles = service.GetRoleMaster().ToList();
+            lst_Roles = Users_service.GetRoleMaster().ToList();
             Session["RolesMaster"] = lst_Roles;
             ViewData.Add("Role_Master", new SelectList(lst_Roles, "ROLE_ID", "ROLE_DESC", oSessionUser.ROLE_DESC));
 
-            lst_Teams = service.GetTeamMaster(oSessionUser.SUPERREGION).ToList();
+            lst_Teams = Users_service.GetTeamMaster(oSessionUser.SUPERREGION).ToList();
             Session["TeamsMaster"] = lst_Teams;
             ViewData.Add("Team_Master", new SelectList(lst_Teams, "TEAM_ID", "TEAM_NAME", oSessionUser.TEAM_NAME));
 
 
             if (oSessionUser.ROLE_DESC == "Supervisor" || oSessionUser.ROLE_DESC == "CSR" || oSessionUser.ROLE_DESC == "WW Lead")
             {
-                var userProfile = service.GetUserTeamDetails(TeamName);
+                var userProfile = Users_service.GetUserTeamDetails(TeamName);
                 return View(userProfile);
             }
             else
             {
-                var userProfile = service.GetUserRegionDetails(oSessionUser.SUPERREGION);
+                var userProfile = Users_service.GetUserRegionDetails(oSessionUser.SUPERREGION);
                 return View(userProfile);
             }
         }
@@ -267,7 +270,7 @@ namespace Cockpit_NextGenMVC.Controllers
         [HttpPost]
         public ActionResult UserSessionRefreshed(FormCollection oCollection)
         {
-            oSessionUserProfiles = service.GetUserDetails(User.Identity.Name.Replace("AGILENT\\", "")).ToList();
+            oSessionUserProfiles = Users_service.GetUserDetails(User.Identity.Name.Replace("AGILENT\\", "")).ToList();
             oSessionUser = oSessionUserProfiles.FirstOrDefault();
             Session["UserProfile"] = oSessionUser;
 
@@ -277,7 +280,7 @@ namespace Cockpit_NextGenMVC.Controllers
 
         public ActionResult UserRegistration()
         {
-            lst_Roles = service.GetRoleMaster().ToList();
+            lst_Roles = Users_service.GetRoleMaster().ToList();
             Session["RolesMaster"] = lst_Roles;
 
             ViewData.Add("Role_Master", new SelectList(lst_Roles, "ROLE_ID", "ROLE_DESC"));
@@ -300,12 +303,12 @@ namespace Cockpit_NextGenMVC.Controllers
             oUser.USERNAME = oCollection["txtUsername"].ToString();
             oUser.TEAM_ID = Convert.ToInt32(oCollection["Team"]);
             oUser.PROFILE_PIC = "User_Profiles/default-profile-big.png";
-            bool result = service.RegisterNewUser(oUser);
+            bool result = Users_service.RegisterNewUser(oUser);
 
             if (result)
             {
                 Session["Registermsg"] = "Registration done Successfully.";
-                string managerEmail = service.getEmailIDByName(oCollection["txtManager"].ToString());
+                string managerEmail = Users_service.getEmailIDByName(oCollection["txtManager"].ToString());
                 // sending mail
                 string emailTo = oCollection["txtEmail"].ToString();
                 string emailCC = "himanshu_oberoi@agilent.com";
@@ -378,8 +381,8 @@ namespace Cockpit_NextGenMVC.Controllers
             oUser.USERNAME = details.USERNAME.ToString();
             oUser.TEAM_ID = Convert.ToInt32(details.TEAM_ID);
             oUser.PROFILE_PIC = "User_Profiles/default-profile-big.png";
-            IsUserAdded = service.RegisterNewUser(oUser);
-            service.UpdateUserInSApandBBZTRD(details.FULLNAME.ToString(), details.USERNAME.ToString());
+            IsUserAdded = Users_service.RegisterNewUser(oUser);
+            Users_service.UpdateUserInSApandBBZTRD(details.FULLNAME.ToString(), details.USERNAME.ToString());
 
             // sending mail
             string emailTo = details.EMAIL.ToString();
@@ -441,7 +444,7 @@ namespace Cockpit_NextGenMVC.Controllers
                 oUser.PROFILE_PIC = details.PROFILE_PIC;
                 oUser.NTLOGIN = details.NTLOGIN.ToString();
 
-                service.UpdateUserDetails(oUser);
+                Users_service.UpdateUserDetails(oUser);
 
                 result = true;
             }
@@ -461,7 +464,7 @@ namespace Cockpit_NextGenMVC.Controllers
 
             if (Team != "" && ModelState.IsValid)
             {
-                oItems = service.GetUserTeamDetails(Team).Where(p => p.ROLE_DESC == "Supervisor").ToList();
+                oItems = Users_service.GetUserTeamDetails(Team).Where(p => p.ROLE_DESC == "Supervisor").ToList();
             }
 
             return Json(oItems);
@@ -475,7 +478,7 @@ namespace Cockpit_NextGenMVC.Controllers
             oDashboardModal = (DashboardModal)Session["oDashboardModal"];
             ViewData.Add("oDashboardModal", oDashboardModal);
 
-            var userUnMappedList = service.GetUnMappedUsersByRegion(oSessionUser.SUPERREGION);
+            var userUnMappedList = Users_service.GetUnMappedUsersByRegion(oSessionUser.SUPERREGION);
             return View(userUnMappedList);
         }
 
@@ -485,7 +488,7 @@ namespace Cockpit_NextGenMVC.Controllers
 
             oDashboardModal = (DashboardModal)Session["oDashboardModal"];
             ViewData.Add("oDashboardModal", oDashboardModal);
-            lstUnmappedUsers = service.GetUnMappedUsersByRegionFunction(Region, UserGroup);
+            lstUnmappedUsers = Users_service.GetUnMappedUsersByRegionFunction(Region, UserGroup);
 
             return View(lstUnmappedUsers);
         }
@@ -501,7 +504,7 @@ namespace Cockpit_NextGenMVC.Controllers
             List<VW_USERS> UserExist;
             VW_USERS oUser;
 
-            UserExist = service.GetUserDetails(NtLogin).ToList();
+            UserExist = Users_service.GetUserDetails(NtLogin).ToList();
             oUser = UserExist.FirstOrDefault();
             return Json(oUser);
         }

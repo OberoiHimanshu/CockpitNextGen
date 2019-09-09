@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Mvc;
 using Cockpit_NextGenMVC.BAL;
+using Cockpit_NextGenMVC.BAL_User_Mgmt;
 using Cockpit_NextGenMVC.Models;
 
 using Kendo.Mvc.Extensions;
@@ -21,6 +22,8 @@ namespace Cockpit_NextGenMVC.Controllers
         // GET: /SNI/
 
         static BAL.Service1Client service = new BAL.Service1Client();
+        static readonly BAL_User_Mgmt.Service1Client Users_service = new BAL_User_Mgmt.Service1Client();
+
         VW_USERS oSessionUser;
         string CockpitUI;
         public List<VW_Orders_Info> lst_SNIResult;
@@ -80,7 +83,7 @@ namespace Cockpit_NextGenMVC.Controllers
             Session["oCurrentReport"] = oCurrentReport;
             ViewBag.oCurrentReport = oCurrentReport;
 
-            var TeamProfile = service.GetUserTeamDetails(oSessionUser.TEAM_NAME);
+            var TeamProfile = Users_service.GetUserTeamDetails(oSessionUser.TEAM_NAME);
             var UniqueMembers = (from tbl in TeamProfile group tbl by new { tbl.FULLNAME } into g select new Model_Pie { category = g.Key.FULLNAME }).ToList();
 
             Session["TeamProfile"] = UniqueMembers;

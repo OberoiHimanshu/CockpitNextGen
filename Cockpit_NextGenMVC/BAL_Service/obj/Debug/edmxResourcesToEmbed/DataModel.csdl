@@ -611,7 +611,6 @@
       <Parameter Name="Team" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="Tbl_OSBR_NOTIFICATIONS" EntityType="Cockpit_NewGenerationModel.Tbl_OSBR_NOTIFICATIONS" />
-    <EntitySet Name="TBL_USERS" EntityType="Cockpit_NewGenerationModel.TBL_USERS" />
     <FunctionImport Name="usp_Add_Order_Ownership">
       <Parameter Name="Sales_Order" Mode="In" Type="String" />
       <Parameter Name="DefaultOwner" Mode="In" Type="String" />
@@ -645,8 +644,6 @@
     <EntitySet Name="Tbl_Order_Items" EntityType="Cockpit_NewGenerationModel.Tbl_Order_Items" />
     <EntitySet Name="Tbl_Order_Partner_Details" EntityType="Cockpit_NewGenerationModel.Tbl_Order_Partner_Details" />
     <EntitySet Name="VW_Orders_Info" EntityType="Cockpit_NewGenerationModel.VW_Orders_Info" />
-    <EntitySet Name="Tbl_Country_Sorg_Orig" EntityType="Cockpit_NewGenerationModel.Tbl_Country_Sorg_Orig" />
-    <EntitySet Name="TBL_TEAM_STRUCTURE" EntityType="Cockpit_NewGenerationModel.TBL_TEAM_STRUCTURE" />
     <FunctionImport Name="usp_ActiveDeactiveUser">
       <Parameter Name="UserID" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -659,7 +656,6 @@
       <Parameter Name="Sales_Order" Mode="In" Type="Double" />
       <Parameter Name="Status" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="TBL_ROLE" EntityType="Cockpit_NewGenerationModel.TBL_ROLE" />
     <FunctionImport Name="usp_UpdateUserInSAPZTRD">
       <Parameter Name="OrderOwner" Mode="In" Type="String" />
       <Parameter Name="CreatedBy" Mode="In" Type="String" />
@@ -870,7 +866,6 @@
       <Parameter Name="ReportName" Mode="In" Type="String" />
       <Parameter Name="OrderOwner" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="Tbl_Unmapped_Summary" EntityType="Cockpit_NewGenerationModel.Tbl_Unmapped_Summary" />
     <EntitySet Name="ETL_BBB_SAP" EntityType="Cockpit_NewGenerationModel.ETL_BBB_SAP" />
     <EntitySet Name="ETL_BBB_SAP_Closed" EntityType="Cockpit_NewGenerationModel.ETL_BBB_SAP_Closed" />
     <EntitySet Name="ETL_BBB_ZTRD" EntityType="Cockpit_NewGenerationModel.ETL_BBB_ZTRD" />
@@ -935,7 +930,7 @@
     <FunctionImport Name="usp_Update_OtherBB_Logic_CleanOrders" />
     <FunctionImport Name="usp_Update_OtherBB_Logic_Production_Block" />
     <FunctionImport Name="usp_Update_OtherBB_Logic_Shipment_Block" />
-    <FunctionImport Name="Usp_Unmapped_User_DetailsByFunction" EntitySet="TBL_USERS" ReturnType="Collection(Cockpit_NewGenerationModel.TBL_USERS)">
+    <FunctionImport Name="Usp_Unmapped_User_DetailsByFunction">
       <Parameter Name="Region" Mode="In" Type="String" />
       <Parameter Name="BusinessFunction" Mode="In" Type="String" />
     </FunctionImport>
@@ -1296,23 +1291,6 @@
     <Property Type="String" Name="OWNER" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="REGION" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="TBL_USERS">
-    <Key>
-      <PropertyRef Name="USER_ID" />
-    </Key>
-    <Property Type="Int32" Name="USER_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-    <Property Type="String" Name="USERNAME" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Type="Int32" Name="TEAM_ID" />
-    <Property Type="Int32" Name="ROLE_ID" />
-    <Property Type="String" Name="NTLOGIN" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="COUNTRY" MaxLength="30" FixedLength="true" Unicode="true" />
-    <Property Type="String" Name="FULLNAME" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="SUPERREGION" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="EMAIL" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="ACTIVE" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Type="Int32" Name="SUBSCRIPTION_ID" />
-    <Property Type="String" Name="PROFILE_PIC" MaxLength="150" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="Tbl_Order_Search">
     <Key>
       <PropertyRef Name="Found_in_Area" />
@@ -1484,29 +1462,6 @@
     <Property Name="PRIMARY_PRODUCT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="BACKLOG_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="Tbl_Country_Sorg_Orig">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-    <Property Type="Int32" Name="CountryID" />
-    <Property Type="String" Name="Country" MaxLength="30" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Sorg" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Region" MaxLength="30" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="TBL_TEAM_STRUCTURE">
-    <Key>
-      <PropertyRef Name="TEAM_ID" />
-    </Key>
-    <Property Type="Int32" Name="TEAM_ID" Nullable="false" />
-    <Property Type="String" Name="TEAM_NAME" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="SUPERVISOR" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="BACKUP" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Type="DateTime" Name="BACKUPFROM" Precision="3" />
-    <Property Type="DateTime" Name="BACKUPTO" Precision="3" />
-    <Property Type="String" Name="BACKUP_COMMENTS" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Type="Int32" Name="ACTIVE" />
-  </EntityType>
   <EntityType Name="Tbl_WW_Blocked_Orders_Summary">
     <Key>
       <PropertyRef Name="Bucket_Rank" />
@@ -1521,13 +1476,6 @@
     <Property Type="Double" Name="GCFO" />
     <Property Type="Double" Name="WW" />
     <Property Type="String" Name="BucketName" MaxLength="30" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="TBL_ROLE">
-    <Key>
-      <PropertyRef Name="ROLE_ID" />
-    </Key>
-    <Property Type="Int32" Name="ROLE_ID" Nullable="false" />
-    <Property Type="String" Name="ROLE_DESC" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Tbl_Archival_Summary">
     <Key>
@@ -1730,17 +1678,6 @@
     <Property Type="DateTime" Name="Ownership_To" Precision="3" />
     <Property Type="String" Name="Assigned_By" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="DateTime" Name="Assigned_On" Nullable="false" Precision="3" />
-  </EntityType>
-  <EntityType Name="Tbl_Unmapped_Summary">
-    <Key>
-      <PropertyRef Name="REGION" />
-      <PropertyRef Name="SALES_ORG" />
-    </Key>
-    <Property Name="REGION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SALES_ORG" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Order_Count" Type="Int32" />
-    <Property Name="Total_NV" Type="Double" />
-    <Property Name="TotalUser" Type="Int32" />
   </EntityType>
   <EntityType Name="ETL_BBB_SAP">
     <Key>

@@ -174,11 +174,10 @@ C:\Users\HOberoi\Documents\GitHub\A.Com-Projects\A.Com-Projects\Cockpit_NextGenM
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Cockpit_NextGenMVC.dll.config
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Cockpit_NextGenMVC.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Cockpit_NextGenMVC.pdb
-C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Antlr3.Runtime.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\EntityFramework.dll
+C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\EntityFramework.SqlServer.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Kendo.Mvc.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Newtonsoft.Json.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Net.Http.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Net.Http.Formatting.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Net.Http.WebRequest.dll
@@ -191,12 +190,10 @@ C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Web.WebPages.Deployment.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Web.WebPages.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Web.WebPages.Razor.dll
-C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\WebGrease.dll
-C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Antlr3.Runtime.pdb
-C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Kendo.Mvc.xml
-C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Newtonsoft.Json.xml
-C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Web.Optimization.xml
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\EntityFramework.xml
+C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\Kendo.Mvc.xml
+C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Web.Optimization.xml
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Net.Http.xml
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Net.Http.Formatting.xml
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\System.Net.Http.WebRequest.xml
@@ -226,6 +223,6 @@ C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\tr-TR\Kendo.Mvc.resources.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\uk-UA\Kendo.Mvc.resources.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\zh-CN\Kendo.Mvc.resources.dll
-C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\obj\Debug\Cockpit_NextGenMVC.csprojResolveAssemblyReference.cache
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\obj\Debug\Cockpit_NextGenMVC.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\obj\Debug\Cockpit_NextGenMVC.pdb
+C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\obj\Debug\Cockpit_NextGenMVC.csprojResolveAssemblyReference.cache

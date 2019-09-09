@@ -13,9 +13,7 @@ namespace BAL_Service
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
-    using System.Data.Entity.Core.Objects.DataClasses;
-    using System.Linq;
-    
+
     public partial class Cockpit_NewGenerationEntities : DbContext
     {
         public Cockpit_NewGenerationEntities()
@@ -44,7 +42,6 @@ namespace BAL_Service
         public DbSet<Dim_Sales_Force> Dim_Sales_Force { get; set; }
         public DbSet<Tbl_SNI_Release_Projection> Tbl_SNI_Release_Projection { get; set; }
         public DbSet<Tbl_OSBR_NOTIFICATIONS> Tbl_OSBR_NOTIFICATIONS { get; set; }
-        public DbSet<TBL_USERS> TBL_USERS { get; set; }
         public DbSet<Tbl_Order_Search> Tbl_Order_Search { get; set; }
         public DbSet<Tbl_Order_Block_Details> Tbl_Order_Block_Details { get; set; }
         public DbSet<Tbl_Order_Delivery_Info> Tbl_Order_Delivery_Info { get; set; }
@@ -52,10 +49,7 @@ namespace BAL_Service
         public DbSet<Tbl_Order_Items> Tbl_Order_Items { get; set; }
         public DbSet<Tbl_Order_Partner_Details> Tbl_Order_Partner_Details { get; set; }
         public DbSet<VW_Orders_Info> VW_Orders_Info { get; set; }
-        public DbSet<Tbl_Country_Sorg_Orig> Tbl_Country_Sorg_Orig { get; set; }
-        public DbSet<TBL_TEAM_STRUCTURE> TBL_TEAM_STRUCTURE { get; set; }
         public DbSet<Tbl_WW_Blocked_Orders_Summary> Tbl_WW_Blocked_Orders_Summary { get; set; }
-        public DbSet<TBL_ROLE> TBL_ROLE { get; set; }
         public DbSet<Tbl_Archival_Summary> Tbl_Archival_Summary { get; set; }
         public DbSet<Tbl_Unmapped_Orders_By_Region_Function> Tbl_Unmapped_Orders_By_Region_Function { get; set; }
         public DbSet<Tbl_Unmapped_Users> Tbl_Unmapped_Users { get; set; }
@@ -65,7 +59,6 @@ namespace BAL_Service
         public DbSet<VW_BCR_SignOff_Summary> VW_BCR_SignOff_Summary { get; set; }
         public DbSet<SNI_Excel_View> SNI_Excel_View { get; set; }
         public DbSet<Tbl_Order_Action_Owner> Tbl_Order_Action_Owner { get; set; }
-        public DbSet<Tbl_Unmapped_Summary> Tbl_Unmapped_Summary { get; set; }
         public DbSet<ETL_BBB_SAP> ETL_BBB_SAP { get; set; }
         public DbSet<ETL_BBB_SAP_Closed> ETL_BBB_SAP_Closed { get; set; }
         public DbSet<ETL_BBB_ZTRD> ETL_BBB_ZTRD { get; set; }
@@ -6195,7 +6188,7 @@ namespace BAL_Service
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_Update_OtherBB_Logic_Shipment_Block");
         }
     
-        public virtual ObjectResult<TBL_USERS> Usp_Unmapped_User_DetailsByFunction(string region, string businessFunction)
+        public virtual int Usp_Unmapped_User_DetailsByFunction(string region, string businessFunction)
         {
             var regionParameter = region != null ?
                 new ObjectParameter("Region", region) :
@@ -6205,20 +6198,7 @@ namespace BAL_Service
                 new ObjectParameter("BusinessFunction", businessFunction) :
                 new ObjectParameter("BusinessFunction", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TBL_USERS>("Usp_Unmapped_User_DetailsByFunction", regionParameter, businessFunctionParameter);
-        }
-    
-        public virtual ObjectResult<TBL_USERS> Usp_Unmapped_User_DetailsByFunction(string region, string businessFunction, MergeOption mergeOption)
-        {
-            var regionParameter = region != null ?
-                new ObjectParameter("Region", region) :
-                new ObjectParameter("Region", typeof(string));
-    
-            var businessFunctionParameter = businessFunction != null ?
-                new ObjectParameter("BusinessFunction", businessFunction) :
-                new ObjectParameter("BusinessFunction", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TBL_USERS>("Usp_Unmapped_User_DetailsByFunction", mergeOption, regionParameter, businessFunctionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Usp_Unmapped_User_DetailsByFunction", regionParameter, businessFunctionParameter);
         }
     
         public virtual ObjectResult<VW_DB_Overdue> usp_Get_NoDB_OverDue(string bU, string dIV, string primaryProduct, string region, string sorg, string createdBy, string orderOwner, string sNI_ClosureStatus, string dB_ClosureStatus, string agingBucket, string sNIAgingBucket, string deltaLoadDateBucket, string dollarBucket, string backlogStatus, string cUSTOMER_PO_NO, string sOLD_TO_PARTY, string sHIP_TO_PARTY, string zU_PARTY, string sAP_PL, string sold_To_Country, string ship_To_Country, string zU_Country, string bBType, string dBType, string pT, string salesRep, string bTM, string bTM_Manager, Nullable<int> closure_Days_Delta_From, Nullable<int> closure_Days_Delta_To, string uI_View)

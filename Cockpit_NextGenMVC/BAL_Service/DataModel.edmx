@@ -1442,16 +1442,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.Tbl_BBB_ZTRD_Staging' does 
           <Property Name="BACKLOG_ACTIVITY_ENHANCED" Type="nvarchar" MaxLength="200" />
           <Property Name="ZU_ACCOUNT_ID" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="Tbl_Country_Sorg_Orig">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CountryID" Type="int" />
-          <Property Name="Country" Type="varchar" MaxLength="30" />
-          <Property Name="Sorg" Type="varchar" MaxLength="10" />
-          <Property Name="Region" Type="varchar" MaxLength="30" />
-        </EntityType>
         <EntityType Name="Tbl_Daily_Control_Reports_Summary">
           <Key>
             <PropertyRef Name="ReportName" />
@@ -1887,13 +1877,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.Tbl_Order_comments_SNI' doe
           <Property Name="Description1" Type="nvarchar(max)" />
           <Property Name="Description2" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="TBL_ROLE">
-          <Key>
-            <PropertyRef Name="ROLE_ID" />
-          </Key>
-          <Property Name="ROLE_ID" Type="int" Nullable="false" />
-          <Property Name="ROLE_DESC" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="Tbl_SNI_Release_Projection">
           <Key>
             <PropertyRef Name="SALES_ORDERNO" />
@@ -1942,19 +1925,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.Tbl_Order_comments_SNI' doe
           <Property Name="AdjustedPerformance" Type="nvarchar" MaxLength="50" />
           <Property Name="LastRefreshDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="TBL_TEAM_STRUCTURE">
-          <Key>
-            <PropertyRef Name="TEAM_ID" />
-          </Key>
-          <Property Name="TEAM_ID" Type="int" Nullable="false" />
-          <Property Name="TEAM_NAME" Type="nvarchar" MaxLength="255" />
-          <Property Name="SUPERVISOR" Type="nvarchar" MaxLength="255" />
-          <Property Name="BACKUP" Type="nvarchar" MaxLength="255" />
-          <Property Name="BACKUPFROM" Type="datetime" />
-          <Property Name="BACKUPTO" Type="datetime" />
-          <Property Name="BACKUP_COMMENTS" Type="nvarchar" MaxLength="255" />
-          <Property Name="ACTIVE" Type="int" />
-        </EntityType>
         <EntityType Name="Tbl_Unmapped_Orders_By_Region_Function">
           <Key>
             <PropertyRef Name="REGION" />
@@ -1979,17 +1949,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.Tbl_Unmapped_Orders_By_Regi
           <Property Name="Total_NV" Type="float" />
           <Property Name="ORDER_CREATED_BY" Type="nvarchar" MaxLength="150" />
         </EntityType>
-        <EntityType Name="Tbl_Unmapped_Summary">
-          <Key>
-            <PropertyRef Name="REGION" />
-            <PropertyRef Name="SALES_ORG" />
-          </Key>
-          <Property Name="REGION" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="SALES_ORG" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Order_Count" Type="int" />
-          <Property Name="Total_NV" Type="float" />
-          <Property Name="TotalUser" Type="int" />
-        </EntityType>
         <EntityType Name="Tbl_Unmapped_Users">
           <Key>
             <PropertyRef Name="REGION" />
@@ -2000,23 +1959,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.Tbl_Unmapped_Orders_By_Regi
           <Property Name="Order_Count" Type="int" />
           <Property Name="Total_NV" Type="float" />
           <Property Name="TotalUser" Type="int" />
-        </EntityType>
-        <EntityType Name="TBL_USERS">
-          <Key>
-            <PropertyRef Name="USER_ID" />
-          </Key>
-          <Property Name="USER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="USERNAME" Type="nvarchar" MaxLength="255" />
-          <Property Name="TEAM_ID" Type="int" />
-          <Property Name="ROLE_ID" Type="int" />
-          <Property Name="NTLOGIN" Type="nvarchar" MaxLength="255" />
-          <Property Name="COUNTRY" Type="nchar" MaxLength="30" />
-          <Property Name="FULLNAME" Type="nvarchar" MaxLength="255" />
-          <Property Name="SUPERREGION" Type="nvarchar" MaxLength="255" />
-          <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
-          <Property Name="ACTIVE" Type="nchar" MaxLength="10" />
-          <Property Name="SUBSCRIPTION_ID" Type="int" />
-          <Property Name="PROFILE_PIC" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Tbl_WW_Blocked_Orders_Summary">
           <Key>
@@ -3418,7 +3360,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.VW_USERS' does not have a p
           <EntitySet Name="Tbl_Archival_Summary" EntityType="Self.Tbl_Archival_Summary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Archives" EntityType="Self.Tbl_Archives" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Backlog_Summary" EntityType="Self.Tbl_Backlog_Summary" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tbl_Country_Sorg_Orig" EntityType="Self.Tbl_Country_Sorg_Orig" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Daily_Control_Reports_Summary" EntityType="Self.Tbl_Daily_Control_Reports_Summary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Followup_Summary" EntityType="Self.Tbl_Followup_Summary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Followups" EntityType="Self.Tbl_Followups" Schema="dbo" store:Type="Tables" />
@@ -3434,14 +3375,10 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.VW_USERS' does not have a p
           <EntitySet Name="Tbl_Order_Search" EntityType="Self.Tbl_Order_Search" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_OSBR_NOTIFICATIONS" EntityType="Self.Tbl_OSBR_NOTIFICATIONS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Review_Reports" EntityType="Self.Tbl_Review_Reports" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TBL_ROLE" EntityType="Self.TBL_ROLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_SNI_Release_Projection" EntityType="Self.Tbl_SNI_Release_Projection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_STR_Summary" EntityType="Self.Tbl_STR_Summary" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TBL_TEAM_STRUCTURE" EntityType="Self.TBL_TEAM_STRUCTURE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Unmapped_Orders_By_Region_Function" EntityType="Self.Tbl_Unmapped_Orders_By_Region_Function" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tbl_Unmapped_Summary" EntityType="Self.Tbl_Unmapped_Summary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Unmapped_Users" EntityType="Self.Tbl_Unmapped_Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TBL_USERS" EntityType="Self.TBL_USERS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_WW_Blocked_Orders_Summary" EntityType="Self.Tbl_WW_Blocked_Orders_Summary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VW_BCR_SignOff_Summary" EntityType="Self.VW_BCR_SignOff_Summary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VW_DB_Speed_To_Revenue" EntityType="Self.VW_DB_Speed_To_Revenue" Schema="dbo" store:Type="Tables" />
@@ -5894,7 +5831,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
             <Parameter Name="Team" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Tbl_OSBR_NOTIFICATIONS" EntityType="Cockpit_NewGenerationModel.Tbl_OSBR_NOTIFICATIONS" />
-          <EntitySet Name="TBL_USERS" EntityType="Cockpit_NewGenerationModel.TBL_USERS" />
           <FunctionImport Name="usp_Add_Order_Ownership">
             <Parameter Name="Sales_Order" Mode="In" Type="String" />
             <Parameter Name="DefaultOwner" Mode="In" Type="String" />
@@ -5928,8 +5864,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
           <EntitySet Name="Tbl_Order_Items" EntityType="Cockpit_NewGenerationModel.Tbl_Order_Items" />
           <EntitySet Name="Tbl_Order_Partner_Details" EntityType="Cockpit_NewGenerationModel.Tbl_Order_Partner_Details" />
           <EntitySet Name="VW_Orders_Info" EntityType="Cockpit_NewGenerationModel.VW_Orders_Info" />
-          <EntitySet Name="Tbl_Country_Sorg_Orig" EntityType="Cockpit_NewGenerationModel.Tbl_Country_Sorg_Orig" />
-          <EntitySet Name="TBL_TEAM_STRUCTURE" EntityType="Cockpit_NewGenerationModel.TBL_TEAM_STRUCTURE" />
           <FunctionImport Name="usp_ActiveDeactiveUser">
           <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -5942,7 +5876,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
             <Parameter Name="Sales_Order" Mode="In" Type="Double" />
             <Parameter Name="Status" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="TBL_ROLE" EntityType="Cockpit_NewGenerationModel.TBL_ROLE" />
           <FunctionImport Name="usp_UpdateUserInSAPZTRD">
             <Parameter Name="OrderOwner" Mode="In" Type="String" />
             <Parameter Name="CreatedBy" Mode="In" Type="String" />
@@ -6153,7 +6086,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
             <Parameter Name="ReportName" Mode="In" Type="String" />
             <Parameter Name="OrderOwner" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Tbl_Unmapped_Summary" EntityType="Cockpit_NewGenerationModel.Tbl_Unmapped_Summary" />
           <EntitySet Name="ETL_BBB_SAP" EntityType="Cockpit_NewGenerationModel.ETL_BBB_SAP" />
           <EntitySet Name="ETL_BBB_SAP_Closed" EntityType="Cockpit_NewGenerationModel.ETL_BBB_SAP_Closed" />
           <EntitySet Name="ETL_BBB_ZTRD" EntityType="Cockpit_NewGenerationModel.ETL_BBB_ZTRD" />
@@ -6218,7 +6150,7 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
           <FunctionImport Name="usp_Update_OtherBB_Logic_CleanOrders" />
           <FunctionImport Name="usp_Update_OtherBB_Logic_Production_Block" />
           <FunctionImport Name="usp_Update_OtherBB_Logic_Shipment_Block" />
-          <FunctionImport Name="Usp_Unmapped_User_DetailsByFunction" EntitySet="TBL_USERS" ReturnType="Collection(Cockpit_NewGenerationModel.TBL_USERS)">
+          <FunctionImport Name="Usp_Unmapped_User_DetailsByFunction">
             <Parameter Name="Region" Mode="In" Type="String" />
             <Parameter Name="BusinessFunction" Mode="In" Type="String" />
           </FunctionImport>
@@ -6579,23 +6511,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
           <Property Type="String" Name="OWNER" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="REGION" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="TBL_USERS">
-          <Key>
-            <PropertyRef Name="USER_ID" />
-          </Key>
-          <Property Type="Int32" Name="USER_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Type="String" Name="USERNAME" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="TEAM_ID" />
-          <Property Type="Int32" Name="ROLE_ID" />
-          <Property Type="String" Name="NTLOGIN" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="COUNTRY" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="FULLNAME" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SUPERREGION" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="EMAIL" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ACTIVE" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Type="Int32" Name="SUBSCRIPTION_ID" />
-          <Property Type="String" Name="PROFILE_PIC" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Tbl_Order_Search">
           <Key>
             <PropertyRef Name="Found_in_Area" />
@@ -6767,29 +6682,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
           <Property Name="PRIMARY_PRODUCT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BACKLOG_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Tbl_Country_Sorg_Orig">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Type="Int32" Name="CountryID" />
-          <Property Type="String" Name="Country" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Sorg" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Region" MaxLength="30" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="TBL_TEAM_STRUCTURE">
-          <Key>
-            <PropertyRef Name="TEAM_ID" />
-          </Key>
-          <Property Type="Int32" Name="TEAM_ID" Nullable="false" />
-          <Property Type="String" Name="TEAM_NAME" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SUPERVISOR" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="BACKUP" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="BACKUPFROM" Precision="3" />
-          <Property Type="DateTime" Name="BACKUPTO" Precision="3" />
-          <Property Type="String" Name="BACKUP_COMMENTS" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="ACTIVE" />
-        </EntityType>
         <EntityType Name="Tbl_WW_Blocked_Orders_Summary">
           <Key>
             <PropertyRef Name="Bucket_Rank" />
@@ -6804,13 +6696,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
           <Property Type="Double" Name="GCFO" />
           <Property Type="Double" Name="WW" />
           <Property Type="String" Name="BucketName" MaxLength="30" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TBL_ROLE">
-          <Key>
-            <PropertyRef Name="ROLE_ID" />
-          </Key>
-          <Property Type="Int32" Name="ROLE_ID" Nullable="false" />
-          <Property Type="String" Name="ROLE_DESC" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Tbl_Archival_Summary">
           <Key>
@@ -7013,17 +6898,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
           <Property Type="DateTime" Name="Ownership_To" Precision="3" />
           <Property Type="String" Name="Assigned_By" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="Assigned_On" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Tbl_Unmapped_Summary">
-          <Key>
-            <PropertyRef Name="REGION" />
-            <PropertyRef Name="SALES_ORG" />
-          </Key>
-          <Property Name="REGION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SALES_ORG" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Order_Count" Type="Int32" />
-          <Property Name="Total_NV" Type="Double" />
-          <Property Name="TotalUser" Type="Int32" />
         </EntityType>
         <EntityType Name="ETL_BBB_SAP">
           <Key>
@@ -9175,24 +9049,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TBL_USERS">
-      <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.TBL_USERS)">
-        <MappingFragment StoreEntitySet="TBL_USERS">
-          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
-          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
-          <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
-          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
-          <ScalarProperty Name="NTLOGIN" ColumnName="NTLOGIN" />
-          <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
-          <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
-          <ScalarProperty Name="SUPERREGION" ColumnName="SUPERREGION" />
-          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
-          <ScalarProperty Name="SUBSCRIPTION_ID" ColumnName="SUBSCRIPTION_ID" />
-          <ScalarProperty Name="PROFILE_PIC" ColumnName="PROFILE_PIC" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Tbl_Order_Search">
       <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.Tbl_Order_Search)">
         <MappingFragment StoreEntitySet="Tbl_Order_Search">
@@ -9363,31 +9219,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Tbl_Country_Sorg_Orig">
-      <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.Tbl_Country_Sorg_Orig)">
-        <MappingFragment StoreEntitySet="Tbl_Country_Sorg_Orig">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="Sorg" ColumnName="Sorg" />
-          <ScalarProperty Name="Region" ColumnName="Region" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TBL_TEAM_STRUCTURE">
-      <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.TBL_TEAM_STRUCTURE)">
-        <MappingFragment StoreEntitySet="TBL_TEAM_STRUCTURE">
-          <ScalarProperty Name="TEAM_ID" ColumnName="TEAM_ID" />
-          <ScalarProperty Name="TEAM_NAME" ColumnName="TEAM_NAME" />
-          <ScalarProperty Name="SUPERVISOR" ColumnName="SUPERVISOR" />
-          <ScalarProperty Name="BACKUP" ColumnName="BACKUP" />
-          <ScalarProperty Name="BACKUPFROM" ColumnName="BACKUPFROM" />
-          <ScalarProperty Name="BACKUPTO" ColumnName="BACKUPTO" />
-          <ScalarProperty Name="BACKUP_COMMENTS" ColumnName="BACKUP_COMMENTS" />
-          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Tbl_WW_Blocked_Orders_Summary">
       <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.Tbl_WW_Blocked_Orders_Summary)">
         <MappingFragment StoreEntitySet="Tbl_WW_Blocked_Orders_Summary">
@@ -9400,14 +9231,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
           <ScalarProperty Name="GCFO" ColumnName="GCFO" />
           <ScalarProperty Name="WW" ColumnName="WW" />
           <ScalarProperty Name="BucketName" ColumnName="BucketName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TBL_ROLE">
-      <EntityTypeMapping TypeName="IsTypeOf(Cockpit_NewGenerationModel.TBL_ROLE)">
-        <MappingFragment StoreEntitySet="TBL_ROLE">
-          <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
-          <ScalarProperty Name="ROLE_DESC" ColumnName="ROLE_DESC" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -9600,17 +9423,6 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Unmapped_Summary">
-            <EntityTypeMapping TypeName="Cockpit_NewGenerationModel.Tbl_Unmapped_Summary">
-              <MappingFragment StoreEntitySet="Tbl_Unmapped_Summary">
-                <ScalarProperty Name="TotalUser" ColumnName="TotalUser" />
-                <ScalarProperty Name="Total_NV" ColumnName="Total_NV" />
-                <ScalarProperty Name="Order_Count" ColumnName="Order_Count" />
-                <ScalarProperty Name="SALES_ORG" ColumnName="SALES_ORG" />
-                <ScalarProperty Name="REGION" ColumnName="REGION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ETL_BBB_SAP">
             <EntityTypeMapping TypeName="Cockpit_NewGenerationModel.ETL_BBB_SAP">
               <MappingFragment StoreEntitySet="ETL_BBB_SAP">
@@ -11445,62 +11257,57 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="DataModel" ZoomLevel="96">
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Archives" Width="1.875" PointX="6.625" PointY="0.5" Height="2.172587890625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Followups" Width="2" PointX="11.125" PointY="0.5" Height="3.9033007812499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Followup_Summary" Width="2.5" PointX="3.75" PointY="0.625" Height="2.172587890625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Daily_Control_Reports_Summary" Width="2.625" PointX="3.75" PointY="3.125" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_STR_Summary" Width="2.5" PointX="3.75" PointY="5.5" Height="3.9033007812500031" />
+      <Diagram Name="DataModel" ZoomLevel="100">
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Archives" Width="1.875" PointX="6.625" PointY="0.5" Height="2.172587890625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Followups" Width="2" PointX="11.125" PointY="0.5" Height="3.9033007812499996" IsExpanded="false" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Followup_Summary" Width="2.5" PointX="3.75" PointY="0.625" Height="2.172587890625" IsExpanded="false" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Daily_Control_Reports_Summary" Width="2.625" PointX="3.75" PointY="3.125" Height="2.1725878906249996" IsExpanded="false" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_STR_Summary" Width="2.5" PointX="3.75" PointY="5.5" Height="3.9033007812500031" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_DB_Speed_To_Revenue" Width="2.625" PointX="13.875" PointY="11" Height="7.1724251302083335" IsExpanded="true" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_comments" Width="1.875" PointX="9.125" PointY="0.5" Height="5.2494108072916656" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Review_Reports" Width="2.125" PointX="6.625" PointY="6.375" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Backlog_Summary" Width="3" PointX="0.5" PointY="0.5" Height="7.5570279947916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_comments" Width="1.875" PointX="9.125" PointY="0.5" Height="5.2494108072916656" IsExpanded="false" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Review_Reports" Width="2.125" PointX="6.625" PointY="6.375" Height="2.3648893229166674" IsExpanded="false" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Backlog_Summary" Width="3" PointX="0.5" PointY="0.5" Height="7.5570279947916674" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Dim_Business_Master" Width="2" PointX="4.75" PointY="11.75" Height="1.9802864583333388" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Dim_Billing_Blocks" Width="1.5" PointX="6.875" PointY="10.25" Height="1.4033821614583388" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Dim_Delivery_Blocks" Width="1.5" PointX="8.875" PointY="10.125" Height="1.4033821614583388" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Dim_Customers" Width="1.75" PointX="8.875" PointY="11.75" Height="1.5956835937499996" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Dim_Sales_Force" Width="1.5" PointX="7" PointY="11.75" Height="1.9802864583333388" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_SNI_Release_Projection" Width="2.5" PointX="10.875" PointY="10.125" Height="5.057109375" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_OSBR_NOTIFICATIONS" Width="3" PointX="13.625" PointY="0.5" Height="4.4802050781250067" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.TBL_USERS" Width="1.5" PointX="0.75" PointY="11.75" Height="3.1340950520833282" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_Search" Width="2" PointX="9" PointY="6.5" Height="2.1725878906250067" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_OSBR_NOTIFICATIONS" Width="3" PointX="13.625" PointY="0.5" Height="4.4802050781250067" IsExpanded="false" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_Search" Width="2" PointX="9" PointY="6.5" Height="2.1725878906250067" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_Block_Details" Width="2.5" PointX="3.125" PointY="15.25" Height="4.0956022135416674" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_Delivery_Info" Width="2.25" PointX="5.75" PointY="15.25" Height="3.5186979166666674" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_Header_Details" Width="2.75" PointX="3.25" PointY="19.625" Height="4.8648079427083353" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_Items" Width="2" PointX="6.625" PointY="19.625" Height="4.0956022135416674" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_Partner_Details" Width="2.25" PointX="8.375" PointY="15.25" Height="3.5186979166666674" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_Orders_Info" Width="2.875" PointX="17.5" PointY="14.75" Height="6.0186165364583353" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Country_Sorg_Orig" Width="2" PointX="14.75" PointY="5.75" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.TBL_TEAM_STRUCTURE" Width="2.125" PointX="17.125" PointY="5.75" Height="2.5571907552083246" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_WW_Blocked_Orders_Summary" Width="3" PointX="13.875" PointY="8" Height="2.5571907552083335" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.TBL_ROLE" Width="1.5" PointX="11.75" PointY="8" Height="1.4033821614583246" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Archival_Summary" Width="2.125" PointX="6.5" PointY="3.125" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Archival_Summary" Width="2.125" PointX="6.5" PointY="3.125" Height="1.5956835937500102" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Unmapped_Orders_By_Region_Function" Width="3" PointX="13.5" PointY="18.25" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Unmapped_Users" Width="2" PointX="11.125" PointY="18.125" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Followups_History" Width="2.375" PointX="17.375" PointY="0.75" Height="4.0956022135416674" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Followups_History" Width="2.375" PointX="17.375" PointY="0.75" Height="4.0956022135416674" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.TBL_ORDER_COMMENT_VIEW" Width="2.5" PointX="17.5" PointY="9.375" Height="5.057109375" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_History_Comments" Width="2.125" PointX="24.875" PointY="12.25" Height="5.2494108072916674" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_BCR_SignOff_Summary" Width="3" PointX="21.5" PointY="12.25" Height="1.9802864583333335" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.SNI_Excel_View" Width="2.75" PointX="20.75" PointY="14.75" Height="9.672343749999996" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_Action_Owner" Width="1.5" PointX="0.75" PointY="16.75" Height="2.7494921875000102" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Unmapped_Summary" Width="1.5" PointX="20.75" PointY="0.75" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.ETL_BBB_SAP" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.ETL_BBB_SAP_Closed" Width="1.5" PointX="9.75" PointY="21.75" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.ETL_BBB_ZTRD" Width="1.5" PointX="11.75" PointY="21.75" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.ETL_BBB_ZTRD_Forecasting_Staging" Width="1.5" PointX="13.75" PointY="21.75" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.ETL_DB_Speed_To_Revenue" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.ETL_SAP_User_Updates" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.ETL_SAP_User_Updates" Width="1.5" PointX="22.75" PointY="1.375" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.TBL_BBB_SAP" Width="1.5" PointX="28.75" PointY="10.75" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.TBL_BBB_SAP_STAGING" Width="1.5" PointX="18.25" PointY="27.5" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_BBB_ZTRD" Width="1.5" PointX="32.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_BBB_ZTRD_Staging" Width="1.5" PointX="36.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_DB_Speed_To_Revenue" Width="1.5" PointX="38.75" PointY="26.75" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_BBB_ZTRD_Staging" Width="2.125" PointX="36.375" PointY="0.5" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_DB_Speed_To_Revenue" Width="2.25" PointX="38.875" PointY="0.5" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_comments_DB" Width="1.5" PointX="42.75" PointY="15.75" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Order_comments_SNI" Width="1.5" PointX="42.75" PointY="20.75" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Unmapped_Orders_By_Region_Salesorg" Width="1.5" PointX="42.75" PointY="30.75" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tbl_Unmapped_Orders_By_Region_Salesorg" Width="3.375" PointX="40.875" PointY="30.75" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tmp_Data" Width="1.5" PointX="42.75" PointY="33.75" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tmp_Reconciled_ZTRD_Incorrect_Data" Width="1.5" PointX="42.75" PointY="38.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tmp_Repricing_Ordes" Width="1.5" PointX="44.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.Tmp_Repricing_Ordes" Width="1.5" PointX="43.25" PointY="0.625" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.tmp2_Service_Backlog" Width="1.5" PointX="44.75" PointY="9.75" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.ETL_VW_DB_All_Orders" Width="1.5" PointX="44.75" PointY="14.75" IsExpanded="false" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.ETL_VW_DB_Speed_To_Revenue" Width="1.5" PointX="44.75" PointY="21.75" IsExpanded="false" />
@@ -11510,8 +11317,8 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_DB_All_Orders" Width="1.5" PointX="44.75" PointY="29.75" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_DB_Overdue" Width="1.5" PointX="44.75" PointY="36.75" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_SNI_All_Orders" Width="1.5" PointX="44.75" PointY="44.75" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_SNI_Mater_Focus_Main_Orders" Width="1.5" PointX="46.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_STR_Summary" Width="1.5" PointX="46.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_SNI_Mater_Focus_Main_Orders" Width="1.5" PointX="41.25" PointY="4.25" />
+        <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_STR_Summary" Width="1.5" PointX="41.25" PointY="0.5" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_Unblocked_Orders" Width="1.5" PointX="46.75" PointY="8.75" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_Unblocked_Overdue_Orders" Width="1.5" PointX="46.75" PointY="15.75" />
         <EntityTypeShape EntityType="Cockpit_NewGenerationModel.VW_USERS" Width="1.5" PointX="16.375" PointY="22.75" IsExpanded="true" />

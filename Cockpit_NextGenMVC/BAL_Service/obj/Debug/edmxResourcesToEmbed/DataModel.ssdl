@@ -1437,16 +1437,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.Tbl_BBB_ZTRD_Staging' does 
     <Property Name="BACKLOG_ACTIVITY_ENHANCED" Type="nvarchar" MaxLength="200" />
     <Property Name="ZU_ACCOUNT_ID" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="Tbl_Country_Sorg_Orig">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CountryID" Type="int" />
-    <Property Name="Country" Type="varchar" MaxLength="30" />
-    <Property Name="Sorg" Type="varchar" MaxLength="10" />
-    <Property Name="Region" Type="varchar" MaxLength="30" />
-  </EntityType>
   <EntityType Name="Tbl_Daily_Control_Reports_Summary">
     <Key>
       <PropertyRef Name="ReportName" />
@@ -1881,13 +1871,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.Tbl_Order_comments_SNI' doe
     <Property Name="Description1" Type="nvarchar(max)" />
     <Property Name="Description2" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="TBL_ROLE">
-    <Key>
-      <PropertyRef Name="ROLE_ID" />
-    </Key>
-    <Property Name="ROLE_ID" Type="int" Nullable="false" />
-    <Property Name="ROLE_DESC" Type="varchar" MaxLength="50" />
-  </EntityType>
   <EntityType Name="Tbl_SNI_Release_Projection">
     <Key>
       <PropertyRef Name="SALES_ORDERNO" />
@@ -1936,19 +1919,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.Tbl_Order_comments_SNI' doe
     <Property Name="AdjustedPerformance" Type="nvarchar" MaxLength="50" />
     <Property Name="LastRefreshDate" Type="datetime" />
   </EntityType>
-  <EntityType Name="TBL_TEAM_STRUCTURE">
-    <Key>
-      <PropertyRef Name="TEAM_ID" />
-    </Key>
-    <Property Name="TEAM_ID" Type="int" Nullable="false" />
-    <Property Name="TEAM_NAME" Type="nvarchar" MaxLength="255" />
-    <Property Name="SUPERVISOR" Type="nvarchar" MaxLength="255" />
-    <Property Name="BACKUP" Type="nvarchar" MaxLength="255" />
-    <Property Name="BACKUPFROM" Type="datetime" />
-    <Property Name="BACKUPTO" Type="datetime" />
-    <Property Name="BACKUP_COMMENTS" Type="nvarchar" MaxLength="255" />
-    <Property Name="ACTIVE" Type="int" />
-  </EntityType>
   <EntityType Name="Tbl_Unmapped_Orders_By_Region_Function">
     <Key>
       <PropertyRef Name="REGION" />
@@ -1973,17 +1943,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.Tbl_Unmapped_Orders_By_Regi
     <Property Name="Total_NV" Type="float" />
     <Property Name="ORDER_CREATED_BY" Type="nvarchar" MaxLength="150" />
   </EntityType>
-  <EntityType Name="Tbl_Unmapped_Summary">
-    <Key>
-      <PropertyRef Name="REGION" />
-      <PropertyRef Name="SALES_ORG" />
-    </Key>
-    <Property Name="REGION" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="SALES_ORG" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Order_Count" Type="int" />
-    <Property Name="Total_NV" Type="float" />
-    <Property Name="TotalUser" Type="int" />
-  </EntityType>
   <EntityType Name="Tbl_Unmapped_Users">
     <Key>
       <PropertyRef Name="REGION" />
@@ -1994,23 +1953,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.Tbl_Unmapped_Orders_By_Regi
     <Property Name="Order_Count" Type="int" />
     <Property Name="Total_NV" Type="float" />
     <Property Name="TotalUser" Type="int" />
-  </EntityType>
-  <EntityType Name="TBL_USERS">
-    <Key>
-      <PropertyRef Name="USER_ID" />
-    </Key>
-    <Property Name="USER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="USERNAME" Type="nvarchar" MaxLength="255" />
-    <Property Name="TEAM_ID" Type="int" />
-    <Property Name="ROLE_ID" Type="int" />
-    <Property Name="NTLOGIN" Type="nvarchar" MaxLength="255" />
-    <Property Name="COUNTRY" Type="nchar" MaxLength="30" />
-    <Property Name="FULLNAME" Type="nvarchar" MaxLength="255" />
-    <Property Name="SUPERREGION" Type="nvarchar" MaxLength="255" />
-    <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
-    <Property Name="ACTIVE" Type="nchar" MaxLength="10" />
-    <Property Name="SUBSCRIPTION_ID" Type="int" />
-    <Property Name="PROFILE_PIC" Type="nvarchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="Tbl_WW_Blocked_Orders_Summary">
     <Key>
@@ -3412,7 +3354,6 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.VW_USERS' does not have a p
     <EntitySet Name="Tbl_Archival_Summary" EntityType="Self.Tbl_Archival_Summary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Archives" EntityType="Self.Tbl_Archives" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Backlog_Summary" EntityType="Self.Tbl_Backlog_Summary" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Tbl_Country_Sorg_Orig" EntityType="Self.Tbl_Country_Sorg_Orig" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Daily_Control_Reports_Summary" EntityType="Self.Tbl_Daily_Control_Reports_Summary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Followup_Summary" EntityType="Self.Tbl_Followup_Summary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Followups" EntityType="Self.Tbl_Followups" Schema="dbo" store:Type="Tables" />
@@ -3428,14 +3369,10 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.VW_USERS' does not have a p
     <EntitySet Name="Tbl_Order_Search" EntityType="Self.Tbl_Order_Search" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_OSBR_NOTIFICATIONS" EntityType="Self.Tbl_OSBR_NOTIFICATIONS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Review_Reports" EntityType="Self.Tbl_Review_Reports" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TBL_ROLE" EntityType="Self.TBL_ROLE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_SNI_Release_Projection" EntityType="Self.Tbl_SNI_Release_Projection" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_STR_Summary" EntityType="Self.Tbl_STR_Summary" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TBL_TEAM_STRUCTURE" EntityType="Self.TBL_TEAM_STRUCTURE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Unmapped_Orders_By_Region_Function" EntityType="Self.Tbl_Unmapped_Orders_By_Region_Function" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Tbl_Unmapped_Summary" EntityType="Self.Tbl_Unmapped_Summary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Unmapped_Users" EntityType="Self.Tbl_Unmapped_Users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TBL_USERS" EntityType="Self.TBL_USERS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_WW_Blocked_Orders_Summary" EntityType="Self.Tbl_WW_Blocked_Orders_Summary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VW_BCR_SignOff_Summary" EntityType="Self.VW_BCR_SignOff_Summary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VW_DB_Speed_To_Revenue" EntityType="Self.VW_DB_Speed_To_Revenue" Schema="dbo" store:Type="Tables" />
