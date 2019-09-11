@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Cockpit_NextGenMVC.BAL.VW_Orders_Info>
 @{
-    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+    Cockpit_NextGenMVC.BAL_User_Mgmt.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL_User_Mgmt.VW_USERS)Session["UserProfile"];
     Cockpit_NextGenMVC.Models.DashboardModal ODashboardModel = (Cockpit_NextGenMVC.Models.DashboardModal)ViewData["oDashboardModal"];
 
     Cockpit_NextGenMVC.BAL.Tbl_Review_Reports oCurrentReport = ViewBag.oCurrentReport;

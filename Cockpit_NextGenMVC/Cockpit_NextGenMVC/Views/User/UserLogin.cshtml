@@ -1,7 +1,7 @@
-﻿@model Cockpit_NextGenMVC.BAL.VW_USERS
+﻿@Model Cockpit_NextGenMVC.BAL_User_Mgmt.VW_USERS
 @{
     var RolesList = ViewBag.RolesList;
-    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+    Cockpit_NextGenMVC.BAL_User_Mgmt.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL_User_Mgmt.VW_USERS)Session["UserProfile"];
     var Role = SessionUSer.ROLE_DESC;
     var NTLogin = SessionUSer.NTLOGIN;
     Layout = "~/Views/Shared/_Layout_Login.cshtml";

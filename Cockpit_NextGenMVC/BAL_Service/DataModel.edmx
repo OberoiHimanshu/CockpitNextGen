@@ -2855,6 +2855,9 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.VW_USERS' does not have a p
           <Parameter Name="Closure_Days_Delta_To" Type="int" Mode="In" />
           <Parameter Name="UI_View" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="usp_Get_DB_Mfchilds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Order_Number" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="usp_Get_DB_Overdue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BU" Type="varchar" Mode="In" />
           <Parameter Name="DIV" Type="varchar(max)" Mode="In" />
@@ -8740,6 +8743,27 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
           <Property Type="Double" Name="WW" Nullable="false" />
           <Property Type="String" Name="BucketName" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="usp_Get_DB_Mfchilds1_Result">
+          <Property Type="Double" Name="Sales_Ord" Nullable="true" />
+          <Property Type="String" Name="Regional_Reason_Code" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Reason_Code" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ActionOwner" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NextAction" Nullable="true" />
+          <Property Type="String" Name="ClosureMonth" Nullable="true" MaxLength="16" />
+          <Property Type="String" Name="Tentative" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="BC_Comment" Nullable="true" />
+          <Property Type="String" Name="BC_Prior" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="BC_Comment_Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="BC_Commented_By" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OF_Comment" Nullable="true" />
+          <Property Type="String" Name="OF_Prior" Nullable="true" MaxLength="10" />
+          <Property Type="DateTime" Name="OF_Comment_Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="OF_Commented_By" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Cockpit_CommentTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CockpitComments" Nullable="true" />
+          <Property Type="String" Name="CockpitClearDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CockpitReasonCode" Nullable="true" MaxLength="100" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -11236,6 +11260,12 @@ FROM [dbo].[VW_USERS] AS [VW_USERS]</DefiningQuery>
           <FunctionImportMapping FunctionImportName="usp_Get_DB_Speed_to_Revenue" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_DB_Speed_to_Revenue" />
           <FunctionImportMapping FunctionImportName="usp_Get_Region_SalesForce" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_Region_SalesForce" />
           <FunctionImportMapping FunctionImportName="usp_WW_Process_Summary" FunctionName="Cockpit_NewGenerationModel.Store.usp_WW_Process_Summary" />
+          <FunctionImportMapping FunctionImportName="usp_GetOrder_Header_Info" FunctionName="Cockpit_NewGenerationModel.Store.usp_GetOrder_Header_Info" />
+          <FunctionImportMapping FunctionImportName="usp_GetOrder_LineItems" FunctionName="Cockpit_NewGenerationModel.Store.usp_GetOrder_LineItems" />
+          <FunctionImportMapping FunctionImportName="usp_GetOrder_Partner_Info" FunctionName="Cockpit_NewGenerationModel.Store.usp_GetOrder_Partner_Info" />
+          <FunctionImportMapping FunctionImportName="usp_GetOrder_Block_Info" FunctionName="Cockpit_NewGenerationModel.Store.usp_GetOrder_Block_Info" />
+          <FunctionImportMapping FunctionImportName="usp_GetOrder_Delivery_Info" FunctionName="Cockpit_NewGenerationModel.Store.usp_GetOrder_Delivery_Info" />
+          <FunctionImportMapping FunctionImportName="usp_Get_DB_Mfchilds" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_DB_Mfchilds" />
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

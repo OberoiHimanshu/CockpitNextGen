@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Net.Mail;
 using Cockpit_NextGenMVC.BAL;
+using Cockpit_NextGenMVC.BAL_User_Mgmt;
 using Cockpit_NextGenMVC.Models;
 using System.Web.Mvc;
 

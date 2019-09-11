@@ -248,6 +248,9 @@
     <Compile Include="usp_Get_Archived_Orders1_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_Get_DB_Mfchilds1_Result.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Usp_Unmapped_User_DetailsBySalesOrg_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

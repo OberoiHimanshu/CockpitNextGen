@@ -1,7 +1,7 @@
 ﻿
 
 @{
-    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+    Cockpit_NextGenMVC.BAL_User_Mgmt.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL_User_Mgmt.VW_USERS)Session["UserProfile"];
     List<Cockpit_NextGenMVC.Controllers.Model_Pie> lstTeamMembers = (List<Cockpit_NextGenMVC.Controllers.Model_Pie>)Session["UniqueCSRs"];
 
     if (lstTeamMembers != null && lstTeamMembers.Where(p=>p.category == " ").Count() == 0)

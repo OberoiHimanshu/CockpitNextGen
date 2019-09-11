@@ -119,7 +119,7 @@ namespace BAL_Service_User_Mgmt
 
         public List<Tbl_Unmapped_Users> GetUnMappedUsersByRegion(string Region)
         {
-            List<Tbl_Unmapped_Users> oresult = db.Database.SqlQuery<Tbl_Unmapped_Users>("exec Usp_Unmapped_Users_Summary '" + Region + "','").ToList();
+            List<Tbl_Unmapped_Users> oresult = db.Database.SqlQuery<Tbl_Unmapped_Users>("exec Usp_Unmapped_Users_Summary '" + Region + "'").ToList();
 
             return oresult;
         }

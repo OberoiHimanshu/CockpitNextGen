@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Cockpit_NextGenMVC.BAL;
+using Cockpit_NextGenMVC.BAL_User_Mgmt;
 using Cockpit_NextGenMVC.Models;
 
 namespace Cockpit_NextGenMVC.Controllers
@@ -12,6 +13,8 @@ namespace Cockpit_NextGenMVC.Controllers
     public class HomeController : Controller
     {
         static BAL.Service1Client service = new BAL.Service1Client();
+        static BAL_User_Mgmt.Service1Client UM_service = new BAL_User_Mgmt.Service1Client();
+
         Tbl_Backlog_Summary Summary;
         Tbl_Daily_Control_Reports_Summary[] BCRSummary, OverallBCRSummary;
         List<SelectListItem> lstRolebasedCockpit;
@@ -427,7 +430,7 @@ namespace Cockpit_NextGenMVC.Controllers
 
             oDashboardModal.BacklogStats = lstBacklogstats;
 
-            unmappedSummery = service.GetUnMappedUsersByRegion(oSessionUser.SUPERREGION);
+            unmappedSummery = UM_service.GetUnMappedUsersByRegion(oSessionUser.SUPERREGION);
             //Session["unmappedSummery"] = unmappedSummery;
             var UnMappedOrderCount = unmappedSummery.Where(w => w.USERGROUP == "COPC CSR").Select(p => p.Order_Count).Sum();
             Session["UnMappedOrderCount"] = UnMappedOrderCount;
@@ -503,7 +506,7 @@ namespace Cockpit_NextGenMVC.Controllers
 
         void Set_SessionUserProfile(string NtLogin)
         {
-            oSessionUserProfiles = service.GetUserDetails(NtLogin).ToList();
+            oSessionUserProfiles = UM_service.GetUserDetails(NtLogin).ToList();
 
             if (oSessionUserProfiles.Count == 0)
             {
@@ -526,7 +529,7 @@ namespace Cockpit_NextGenMVC.Controllers
                 ViewBag.RolesList = lstRoles;
                 Session.Clear();
 
-                var TeamProfile = service.GetUserTeamDetails(oSessionUser.TEAM_NAME);
+                var TeamProfile = UM_service.GetUserTeamDetails(oSessionUser.TEAM_NAME);
                 var UniqueMembers = (from tbl in TeamProfile group tbl by new { tbl.FULLNAME } into g select new Model_Pie { category = g.Key.FULLNAME }).ToList();
 
 
@@ -554,7 +557,7 @@ namespace Cockpit_NextGenMVC.Controllers
 
                 oSessionUser = (VW_USERS)Session["UserProfile"];
 
-                var TeamProfile = service.GetUserTeamDetails(oSessionUser.TEAM_NAME);
+                var TeamProfile = UM_service.GetUserTeamDetails(oSessionUser.TEAM_NAME);
                 var UniqueMembers = (from tbl in TeamProfile group tbl by new { tbl.FULLNAME, tbl.NTLOGIN } into g select new Model_Pie { category = g.Key.FULLNAME, Color = g.Key.NTLOGIN }).ToList();
 
                 var UniqueCSRs = (from tbl in TeamProfile where tbl.ROLE_DESC == "CSR" group tbl by new { tbl.FULLNAME, tbl.NTLOGIN } into g select new Model_Pie { category = g.Key.FULLNAME, Color = g.Key.NTLOGIN }).ToList();

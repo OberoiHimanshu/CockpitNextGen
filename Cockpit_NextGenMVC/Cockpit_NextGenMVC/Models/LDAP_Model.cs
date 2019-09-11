@@ -6,7 +6,7 @@ using System.DirectoryServices.Protocols;
 
 namespace Cockpit_NextGenMVC.Models
 {
-    public class LDAP_Model
+    public class LDAP_Model 
     {
         private LdapConnection con;
         Dictionary<String, String> objDicLdap = new Dictionary<string, string>();
@@ -118,14 +118,7 @@ namespace Cockpit_NextGenMVC.Models
                 Exception ex = new Exception("Employee ID cannot be null");
                 throw ex;
             }
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+           
             return objDicLdap;
         }
 
@@ -184,14 +177,13 @@ namespace Cockpit_NextGenMVC.Models
                 Exception ex = new Exception("Employee ID cannot be null");
                 throw ex;
             }
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            
             return objDicLdap;
+        }
+
+        ~ LDAP_Model()
+        {
+            con.Dispose();
         }
     }
 }

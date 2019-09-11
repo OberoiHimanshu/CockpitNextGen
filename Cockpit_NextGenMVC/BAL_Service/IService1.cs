@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 
 namespace BAL_Service
@@ -107,9 +108,9 @@ namespace BAL_Service
 
         #region Billing Block related Orders
 
-        [OperationContract]
+        [OperationContract(IsOneWay =false, AsyncPattern =true)]
         [FaultContract(typeof(ServiceException))]
-        List<VW_Orders_Info> Get_SNIAllOrders(Session_Filters oSession_Filter, string ReportCatagory, string UIView);
+        Task<List<VW_Orders_Info>> Get_SNIAllOrders(Session_Filters oSession_Filter, string ReportCatagory, string UIView);
 
         [OperationContract]
         [FaultContract(typeof(ServiceException))]

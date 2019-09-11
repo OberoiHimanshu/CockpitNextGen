@@ -1,6 +1,6 @@
-﻿using log4net;
-using log4net.Config;
-using log4net.Core;
+﻿//using log4net;
+//using log4net.Config;
+//using log4net.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BAL_Service
 {
@@ -30,7 +31,7 @@ namespace BAL_Service
             return string.Format("You entered: {0}", value);
         }
 
-        
+
 
         #region Generic Methods
 
@@ -172,18 +173,38 @@ namespace BAL_Service
 
         #region Billing Blocked Related
 
-        public List<VW_Orders_Info> Get_SNIAllOrders(Session_Filters oSession_Filter, string ReportCatagory, string UIView)
+        public async Task<List<VW_Orders_Info>> Get_SNIAllOrders(Session_Filters oSession_Filter, string ReportCatagory, string UIView)
         {
-            var objResult = (from Tbl in db.usp_SNI_All_Orders(oSession_Filter.Business, oSession_Filter.Division, oSession_Filter.PrimaryProduct,
-                                 oSession_Filter.Region, oSession_Filter.Sorg, oSession_Filter.CreatedBy, oSession_Filter.OrderOwner, oSession_Filter.SNIClosureStatus,
-                                 oSession_Filter.DBClosureStatus, oSession_Filter.AgingBucket, oSession_Filter.SNIAgingBucket, oSession_Filter.DeltaLoaddateBucket,
-                                 oSession_Filter.DollarBucket, oSession_Filter.BacklogStatus,
-                                 oSession_Filter.CustomerPONumber, oSession_Filter.SoldToAccountID, oSession_Filter.ShipToAccountID, oSession_Filter.ZUAccountID, oSession_Filter.PL,
-                                 oSession_Filter.SoldToCountry, oSession_Filter.ShipToCountry, oSession_Filter.ZUCountry,
-                                 oSession_Filter.BillingBlock_Code, oSession_Filter.DeliveryBlock_Code, oSession_Filter.PaymentTerm, oSession_Filter.SalesRep,
-                                 oSession_Filter.BTM, oSession_Filter.BTM_Manager,
-                                 oSession_Filter.ClosuredaysDeltaFrom, oSession_Filter.ClosuredaysDeltaTo, UIView)
-                             select Tbl).ToList();
+            List<VW_Orders_Info> objResult;
+
+            objResult = await Task.Factory.StartNew(() =>
+            {
+                return GetDB_Calls("SNI_AllOrders", oSession_Filter, UIView);
+            });
+
+            return objResult;
+        }
+
+        private List<VW_Orders_Info> GetDB_Calls(string Catagory, Session_Filters oSession_Filter, string UIView)
+        {
+            List<VW_Orders_Info> objResult = new List<VW_Orders_Info>();
+
+            switch(Catagory)
+            {
+                case "SNI_AllOrders":
+                    objResult = (from Tbl in db.usp_SNI_All_Orders(oSession_Filter.Business, oSession_Filter.Division, oSession_Filter.PrimaryProduct,
+                         oSession_Filter.Region, oSession_Filter.Sorg, oSession_Filter.CreatedBy, oSession_Filter.OrderOwner, oSession_Filter.SNIClosureStatus,
+                         oSession_Filter.DBClosureStatus, oSession_Filter.AgingBucket, oSession_Filter.SNIAgingBucket, oSession_Filter.DeltaLoaddateBucket,
+                         oSession_Filter.DollarBucket, oSession_Filter.BacklogStatus,
+                         oSession_Filter.CustomerPONumber, oSession_Filter.SoldToAccountID, oSession_Filter.ShipToAccountID, oSession_Filter.ZUAccountID, oSession_Filter.PL,
+                         oSession_Filter.SoldToCountry, oSession_Filter.ShipToCountry, oSession_Filter.ZUCountry,
+                         oSession_Filter.BillingBlock_Code, oSession_Filter.DeliveryBlock_Code, oSession_Filter.PaymentTerm, oSession_Filter.SalesRep,
+                         oSession_Filter.BTM, oSession_Filter.BTM_Manager,
+                         oSession_Filter.ClosuredaysDeltaFrom, oSession_Filter.ClosuredaysDeltaTo, UIView)
+                                 select Tbl).ToList();
+                    break;
+            }
+
 
             return objResult;
         }
@@ -291,11 +312,11 @@ namespace BAL_Service
                 case "SNI_ExpectedReleasePassed":
                     var SNI_ExpectedReleasePassed = from Tbl in db.usp_SNI_Excel_Export(oSession_Filter.Business, oSession_Filter.Division, oSession_Filter.PrimaryProduct,
                                  oSession_Filter.Region, oSession_Filter.Sorg, oSession_Filter.CreatedBy, oSession_Filter.OrderOwner, oSession_Filter.SNIClosureStatus,
-                                 oSession_Filter.DBClosureStatus, oSession_Filter.AgingBucket, oSession_Filter.SNIAgingBucket, oSession_Filter.DeltaLoaddateBucket, 
+                                 oSession_Filter.DBClosureStatus, oSession_Filter.AgingBucket, oSession_Filter.SNIAgingBucket, oSession_Filter.DeltaLoaddateBucket,
                                  oSession_Filter.DollarBucket, oSession_Filter.BacklogStatus,
                                  oSession_Filter.CustomerPONumber, oSession_Filter.SoldToAccountID, oSession_Filter.ShipToAccountID, oSession_Filter.ZUAccountID, oSession_Filter.PL,
                                  oSession_Filter.SoldToCountry, oSession_Filter.ShipToCountry, oSession_Filter.ZUCountry,
-                                 oSession_Filter.BillingBlock_Code, oSession_Filter.DeliveryBlock_Code, oSession_Filter.PaymentTerm, oSession_Filter.SalesRep, 
+                                 oSession_Filter.BillingBlock_Code, oSession_Filter.DeliveryBlock_Code, oSession_Filter.PaymentTerm, oSession_Filter.SalesRep,
                                  oSession_Filter.BTM, oSession_Filter.BTM_Manager,
                                  oSession_Filter.ClosuredaysDeltaFrom, oSession_Filter.ClosuredaysDeltaTo, UIView)
                                                     select Tbl;
@@ -376,7 +397,7 @@ namespace BAL_Service
             }
             catch (Exception ex)
             {
-                
+
             }
 
             return objResult;
@@ -440,13 +461,13 @@ namespace BAL_Service
                                  oSession_Filter.CustomerPONumber, oSession_Filter.Sorg, oSession_Filter.Business, oSession_Filter.PL, oSession_Filter.PrimaryProduct,
                                  oSession_Filter.OwnerName, oSession_Filter.OrderOwner, oSession_Filter.BacklogStatus, oSession_Filter.DollarBucket,
                                  oSession_Filter.DollarBucket, oSession_Filter.Aging, oSession_Filter.AgingBucket, oSession_Filter.SNIAgingBucket, oSession_Filter.SNIClosureStatus,
-                                 oSession_Filter.DBClosureStatus, oSession_Filter.BacklogAmt, oSession_Filter.SoldToAccountID, oSession_Filter.ShipToAccountID, 
-                                 oSession_Filter.SoldToAccount, oSession_Filter.ShipToAccount, oSession_Filter.ZUAccountID, oSession_Filter.SoldToCountry, oSession_Filter.ShipToCountry, 
-                                 oSession_Filter.ZUAccount, oSession_Filter.ZUCountry, oSession_Filter.SalesRep, oSession_Filter.BTM, oSession_Filter.BTM_Manager, 
-                                 oSession_Filter.BillingBlock_Code, oSession_Filter.DeliveryBlock_Code, oSession_Filter.BillingBlock_HeaderText, 
-                                 oSession_Filter.DeliveryBlock_HeaderText, oSession_Filter.DeliveryBlock_HeaderText, oSession_Filter.BillingBlock_ItemText, 
-                                 oSession_Filter.DeliveryBlock_ItemText, oSession_Filter.DeltaLoaddate, oSession_Filter.DeltaLoaddateBucket, oSession_Filter.ClosuredaysDeltaFrom, 
-                                 oSession_Filter.ClosuredaysDeltaTo, oSession_Filter.NLHD, oSession_Filter.LoaDDate, oSession_Filter.TrioLoaDDate, oSession_Filter.CRDD, 
+                                 oSession_Filter.DBClosureStatus, oSession_Filter.BacklogAmt, oSession_Filter.SoldToAccountID, oSession_Filter.ShipToAccountID,
+                                 oSession_Filter.SoldToAccount, oSession_Filter.ShipToAccount, oSession_Filter.ZUAccountID, oSession_Filter.SoldToCountry, oSession_Filter.ShipToCountry,
+                                 oSession_Filter.ZUAccount, oSession_Filter.ZUCountry, oSession_Filter.SalesRep, oSession_Filter.BTM, oSession_Filter.BTM_Manager,
+                                 oSession_Filter.BillingBlock_Code, oSession_Filter.DeliveryBlock_Code, oSession_Filter.BillingBlock_HeaderText,
+                                 oSession_Filter.DeliveryBlock_HeaderText, oSession_Filter.DeliveryBlock_HeaderText, oSession_Filter.BillingBlock_ItemText,
+                                 oSession_Filter.DeliveryBlock_ItemText, oSession_Filter.DeltaLoaddate, oSession_Filter.DeltaLoaddateBucket, oSession_Filter.ClosuredaysDeltaFrom,
+                                 oSession_Filter.ClosuredaysDeltaTo, oSession_Filter.NLHD, oSession_Filter.LoaDDate, oSession_Filter.TrioLoaDDate, oSession_Filter.CRDD,
                                  oSession_Filter.ExpReleaseDate, oSession_Filter.ReasonCode,
                                  UIView, "All_DB")
                                   select Tbl).ToList();
@@ -580,11 +601,11 @@ namespace BAL_Service
         {
             var result = (from tbl in db.usp_Get_DB_Greater_90days(oSession_Filter.Business, oSession_Filter.Division, oSession_Filter.PrimaryProduct,
                                  oSession_Filter.Region, oSession_Filter.Sorg, oSession_Filter.CreatedBy, oSession_Filter.OrderOwner, oSession_Filter.SNIClosureStatus,
-                                 oSession_Filter.DBClosureStatus, oSession_Filter.AgingBucket, oSession_Filter.SNIAgingBucket, oSession_Filter.DeltaLoaddateBucket, 
+                                 oSession_Filter.DBClosureStatus, oSession_Filter.AgingBucket, oSession_Filter.SNIAgingBucket, oSession_Filter.DeltaLoaddateBucket,
                                  oSession_Filter.DollarBucket, oSession_Filter.BacklogStatus,
                                  oSession_Filter.CustomerPONumber, oSession_Filter.SoldToAccountID, oSession_Filter.ShipToAccountID, oSession_Filter.ZUAccountID, oSession_Filter.PL,
                                  oSession_Filter.SoldToCountry, oSession_Filter.ShipToCountry, oSession_Filter.ZUCountry,
-                                 oSession_Filter.BillingBlock_Code, oSession_Filter.DeliveryBlock_Code, oSession_Filter.PaymentTerm, oSession_Filter.SalesRep, 
+                                 oSession_Filter.BillingBlock_Code, oSession_Filter.DeliveryBlock_Code, oSession_Filter.PaymentTerm, oSession_Filter.SalesRep,
                                  oSession_Filter.BTM, oSession_Filter.BTM_Manager,
                                  oSession_Filter.ClosuredaysDeltaFrom, oSession_Filter.ClosuredaysDeltaTo, UIView)
                           select tbl).ToList();
@@ -679,12 +700,12 @@ namespace BAL_Service
         {
             var result = (from tbl in db.usp_Get_Unblocked_Orders(oSession_Filter.Business, oSession_Filter.Division, oSession_Filter.PrimaryProduct,
                                  oSession_Filter.Region, oSession_Filter.Sorg, oSession_Filter.CreatedBy, oSession_Filter.OrderOwner, oSession_Filter.SNIClosureStatus,
-                                 oSession_Filter.DBClosureStatus, oSession_Filter.Aging, oSession_Filter.SNIAging, oSession_Filter.AgingBucket, oSession_Filter.SNIAgingBucket, oSession_Filter.DeltaLoaddate, 
+                                 oSession_Filter.DBClosureStatus, oSession_Filter.Aging, oSession_Filter.SNIAging, oSession_Filter.AgingBucket, oSession_Filter.SNIAgingBucket, oSession_Filter.DeltaLoaddate,
                                  oSession_Filter.DeltaLoaddateBucket, oSession_Filter.DollarBucket, oSession_Filter.BacklogStatus,
                                  oSession_Filter.CustomerPONumber, oSession_Filter.SoldToAccountID, oSession_Filter.ShipToAccountID, oSession_Filter.SoldToAccount, oSession_Filter.ShipToAccount,
-                                 oSession_Filter.ZUAccountID, oSession_Filter.ZUAccount ,oSession_Filter.PL,
+                                 oSession_Filter.ZUAccountID, oSession_Filter.ZUAccount, oSession_Filter.PL,
                                  oSession_Filter.SoldToCountry, oSession_Filter.ShipToCountry, oSession_Filter.ZUCountry,
-                                 oSession_Filter.BillingBlock_Code, oSession_Filter.DeliveryBlock_Code, oSession_Filter.BillingBlock_HeaderText , oSession_Filter.DeliveryBlock_HeaderText,
+                                 oSession_Filter.BillingBlock_Code, oSession_Filter.DeliveryBlock_Code, oSession_Filter.BillingBlock_HeaderText, oSession_Filter.DeliveryBlock_HeaderText,
                                  oSession_Filter.BillingBlock_ItemText, oSession_Filter.DeliveryBlock_ItemText,
                                  oSession_Filter.PaymentTerm, oSession_Filter.SalesRep,
                                  oSession_Filter.BTM, oSession_Filter.BTM_Manager,

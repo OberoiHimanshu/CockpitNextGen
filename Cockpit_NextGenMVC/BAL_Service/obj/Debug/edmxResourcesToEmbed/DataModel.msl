@@ -2491,5 +2491,11 @@
     <FunctionImportMapping FunctionImportName="usp_Get_DB_Speed_to_Revenue" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_DB_Speed_to_Revenue" />
     <FunctionImportMapping FunctionImportName="usp_Get_Region_SalesForce" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_Region_SalesForce" />
     <FunctionImportMapping FunctionImportName="usp_WW_Process_Summary" FunctionName="Cockpit_NewGenerationModel.Store.usp_WW_Process_Summary" />
+    <FunctionImportMapping FunctionImportName="usp_GetOrder_Header_Info" FunctionName="Cockpit_NewGenerationModel.Store.usp_GetOrder_Header_Info" />
+    <FunctionImportMapping FunctionImportName="usp_GetOrder_LineItems" FunctionName="Cockpit_NewGenerationModel.Store.usp_GetOrder_LineItems" />
+    <FunctionImportMapping FunctionImportName="usp_GetOrder_Partner_Info" FunctionName="Cockpit_NewGenerationModel.Store.usp_GetOrder_Partner_Info" />
+    <FunctionImportMapping FunctionImportName="usp_GetOrder_Block_Info" FunctionName="Cockpit_NewGenerationModel.Store.usp_GetOrder_Block_Info" />
+    <FunctionImportMapping FunctionImportName="usp_GetOrder_Delivery_Info" FunctionName="Cockpit_NewGenerationModel.Store.usp_GetOrder_Delivery_Info" />
+    <FunctionImportMapping FunctionImportName="usp_Get_DB_Mfchilds" FunctionName="Cockpit_NewGenerationModel.Store.usp_Get_DB_Mfchilds" />
   </EntityContainerMapping>
 </Mapping>

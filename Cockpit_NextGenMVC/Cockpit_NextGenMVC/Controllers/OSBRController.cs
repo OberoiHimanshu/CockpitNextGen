@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Cockpit_NextGenMVC.BAL;
+using Cockpit_NextGenMVC.BAL_User_Mgmt;
 using Cockpit_NextGenMVC.Models;
 
 using Kendo.Mvc.Extensions;

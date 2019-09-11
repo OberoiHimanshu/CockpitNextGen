@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.IO;
 
 using Cockpit_NextGenMVC.BAL;
+using Cockpit_NextGenMVC.BAL_User_Mgmt;
 using Cockpit_NextGenMVC.Models;
 
 using Kendo.Mvc.Extensions;
@@ -19,6 +20,8 @@ namespace Cockpit_NextGenMVC.Controllers
     public class GenericController : Controller
     {
         static BAL.Service1Client service = new BAL.Service1Client();
+        static BAL_User_Mgmt.Service1Client um_service = new BAL_User_Mgmt.Service1Client();
+
         VW_USERS oSessionUser;
         List<Dim_Billing_Blocks> lstBillingBlocks;
         List<Dim_Delivery_Blocks> lstDeliveryBlocks;
@@ -40,7 +43,7 @@ namespace Cockpit_NextGenMVC.Controllers
                 lstSalesForce = service.Get_Sales_Force_Master(Region).ToList();
                 lstCustomers = service.Get_Customer_Master(Region).ToList();
             }
-            catch (FaultException<ServiceException> WCFEx)
+            catch (Exception WCFEx)
             {
                 //throw new Exception(WCFEx.Detail.ErrorMessage);
             }
@@ -528,14 +531,14 @@ namespace Cockpit_NextGenMVC.Controllers
 
         public JsonResult GetTeamsByRegion(string RegionName)
         {
-            var oresult = service.GetTeamMaster(RegionName);
+            var oresult = um_service.GetTeamMaster(RegionName);
 
             return Json(oresult);
         }
 
         public JsonResult GetCountryByRegion(string Region)
         {
-            var userProfile = service.GetCountryByRegion(Region);
+            var userProfile = um_service.GetCountryByRegion(Region);
 
             return Json(userProfile);
         }
@@ -915,7 +918,7 @@ namespace Cockpit_NextGenMVC.Controllers
         public JsonResult GetRegionTeams()
         {
             oSessionUser = (VW_USERS)Session["UserProfile"];
-            var userProfile = service.GetUsersByRegion(oSessionUser.SUPERREGION);
+            var userProfile = um_service.GetUsersByRegion(oSessionUser.SUPERREGION);
 
             List<MultiSelectResult> oresult = userProfile.Select(p => new MultiSelectResult { Text = p.TEAM_NAME, Value = p.TEAM_NAME }).Distinct().ToList();
 

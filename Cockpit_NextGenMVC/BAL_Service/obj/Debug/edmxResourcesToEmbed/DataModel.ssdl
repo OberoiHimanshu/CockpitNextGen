@@ -2849,6 +2849,9 @@ warning 6002: The table/view 'CockpitNextGen_Dev.dbo.VW_USERS' does not have a p
     <Parameter Name="Closure_Days_Delta_To" Type="int" Mode="In" />
     <Parameter Name="UI_View" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="usp_Get_DB_Mfchilds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Order_Number" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="usp_Get_DB_Overdue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="BU" Type="varchar" Mode="In" />
     <Parameter Name="DIV" Type="varchar(max)" Mode="In" />

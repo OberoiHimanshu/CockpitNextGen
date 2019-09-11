@@ -3520,4 +3520,25 @@
     <Property Type="Double" Name="WW" Nullable="false" />
     <Property Type="String" Name="BucketName" Nullable="true" MaxLength="100" />
   </ComplexType>
+  <ComplexType Name="usp_Get_DB_Mfchilds1_Result">
+    <Property Type="Double" Name="Sales_Ord" Nullable="true" />
+    <Property Type="String" Name="Regional_Reason_Code" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Reason_Code" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ActionOwner" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NextAction" Nullable="true" />
+    <Property Type="String" Name="ClosureMonth" Nullable="true" MaxLength="16" />
+    <Property Type="String" Name="Tentative" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BC_Comment" Nullable="true" />
+    <Property Type="String" Name="BC_Prior" Nullable="true" MaxLength="10" />
+    <Property Type="DateTime" Name="BC_Comment_Date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="BC_Commented_By" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OF_Comment" Nullable="true" />
+    <Property Type="String" Name="OF_Prior" Nullable="true" MaxLength="10" />
+    <Property Type="DateTime" Name="OF_Comment_Date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="OF_Commented_By" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Cockpit_CommentTime" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CockpitComments" Nullable="true" />
+    <Property Type="String" Name="CockpitClearDate" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CockpitReasonCode" Nullable="true" MaxLength="100" />
+  </ComplexType>
 </Schema>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Cockpit_NextGenMVC.Models;
 using Cockpit_NextGenMVC.BAL;
+using Cockpit_NextGenMVC.BAL_User_Mgmt;
 
 namespace Cockpit_NextGenMVC.Models
 {

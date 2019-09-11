@@ -1,6 +1,6 @@
 ﻿@model  Cockpit_NextGenMVC.Models.DashboardModal
 @{
-    Cockpit_NextGenMVC.BAL.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL.VW_USERS)Session["UserProfile"];
+    Cockpit_NextGenMVC.BAL_User_Mgmt.VW_USERS SessionUSer = (Cockpit_NextGenMVC.BAL_User_Mgmt.VW_USERS)Session["UserProfile"];
 
     IEnumerable<Cockpit_NextGenMVC.Models.Backlogstats> listStats = Model.BCR_Level1_RawData;
     SelectList ReportsList = Model.lstReportsMaster;

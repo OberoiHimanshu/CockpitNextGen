@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -92,7 +93,7 @@ namespace Cockpit_NextGenMVC.Controllers
             return View(lst_SNIResult);
         }
 
-        public ActionResult SNI_AllOrders()
+        public async Task<ActionResult> SNI_AllOrders()
         {
             oSessionUser = (VW_USERS)Session["UserProfile"];
             oDashboardModel = (DashboardModal)Session["oDashboardModal"];
@@ -116,8 +117,10 @@ namespace Cockpit_NextGenMVC.Controllers
             BAL.Session_Filters oFilters = oDashboardModel.oSessionFilters.Set_ServiceFilters();
 
 
-            var lst_SNIResult = service.Get_SNIAllOrders(oFilters, 
-                                                          "SNI_MF", CockpitUI);
+            var lst_SNIResult = await Task.Factory.StartNew(() => service.Get_SNIAllOrders(oFilters, 
+                                                          "SNI_MF", CockpitUI));
+
+
             lstReportsMaster = service.Get_Reports_Master().ToList();
             oCurrentReport = lstReportsMaster.Where(p => p.ReportName == "Billing Block").FirstOrDefault();
 
@@ -129,7 +132,7 @@ namespace Cockpit_NextGenMVC.Controllers
             return View(lst_SNIResult);
         }
 
-        public ActionResult SNI_AllOrders_via_Summary(string Region, string Bucket, string Bucket_Type)
+        public async Task<ActionResult> SNI_AllOrders_via_Summary(string Region, string Bucket, string Bucket_Type)
         {
             oSessionUser = (VW_USERS)Session["UserProfile"];
 
@@ -157,8 +160,9 @@ namespace Cockpit_NextGenMVC.Controllers
 
             if (Bucket_Type == "AgingBucket")
             {
-                lst_SNIResult = service.Get_SNIAllOrders(oFilters, 
-                                                          "SNI_MF", CockpitUI);
+                lst_SNIResult = await Task.Factory.StartNew(() => service.Get_SNIAllOrders(oFilters,
+                                                          "SNI_MF", CockpitUI));
+
                 ViewData.Add("lst_SNIResult", lst_SNIResult);
 
                 ViewData.Add("oDashboardModal", (DashboardModal)Session["oDashboardModal"]);
@@ -168,8 +172,8 @@ namespace Cockpit_NextGenMVC.Controllers
             }
             else if (Bucket_Type == "DollarBucket")
             {
-                lst_SNIResult = service.Get_SNIAllOrders(oFilters,
-                                                          "SNI_MF", CockpitUI);
+                lst_SNIResult = await Task.Factory.StartNew(() => service.Get_SNIAllOrders(oFilters,
+                                                          "SNI_MF", CockpitUI));
                 ViewData.Add("lst_SNIResult", lst_SNIResult);
 
                 ViewData.Add("oDashboardModal", (DashboardModal)Session["oDashboardModal"]);
@@ -179,8 +183,9 @@ namespace Cockpit_NextGenMVC.Controllers
             }
             else
             {
-                lst_SNIResult = service.Get_SNIAllOrders(oFilters, 
-                                                          "SNI_MF", CockpitUI);
+                lst_SNIResult = await Task.Factory.StartNew(() => service.Get_SNIAllOrders(oFilters,
+                                                          "SNI_MF", CockpitUI));
+
                 ViewData.Add("lst_SNIResult", lst_SNIResult);
 
                 ViewData.Add("oDashboardModal", (DashboardModal)Session["oDashboardModal"]);
