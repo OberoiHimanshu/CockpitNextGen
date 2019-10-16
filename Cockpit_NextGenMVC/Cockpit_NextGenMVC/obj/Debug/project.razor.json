@@ -1,0 +1,19 @@
+{
+  "FilePath": "/Users/himanshuoberoi/Documents/GitHub/A.Com-Projects/Cockpit_NextGenMVC/Cockpit_NextGenMVC/Cockpit_NextGenMVC.csproj",
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 703
+  },
+  "RootNamespace": null,
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}

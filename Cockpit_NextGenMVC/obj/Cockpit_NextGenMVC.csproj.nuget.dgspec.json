@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/himanshuoberoi/Documents/GitHub/A.Com-Projects/Cockpit_NextGenMVC/Cockpit_NextGenMVC.csproj": {}
+  },
+  "projects": {
+    "/Users/himanshuoberoi/Documents/GitHub/A.Com-Projects/Cockpit_NextGenMVC/Cockpit_NextGenMVC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/himanshuoberoi/Documents/GitHub/A.Com-Projects/Cockpit_NextGenMVC/Cockpit_NextGenMVC.csproj",
+        "projectName": "Cockpit_NextGenMVC",
+        "projectPath": "/Users/himanshuoberoi/Documents/GitHub/A.Com-Projects/Cockpit_NextGenMVC/Cockpit_NextGenMVC.csproj",
+        "packagesPath": "/Users/himanshuoberoi/.nuget/packages/",
+        "outputPath": "/Users/himanshuoberoi/Documents/GitHub/A.Com-Projects/Cockpit_NextGenMVC/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/himanshuoberoi/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
