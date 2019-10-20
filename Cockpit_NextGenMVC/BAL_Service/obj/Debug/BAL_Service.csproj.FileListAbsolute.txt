@@ -29,3 +29,4 @@ C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\BAL_Service\bin\Deb
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\BAL_Service\bin\Debug\Newtonsoft.Json.xml
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\BAL_Service\obj\Debug\BAL_Service.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\BAL_Service\obj\Debug\BAL_Service.pdb
+C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\BAL_Service\obj\Debug\BAL_Service.csprojResolveAssemblyReference.cache
