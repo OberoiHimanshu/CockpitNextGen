@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="AzureDBConnection-Web.config Connection String" description="AzureDBConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=hsqlserver.database.windows.net;Initial Catalog=Practice_DB;Integrated Security=False;User ID=test;Password=secure@2k19;Connect Timeout=15;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\HOberoi\\documents\\visual\ studio\ 2015\\Projects\\B-Web-App\\B-Web-App\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AzureDBConnection']/@connectionString" />
+  </parameter>
+  <parameter name="CNG_Azure-Web.config Connection String" description="CNG_Azure Connection String used in web.config by the application to access the database." defaultValue="data source=hsqlserver.database.windows.net;initial catalog=Practice_DB;integrated security=False;user id=test;password=secure@2k19;connect timeout=15;encrypt=True;trustservercertificate=False;applicationintent=ReadWrite;multisubnetfailover=False;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\HOberoi\\documents\\visual\ studio\ 2015\\Projects\\B-Web-App\\B-Web-App\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CNG_Azure']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="DefaultConnection_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\HOberoi\\documents\\visual\ studio\ 2015\\Projects\\B-Web-App\\B-Web-App\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>
