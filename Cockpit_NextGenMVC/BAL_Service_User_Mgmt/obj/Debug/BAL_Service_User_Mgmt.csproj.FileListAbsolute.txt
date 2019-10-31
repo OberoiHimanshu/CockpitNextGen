@@ -7,4 +7,3 @@ C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\BAL_Service_User_Mg
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\BAL_Service_User_Mgmt\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\BAL_Service_User_Mgmt\obj\Debug\BAL_Service_User_Mgmt.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\BAL_Service_User_Mgmt\obj\Debug\BAL_Service_User_Mgmt.pdb
-C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\BAL_Service_User_Mgmt\obj\Debug\BAL_Service_User_Mgmt.csprojResolveAssemblyReference.cache

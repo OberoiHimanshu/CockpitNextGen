@@ -55,4 +55,3 @@ C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\bin\zh-CN\Kendo.Mvc.resources.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\obj\Debug\Cockpit_NextGenMVC.dll
 C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\obj\Debug\Cockpit_NextGenMVC.pdb
-C:\Users\HOberoi\Documents\A.Com-Projects\Cockpit_NextGenMVC\Cockpit_NextGenMVC\obj\Debug\Cockpit_NextGenMVC.csprojResolveAssemblyReference.cache
