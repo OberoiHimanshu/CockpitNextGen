@@ -1,0 +1,76 @@
+﻿@model IEnumerable<B_Web_App.Models.Tbl_Order_Search>
+@using Kendo.Mvc.UI
+@{
+    var OrderToSearch = ViewBag.SalesOrder;
+
+    var resultCount = Model.Count();
+    bool EnableDetailsButton = true;
+
+    if (resultCount == 0)
+    { EnableDetailsButton = false; }
+}
+<div class="content-wrapper">
+    <section class="content">
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+        <div class="box-body table-responsive no-padding">
+            <h3>Search Results for Sales Order : @OrderToSearch </h3>    
+            <input type="hidden" value="@OrderToSearch" id="hid_OrderToSearch" name="hid_OrderToSearch" />
+            <p style="color:Red;"> 
+            (*) This is an unrestricted view to provide the Order details for information purpose only.	
+            If you are an owner or authorized to take the action on this Order then you will be able to see the Order in action view as well.
+	        <br /> (*) For orders which are already Invoiced and no longer pending for Commenting / sign-off will only be available in Archive Section.
+            </p>
+
+
+            @(Html.Kendo().Grid(Model)
+                   .Name("grdOrders")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(p => p.Sales_Order).Width(100);
+                        columns.Bound(p => p.Found_in_Area).Title("Found in Bucket").Width(130);
+                        columns.Bound(p => p.Bucket_Security_On).Width(80).Title("Region");
+                        columns.Bound(p => p.Current_Owner).Width(100).Title("Order Owner");
+                    })
+                    .Sortable()
+                    .Filterable()
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .ServerOperation(false)
+                        )
+                 )
+
+                 <br/>
+
+		        @(Html.Kendo().Button().Name("btnSearchFullDetails").Events(e => e.Click("SearchFullDetails")).Content("Click here to see details of this order").Enable(EnableDetailsButton)
+                )
+
+            <br/>
+
+         </div>     
+
+         <div id="tabstrip">
+                <ul>
+                    <li class="k-state-active">Header Info</li>
+                    <li>Block Info</li>
+                    <li>Item Info</li>
+                    <li>Delivery Details</li>
+                    <li>Partner Details</li>
+                    <li>Comments History</li>
+                </ul>
+         
+                <div>@{Html.RenderPartial("_Order_Header_Info");}</div>
+                <div>@{Html.RenderPartial("_Order_Block_Info");}</div>
+                <div>@{Html.RenderPartial("_Order_Item_Info");}</div>
+                <div>@{Html.RenderPartial("_Order_Delivery_Info");}</div>
+                <div>@{Html.RenderPartial("_Order_Partner_Info");}</div>
+                <div>@{Html.RenderPartial("_CommentHistory");}</div>
+           </div>     
+        </div>
+    </div>
+</div>
+
+</section>
+</div>

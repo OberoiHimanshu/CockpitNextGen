@@ -18,6 +18,8 @@ namespace B_Web_App.Models
         public virtual DbSet<TBL_TEAM_STRUCTURE> TBL_TEAM_STRUCTURE { get; set; }
         public virtual DbSet<Tbl_Country_Sorg_Orig> Tbl_Country_Sorg_Orig { get; set; }
 
+        public virtual DbSet<VW_BCR_SignOff_Summary> VW_BCR_SignOff_Summary { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TBL_USERS>()

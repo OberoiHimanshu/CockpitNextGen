@@ -1,0 +1,8 @@
+﻿@model IEnumerable<B_Web_App.Models.Tbl_Order_Search>
+
+@{
+    var OrderToSearch = ViewBag.SalesOrder;
+}
+
+@{Html.RenderPartial("_SearchOrder");}
+

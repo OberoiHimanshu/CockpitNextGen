@@ -5,11 +5,29 @@ using System.Web;
 using System.Web.Mvc;
 using B_Web_App.Models;
 
+using Kendo.Mvc.Extensions;
+
+
 namespace B_Web_App.Controllers
 {
     public class GenericController : Controller
     {
         private CNG_Azure db = new CNG_Azure();
+        // Private Attributes
+
+        VW_USERS oSessionUser;
+        List<Dim_Billing_Blocks> lstBillingBlocks;
+        List<Dim_Delivery_Blocks> lstDeliveryBlocks;
+        List<Dim_Customers> lstCustomers;
+        List<Dim_Sales_Force> lstSalesForce;
+        List<Dim_Business_Master> lstBusienssMaster;
+        string CockpitUI;
+        DashboardModal oDashboardModal;
+        Tbl_Followup_Summary[] oMyFollowups;
+        Tbl_Followups[] oSystemGeneratedFollowups;
+
+        //
+
 
         // GET: Genric
         public ActionResult Index()

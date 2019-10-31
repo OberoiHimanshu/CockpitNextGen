@@ -6,6 +6,8 @@
     var Role = Model.ROLE_DESC;
     var NTLogin = Model.NTLOGIN;
     Layout = "~/Views/Shared/_Layout_Login.cshtml";
+
+    Session["User"] = Model;
 }
 <div class="login-box-body">
     <p class="login-box-msg" style="text-align:justify;">

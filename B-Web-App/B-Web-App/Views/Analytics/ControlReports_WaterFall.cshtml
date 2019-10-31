@@ -1,0 +1,277 @@
+﻿@model IEnumerable<Cockpit_NextGenMVC.Controllers.Model_Pie>
+@{
+    List<Cockpit_NextGenMVC.Models.Backlogstats> listStats = (List<Cockpit_NextGenMVC.Models.Backlogstats>)ViewData["RawData"];
+    List<Cockpit_NextGenMVC.Models.Backlogstats> listStats2 = (List<Cockpit_NextGenMVC.Models.Backlogstats>)ViewData["RawData2"];
+
+    Cockpit_NextGenMVC.BAL.User SessionUSer = (Cockpit_NextGenMVC.BAL.User)Session["UserProfile"];
+    var UserRole = SessionUSer.RoleDescr;
+    var IsReportbyOwner = true;
+    var IsReportbyReportName = false;
+    var DefaultReprot = ViewBag.DefaultReport;
+
+    if (UserRole == "Supervisor")
+    {
+        IsReportbyOwner = false;
+        IsReportbyReportName = true;
+    }
+    else if (UserRole != "Supervisor")
+    {
+        IsReportbyOwner = true;
+        IsReportbyReportName = false;
+    }    
+}
+<div class="content-wrapper">
+    <section class="content-header">
+    <h1>
+        Control Reports Analytics
+        </h1>
+        <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="halflings-icon home"></i>Home</a></li>
+        <li><a href="#"><i class="halflings-icon cog"></i>@ViewBag.Title</a></li>
+        </ol>
+   </section>
+    <section class="content">
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="box">
+    <div id="content" class="span11" style="min-height: 939px;">
+    @Html.Kendo().TabStrip().Name("tabstrip").Items(tabstrip =>
+                   {
+                       tabstrip.Add().Text("<span class='km-icon revenue'></span><span class='hidden-xs'>Summary Analysis</span>")
+                        .Encoded(false)
+                        .Selected(true)
+                        .Content(@<text>
+                            <div id="chart1">
+                               @(Html.Kendo().Chart()
+                                .Name("BCRSummarychart")
+                                .Title("Control Reports Summary")
+                                .Legend(legend => legend
+                                    .Visible(false)
+                                )
+                                .Series(series =>
+                                {
+                                    series.Pie(Model).Labels(l => l
+                                        .Template("#= category #: \n #= value#")
+                                        .Background("transparent")
+                                        .Visible(true)
+                                        )
+                                    .StartAngle(150);
+                                })
+                                .Tooltip(tooltip => tooltip
+                                    .Visible(true)
+                                    .Format("{0}%")
+                                )
+
+                            )
+
+
+
+                            @Html.Kendo().Grid(Model).Name("grdSummaryData").ToolBar(tools => tools.Excel()).Columns(c =>
+                            {
+                                c.Bound(p => p.category).Width(150);
+                                c.Bound(p => p.value).Width(100).Title("Pending Count");
+                            }).Scrollable(sc => sc.Height(350)).DataSource(dataSource => dataSource
+                            .Ajax()
+                            .PageSize(20)
+                            .Model(model => model.Id(p => p.category))
+                            .ServerOperation(false)).Excel(excel => excel
+                            .FileName("CNG_BCR_Summary.xlsx")
+                            .Filterable(true)
+                            .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+                            )
+                    </div> 
+                            </text>);
+
+                       tabstrip.Add().Text("<span class='km-icon revenue'></span><span class='hidden-xs'>Summary Details</span>")
+                        .Encoded(false)
+                        .Content(@<text>
+                             <div id="chart2">                                                                                
+                              @(Html.Kendo().Chart()
+                                .Name("BCRDetailschart")
+                                .Title("Control Reports Backlog Details")
+                                .Legend(legend => legend
+                                    .Visible(false)
+                                )
+                                .Series(series =>
+                                {
+                                    series.Bar((double[])ViewData["PendingComments"]).Name("Pending Comments").Color("#f3ac32");
+                                    series.Bar((double[])ViewData["PendingReview"]).Name("Pending Reviews").Color("#b8b8b8");
+                                    series.Bar((double[])ViewData["PendingSignOff"]).Name("#Pending Sign-Offs#").Color("#bb6e36");
+                                })
+                                .CategoryAxis(axis => axis
+                                    .Name("series-axis")
+                                    .Line(line => line.Visible(false))
+                                )
+                                .CategoryAxis(axis => axis
+                                    .Name("label-axis")
+                                    .Categories((string[])ViewData["UniqueReports"])
+                                )
+                                .ValueAxis(axis => axis
+                                    .Numeric()
+                                        .Labels(labels => labels.Format("{0}"))
+
+                                        // Move the label-axis all the way down the value axis
+                                        .AxisCrossingValue(0, int.MinValue)
+                                )
+
+                                .Tooltip(tooltip => tooltip
+                                    .Visible(true)
+                                    .Format("{0}")
+                                    .Template("#= series.name #: #= value #")
+                                )
+
+                            )
+
+                            @Html.Kendo().Grid(listStats).Name("grdDetailsData").ToolBar(tools => tools.Excel()).Columns(c =>
+                            {
+                                c.Bound(p => p.OrderOwner).Width(150).Hidden(IsReportbyOwner);
+                                c.Bound(p => p.ReportName).Width(150).Hidden(IsReportbyReportName);
+                                c.Bound(p => p.PendingComments).Width(100).Title("Pending Comments");
+                                c.Bound(p => p.PendingReview).Width(100).Title("Pending Reviews");
+                                c.Bound(p => p.PendingSignOff).Width(100).Title("Pending Sign-Off");
+                            }).Scrollable(sc => sc.Height(350)).DataSource(dataSource => dataSource
+                            .Ajax()
+                            .PageSize(20)
+                            .Model(model => model.Id(p => p.ReportName))
+                            .ServerOperation(false)
+                                 ).Excel(excel => excel
+                                     .FileName("CNG_BCR_Summary_Details.xlsx")
+                                     .Filterable(true)
+                                     .ProxyURL(Url.Action("Excel_Export_Save", "Grid"))
+                                     )
+                        
+                    </div>
+                            </text>);
+
+                       if (UserRole != "CSR" && UserRole != "Supervisor")
+                       {
+                           tabstrip.Add().Text("<span class='km-icon revenue'></span><span class='hidden-xs'>Summary (Level 2) Details</span>")
+                            .Encoded(false)
+                            .Content(@<text>
+                             <div id="chart3">
+
+                             Owner Backlog Details By Report :
+                             @(Html.Kendo().DropDownList()
+                              .Name("ControlReports")
+                              .HtmlAttributes(new { style = "width: 250px" })
+                              .Events(e => e.Select("onReportSelected"))
+                              .DataValueField("ReportName")
+                              .BindTo(ViewData["lstReportsMaster"] as SelectList)
+                              .DataTextField("Text")
+                              )
+
+
+
+
+                              @(Html.Kendo().Chart()
+                                .Name("BCRDetails2chart")
+                                .Title("Control Reports Backlog Details")
+                                .Legend(legend => legend
+                                    .Visible(false)
+                                )
+                                .Series(series =>
+                                {
+                                    series.Bar((double[])ViewData["PendingComments2"]).Name("Pending Comments").Color("#f3ac32");
+                                    series.Bar((double[])ViewData["PendingReview2"]).Name("Pending Reviews").Color("#b8b8b8");
+                                    series.Bar((double[])ViewData["PendingSignOff2"]).Name("#Pending Sign-Offs#").Color("#bb6e36");
+                                })
+                                .CategoryAxis(axis => axis
+                                    .Name("series-axis")
+                                    .Line(line => line.Visible(false))
+                                )
+                                .CategoryAxis(axis => axis
+                                    .Name("label-axis")
+                                    .Categories((string[])ViewData["UniqueReports2"])
+                                )
+                                .ValueAxis(axis => axis
+                                    .Numeric()
+                                        .Labels(labels => labels.Format("{0}"))
+
+                                        // Move the label-axis all the way down the value axis
+                                        .AxisCrossingValue(0, int.MinValue)
+                                )
+
+                                .Tooltip(tooltip => tooltip
+                                    .Visible(true)
+                                    .Format("{0}")
+                                    .Template("#= series.name #: #= value #")
+                                )
+
+                            )
+
+                            @Html.Kendo().Grid(listStats2).Name("grdDetailsData2").Columns(c =>
+                           {
+                               c.Bound(p => p.ReportName).Width(150);
+                               c.Bound(p => p.PendingComments).Width(100).Title("Pending Comments");
+                               c.Bound(p => p.PendingReview).Width(100).Title("Pending Reviews");
+                               c.Bound(p => p.PendingSignOff).Width(100).Title("Pending Sign-Off");
+                           }).Scrollable(sc => sc.Height(350)).DataSource(dataSource => dataSource
+                            .Ajax()
+                            .PageSize(20)
+                            .Model(model => model.Id(p => p.ReportName))
+                            .ServerOperation(false)
+                            )    
+                    </div>
+                            </text>);
+                       }
+                   })
+    </div>
+</div>
+
+   </div>
+    </div>
+    </section>
+</div>
+<script>
+
+    var currentReportSelected = "@DefaultReprot";
+
+    function onReportSelected(e) {
+        var dataItem = this.dataItem(e.item.index());
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Analytics/SelectedReportData/',
+            dataType: 'json',
+            data: { ReportName: dataItem.Text },
+            success: function (result) {
+                currentReportSelected = dataItem.Text;
+                //alert(currentReportSelected);
+
+                catagory1 = result[0].category;
+                data1 = result[0].value;
+
+                catagory2 = result[1].category;
+                data2 = result[1].value;
+
+                catagory3 = result[2].category;
+                data3 = result[2].value;
+
+                catagory4 = result[3].category;
+                data4 = result[3].othervalue;
+
+                catagory5 = result[4].RawData;
+
+                var chart = $("#BCRDetails2chart")({
+                    theme: $(document).data("kendoSkin") || "default",
+                    series: [{
+                        data: data1
+                    }, {
+                        data: data2
+                    }, {
+                        data: data3
+                    }],
+                    yAxis: {
+                        data: data4
+                    }
+                });
+
+                $("#grdDetailsData2").data("kendoGrid").dataSource.data(catagory5);
+
+            }
+        });
+
+    }
+
+
+</script>

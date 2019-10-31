@@ -4,7 +4,10 @@
 @{
     ViewBag.Title = "Team Members";
     var UserRole = Model.ROLE_DESC.ToString();
-    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+    Layout = "~/Views/Shared/_Layout_Register.cshtml";
+    SelectList RoleMaster = (SelectList)ViewData["Role_Master"];
+
+    var SubmissionConfirmation = ViewData["SubmissionConfirmation"];
 }
 
 <script language="javascript">
